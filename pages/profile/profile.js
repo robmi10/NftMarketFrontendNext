@@ -9,7 +9,13 @@ const Profile = () => {
   return (
     <>
       <div>
-        <div class="h-2/10 w-4/8 flex cursor-pointer flex-row justify-center space-x-52 pt-20 font-poppins text-xl underline">
+        <div class="flex w-screen justify-center">
+          <div class="mt-24 flex h-56 w-4/6 items-center justify-center bg-slate-300">
+            {" "}
+            Profile
+          </div>
+        </div>
+        <div class="h-2/10 w-4/8 bg flex cursor-pointer flex-row justify-center space-x-52 pt-20 font-poppins text-xl underline">
           <span
             onClick={() => {
               setOpenModal(true);
