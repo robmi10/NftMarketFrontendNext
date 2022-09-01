@@ -19,28 +19,43 @@ const Inputfield = () => {
           <label class="text-white" for="first">
             NFT
           </label>
-          <input class="w-2/4 rounded-md" type="text" id="name" name="first" />
+          <input
+            class="flex-start rounded-md px-4"
+            type="text"
+            id="name"
+            name="first"
+          />
 
-          <label class="text-white" for="first">
+          <label class="flex items-start text-white " for="first">
             Price
           </label>
-          <input class="rounded-md" type="text" id="number" price="second" />
+          <input
+            class="w-full rounded-md px-4"
+            type="number"
+            id="price"
+            price="second"
+          />
 
           <label class="text-white" for="first">
             Royalty
           </label>
-          <input class="rounded-md" type="text" id="range" name="third" />
+          <input
+            class="rounded-md px-4"
+            type="number"
+            id="royalty"
+            name="third"
+          />
 
           <label class="text-white" for="first">
             Duration
           </label>
-          <input class="rounded-md" type="number" id="date" name="fourth" />
+          <input class="rounded-md px-4" type="date" id="date" name="fourth" />
 
           <label class="text-white" for="first">
             Description
           </label>
           <input
-            class="mr-2 h-24 rounded-md"
+            class="mr-2 h-24 max-w-full rounded-md px-4"
             type="text"
             id="text"
             name="fifth"
