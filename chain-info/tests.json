@@ -1,0 +1,18 @@
+{
+  "contracts": {
+    "Auction": "67756d88c6f5f4e156aea9f7b2fdb0b37b748578",
+    "NftMarketPlace": "f65d02deedc101aa09db0e1f4f62dc2a5dc151cf",
+    "OpenZeppelin/openzeppelin-contracts@4.5.0/ERC721": "fb8b673c290f4d6f89b68839bdcaf1858ba56ae3",
+    "OpenZeppelin/openzeppelin-contracts@4.5.0/Strings": "1ce946f6a4eaa185320328620ccf999b9e86db7c"
+  },
+  "tests": {
+    "tests/test_nftmarket.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "..F",
+      "sha1": "89364fd2e010d84173c8428d107d967203da0d57",
+      "txhash": []
+    }
+  },
+  "tx": {}
+}
