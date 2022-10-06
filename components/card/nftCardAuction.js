@@ -3,15 +3,16 @@ import { useMoralis } from "react-moralis";
 import { NftContext } from "../../nftContext/context";
 import Modal from "../modal";
 import useBidNft from "../moralis/useBidNft";
+import useEnd from "../moralis/useEndNft";
 import CountDownTimer from "../time/countdownTimer";
 
 const NftCardAuction = ({ option, ipfsInfo, handleOpenSellModal }) => {
-  const { setBidType, bidType, openModal, setOpenModal } =
-    useContext(NftContext);
+  const { setBidType, bidType } = useContext(NftContext);
   const { Moralis } = useMoralis();
-  const { bidNFT } = useBidNft();
+  const isTimeOver = new Date().getTime() - option.Duration;
+  const { endNFT } = useEnd();
+  console.log({ isTimeOver });
   const NftCardData = { option, ipfsInfo };
-
   const currentPrice = option?.Price
     ? Moralis.Units.FromWei(option?.Price.toString())
     : 0;
@@ -35,25 +36,43 @@ const NftCardAuction = ({ option, ipfsInfo, handleOpenSellModal }) => {
         <h1>{ipfsInfo.description}</h1>
       </div>
 
-      <div class="mt-5 flex h-2/4 w-auto items-center justify-center rounded-sm bg-violet-400">
-        <CountDownTimer />
-      </div>
+      {isTimeOver < 0 && (
+        <>
+          <div class="mt-5 flex h-2/4 w-auto items-center justify-center rounded-sm bg-violet-400">
+            <CountDownTimer
+              countDownTimeMs={option.Duration}
+              AuctionInfo={option}
+            />
+          </div>
 
-      <div class="m-50 mt-10 flex h-2/4 w-full flex-row justify-center space-x-10 ">
-        <button
-          onClick={() => {
-            setBidType(option);
-            handleOpenSellModal({
-              status: true,
-              data: NftCardData,
-              type: "bid",
-            });
-            console.log("setBidType ->", bidType);
-          }}
-        >
-          PUT BID
-        </button>
-      </div>
+          <div class="m-50 mt-10 flex h-2/4 w-full flex-row justify-center space-x-10 ">
+            <button
+              onClick={() => {
+                setBidType(option);
+                handleOpenSellModal({
+                  status: true,
+                  data: NftCardData,
+                  type: "bid",
+                });
+                console.log("setBidType ->", bidType);
+              }}
+            >
+              PUT BID
+            </button>
+          </div>
+        </>
+      )}
+      {isTimeOver > 0 && (
+        <div class="m-50 mt-10 flex h-2/4 w-full flex-row justify-center space-x-10 ">
+          <button
+            onClick={() => {
+              endNFT(option);
+            }}
+          >
+            END AUCTION
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useMoralis } from "react-moralis";
-import auctionAddress from "../../chain-info/deployments/80001/0xAeD9bA6c911cAfCE83DbEb6e87DE1d1d1c615F93.json";
+import auctionAddress from "../../chain-info/deployments/80001/0x278078b27150871d21406A05668c53a74E8c8E2c.json";
 import { NftContext } from "../../nftContext/context";
 import { auctionContractAddress } from "../contracts/adress";
 
@@ -33,6 +33,7 @@ const useBidNft = () => {
           status: status.events[1].args,
           owner: option.openModalSellData.option.Seller,
           tokenID: option.openModalSellData.option.TokenId,
+          auctionID: option.openModalSellData.option.AuctionID,
         });
       })
       .catch((e) => {

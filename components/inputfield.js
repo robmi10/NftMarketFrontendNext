@@ -16,6 +16,12 @@ const Inputfield = () => {
     }
   }, [imageFile]);
 
+  useEffect(() => {
+    if (!openModal) {
+      handleOpenSellModal(false);
+    }
+  }, [openModal]);
+
   const onSubmit = (data) => {
     console.log(data);
     setData(data);
@@ -60,7 +66,6 @@ const Inputfield = () => {
       console.log("hashResult ->", hashResult);
       console.log({ data });
       createSell(hashResult, data.duration);
-      //createNftList(data);
     } catch (e) {
       console.log("error ->", e);
     }

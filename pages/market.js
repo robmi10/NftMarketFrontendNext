@@ -1,23 +1,34 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CardAuction from "../components/card/cardAuction";
 import CardBuy from "../components/card/cardBuy";
 import Modal from "../components/modal";
 import { NftContext } from "../nftContext/context";
 
 const Market = () => {
-  const { marketAuction, setMarketAuction, nftListOnSale, nftListOnAuction } =
-    useContext(NftContext);
+  const {
+    marketAuction,
+    setMarketAuction,
+    nftListOnSale,
+    openModal,
+    nftListOnAuction,
+  } = useContext(NftContext);
   const [openModalBid, setOpenModalBid] = useState(false);
+  useEffect(() => {
+    "inside market open modal here";
+  }, [openModal]);
+
+  useEffect(() => {
+    "update nftListOnSale and nftListOnAuction!";
+  }, [nftListOnSale, nftListOnAuction]);
 
   console.log({ nftListOnSale });
-  console.log({ nftListOnAuction });
 
   const handleOpenSellModal = (e) => {
     console.log("inside handleOpenSellModal market");
     setOpenModalBid(e);
   };
 
-  if (openModalBid)
+  if (openModalBid && openModal)
     return (
       <Modal
         openModalSell={openModalBid}

@@ -6,7 +6,13 @@ import { NftContext } from "../nftContext/context";
 
 const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
   const [sellType, setSellType] = useState(false);
-  const { bidType } = useContext(NftContext);
+  const { bidType, setOpenModal, openModal } = useContext(NftContext);
+
+  useEffect(() => {
+    if (!openModal) {
+      handleOpenSellModal(false);
+    }
+  }, [openModal]);
 
   return (
     <>
@@ -15,6 +21,7 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
           class="absolute top-0 left-0 mt-5 ml-20 flex w-0 cursor-pointer flex-row gap-20 bg-slate-400 text-white"
           onClick={() => {
             handleOpenSellModal(false);
+            setOpenModal(false);
           }}
         >
           X

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useMoralis } from "react-moralis";
-import auctionAddress from "../../chain-info/deployments/80001/0xAeD9bA6c911cAfCE83DbEb6e87DE1d1d1c615F93.json";
+import auctionAddress from "../../chain-info/deployments/80001/0x278078b27150871d21406A05668c53a74E8c8E2c.json";
 import { NftContext } from "../../nftContext/context";
 import { auctionContractAddress } from "../contracts/adress";
 
@@ -29,7 +29,7 @@ const useNftToMarketAuction = () => {
         msgSender: userAddress,
         params: {
           _nftTokenId: createSellData?.openModalSellData?.option?.TokenId,
-          _duration: milliseconds,
+          _duration: 1664916122000,
           _tokenURI: createSellData?.openModalSellData?.option?.TokenURI,
           _royalty: _royalty,
         },

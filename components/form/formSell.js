@@ -6,6 +6,7 @@ import useNftToMarket from "../moralis/useNftToMarket";
 const FormSell = ({ openModalSellData }) => {
   const { register, handleSubmit } = useForm();
   const { NftToMarket } = useNftToMarket();
+  const { setOpenModalSell } = useContext(NftContext);
 
   const onSubmit = (data) => {
     console.log(data);

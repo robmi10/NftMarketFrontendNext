@@ -6,12 +6,19 @@ import useBidNft from "./moralis/useBidNft";
 
 const InputfieldBid = ({ handleOpenSellModal, openModalSellData }) => {
   const { register, handleSubmit } = useForm();
+  const { setOpenModal, bidType, openModal } = useContext(NftContext);
   const { bidNFT } = useBidNft();
   const onSubmit = (data) => {
     console.log(data);
     const createSellData = { form: data, openModalSellData: openModalSellData };
     bidNFT(createSellData);
   };
+
+  useEffect(() => {
+    if (!openModal) {
+      handleOpenSellModal(false);
+    }
+  }, [openModal]);
 
   return (
     <>

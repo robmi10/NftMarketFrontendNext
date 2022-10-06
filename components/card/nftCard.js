@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { NftContext } from "../../nftContext/context";
 
 const NftCard = ({ option, ipfsInfo, handleOpenSellModal }) => {
-  const { setOpenModalSell } = useContext(NftContext);
+  const { setOpenModal } = useContext(NftContext);
   const NftCardData = { option, ipfsInfo };
-  console.log({ ipfsInfo });
+  // console.log({ ipfsInfo });
 
   return (
     <div class="border-1 h-5/5 flex w-2/6 flex-col items-center justify-center rounded-md border-black bg-slate-100 drop-shadow-xl">
@@ -23,7 +23,12 @@ const NftCard = ({ option, ipfsInfo, handleOpenSellModal }) => {
       <div class="m-50 mt-10 mb-5 flex h-2/4 w-full flex-row justify-center space-x-10 ">
         <button
           onClick={() => {
-            handleOpenSellModal({ status: true, data: NftCardData });
+            handleOpenSellModal({
+              status: true,
+              data: NftCardData,
+              type: "sell",
+            });
+            setOpenModal(true);
           }}
         >
           LIST TO MARKET

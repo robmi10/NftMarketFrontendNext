@@ -22,6 +22,10 @@ const NftProvider = ({ children }) => {
   const [buyNft, setBuyNft] = useState(false);
   const [bidNft, setBidNft] = useState(false);
   const [bidType, setBidType] = useState(false);
+  const [myBids, setMyBids] = useState(false);
+  const [widthdrawNft, setWidthdrawNft] = useState(false);
+  const [auctionStatus, setAuctionStatus] = useState(false);
+  const [endNft, setEndNft] = useState(false);
 
   const {
     isWeb3Enabled,
@@ -71,20 +75,8 @@ const NftProvider = ({ children }) => {
   }, [bidNft]);
 
   useEffect(() => {
-    if (!nftList) {
-      getAllNftList();
-    }
-  });
-
-  useEffect(() => {
-    if (!nftListOnSale) {
-      getAllNftsOnSale();
-    }
-  });
-
-  useEffect(() => {
-    if (!nftListOnAuction) {
-      getAllNftsOnAuction();
+    if (!myBids) {
+      getMyBids();
     }
   });
 
@@ -102,11 +94,86 @@ const NftProvider = ({ children }) => {
   }, [nftToMarketAuction]);
 
   useEffect(() => {
+    if (!nftList) {
+      console.log("inside getAllNftList nftCreateData ->", nftCreateData);
+      getAllNftList();
+    }
+  });
+
+  useEffect(() => {
+    if (!nftListOnSale) {
+      console.log("inside getAllNftsOnSale nftToMarket ->", nftToMarket);
+      getAllNftsOnSale();
+    }
+  });
+
+  useEffect(() => {
+    if (!nftListOnAuction) {
+      getAllNftsOnAuction();
+    }
+  });
+
+  useEffect(() => {
+    if (widthdrawNft) {
+      console.log("useffect deleteBid!");
+      deleteBid();
+    }
+  }, [widthdrawNft]);
+
+  useEffect(() => {
     if (buyNft) {
       console.log("useffect buyNft!");
       updateAndDeleteNftSeller();
     }
   }, [buyNft]);
+
+  useEffect(() => {
+    if (endNft) {
+      console.log("useffect endNft!");
+
+      deleteAuction();
+    }
+  }, [endNft]);
+
+  const deleteAuction = async () => {
+    try {
+      console.log("endNft check ->", endNft);
+      await fetch("api/db/deleteAuction", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          auctionID: endNft.AuctionID,
+          tokenId: endNft.TokenId,
+          owner: endNft.Seller,
+          buyer: endNft.Bid,
+        }),
+      }).then(() => {
+        getAllNftsOnAuction();
+      });
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  const deleteBid = async () => {
+    try {
+      console.log("widthdrawNft check ->", widthdrawNft);
+      await fetch("api/db/deleteBid", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          bidder: widthdrawNft.Bidder,
+          tokenId: widthdrawNft.TokenId,
+        }),
+      });
+    } catch (error) {
+      console.log({ error });
+    }
+  };
 
   const getAllNftList = async () => {
     const query_createdNfts = '*[_type=="nftCreated"]';
@@ -114,6 +181,7 @@ const NftProvider = ({ children }) => {
       await client.fetch(query_createdNfts).then((res) => {
         console.log({ res });
         setNftList(res);
+        console.log("getAllNftList ->", res);
       });
     } catch (error) {
       console.log({ error });
@@ -124,7 +192,7 @@ const NftProvider = ({ children }) => {
     const query_onsale = '*[_type=="listedNftTable"]';
     try {
       await client.fetch(query_onsale).then((res) => {
-        console.log({ res });
+        console.log({ nftListOnSale: res });
         setNftListOnSale(res);
         console.log("nftListOnSale get ->", nftListOnSale);
       });
@@ -137,9 +205,23 @@ const NftProvider = ({ children }) => {
     const query_Auction = '*[_type=="listedAuctionNftTable"]';
     try {
       await client.fetch(query_Auction).then((res) => {
-        console.log({ res });
+        console.log({ getAllNftsOnAuction: res });
         setNftListOnAuction(res);
         console.log("nftListOnAuction get ->", nftListOnAuction);
+      });
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  const getMyBids = async () => {
+    // const query_myBids = `*[_type=="bidsNftTable" && bid == ${userAddress}]`;
+    const query_myBids = `*[_type=="bidsNftTable"]`;
+    try {
+      await client.fetch(query_myBids).then((res) => {
+        console.log({ getMyBids: res });
+        setMyBids(res);
+        console.log({ myBids });
       });
     } catch (error) {
       console.log({ error });
@@ -150,6 +232,9 @@ const NftProvider = ({ children }) => {
     console.log("putBid data now->", bidNft);
     const amountString = bidNft?.status?._amount?._hex.toString(16);
     const amount = Number(amountString);
+
+    const idString = bidNft?.status?._id?._hex.toString(16);
+    const id = Number(idString);
 
     try {
       console.log("data ->", data);
@@ -162,6 +247,7 @@ const NftProvider = ({ children }) => {
           tokenId: bidNft.tokenID,
           bidder: bidNft.status._bidder,
           seller: bidNft.owner,
+          auctionID: bidNft.auctionID,
           price: amount,
         }),
       });
@@ -217,6 +303,9 @@ const NftProvider = ({ children }) => {
           royalty: _royalty,
           sale: nftCreateData.sale,
         }),
+      }).then(() => {
+        console.log("inside get all nfts after to created");
+        getAllNftList();
       });
     } catch (error) {
       console.log({ error });
@@ -250,6 +339,9 @@ const NftProvider = ({ children }) => {
           royalty: _royalty,
           sale: nftToMarket.sale,
         }),
+      }).then(() => {
+        console.log("inside get all nfts after to market");
+        getAllNftsOnSale();
       });
     } catch (error) {
       console.log({ error });
@@ -334,6 +426,14 @@ const NftProvider = ({ children }) => {
         setBidNft,
         bidType,
         setBidType,
+        myBids,
+        setMyBids,
+        widthdrawNft,
+        setWidthdrawNft,
+        endNft,
+        setEndNft,
+        auctionStatus,
+        setAuctionStatus,
       }}
     >
       {children}

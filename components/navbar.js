@@ -10,14 +10,18 @@ const Navbar = () => {
     useContext(NftContext);
   const { user, isWeb3Enabled } = useMoralis();
 
-  const deleteNftFromMarket = async () => {
+  const deleteBid = async () => {
     try {
-      await fetch("api/db/deleteSale", {
+      await fetch("api/db/deleteBid", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-      }).then(console.log("HEJ"));
+        body: JSON.stringify({
+          seller: "0xd360E516b7bCC9C1f00638E09314e8523CeC74f0",
+          tokenId: 1,
+        }),
+      });
     } catch (error) {
       console.log({ error });
     }
@@ -33,11 +37,11 @@ const Navbar = () => {
       </div>
       <button
         onClick={() => {
-          deleteNftFromMarket();
+          deleteBid();
         }}
       >
         {" "}
-        UPDATE SELLER
+        DELETE BID
       </button>
       <div class="flex w-1/2 justify-end space-x-10 ">
         {userAddress && (

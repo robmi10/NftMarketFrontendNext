@@ -10,6 +10,7 @@ const FormAuction = ({ openModalSellData }) => {
   const onSubmitAuction = (data) => {
     console.log({ data });
     const createSellData = { form: data, openModalSellData: openModalSellData };
+    console.log({ createSellData });
     NftToMarketAuction(createSellData);
   };
 

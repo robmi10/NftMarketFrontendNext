@@ -31,6 +31,7 @@ const Profile = () => {
             Create NFT
           </span>
           <Link href="/myCollection"> My Collection</Link>
+          <Link href="/myBids"> My Bids</Link>
         </div>
       </div>
     </>

@@ -10,8 +10,8 @@ const NftCardBuy = ({ option, ipfsInfo }) => {
     ? Moralis.Units.FromWei(option?.Price.toString())
     : 0;
 
-  console.log({ option });
-  console.log({ ipfsInfo });
+  // console.log({ option });
+  // console.log({ ipfsInfo });
   return (
     <div class="border-1 flex h-3/5 w-2/6 flex-col items-center justify-center rounded-md border-black bg-slate-100 drop-shadow-xl">
       <div class="border-1 mt-10 flex h-2/4 w-2/6 items-center justify-center rounded-md border-black bg-slate-400">

@@ -4,7 +4,7 @@ import NftCardBuy from "./nftCardBuy";
 
 const CardBuy = ({ option }) => {
   const [ipfsInfo, setIpfsInfo] = useState(false);
-  console.log({ cardProfile: option });
+  // console.log({ cardProfile: option });
 
   const retriveIpfsInfo = async () => {
     if (!option?.TokenURI) return false;
@@ -15,7 +15,7 @@ const CardBuy = ({ option }) => {
     } catch (error) {
       console.log({ error });
     }
-    console.log({ body });
+    // console.log({ body });
     setIpfsInfo(body);
   };
 

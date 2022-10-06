@@ -3,7 +3,7 @@ import NftCard from "./nftCard";
 
 const CardProfile = ({ option, handleOpenSellModal }) => {
   const [ipfsInfo, setIpfsInfo] = useState(false);
-  console.log({ cardProfile: option });
+  // console.log({ cardProfile: option });
 
   const retriveIpfsInfo = async () => {
     if (!option?.TokenURI) return false;
@@ -14,7 +14,7 @@ const CardProfile = ({ option, handleOpenSellModal }) => {
     } catch (error) {
       console.log({ error });
     }
-    console.log({ body });
+    // console.log({ body });
     setIpfsInfo(body);
   };
 
