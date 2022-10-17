@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { useMoralis } from "react-moralis";
-import auctionAddress from "../../chain-info/deployments/80001/0x278078b27150871d21406A05668c53a74E8c8E2c.json";
+import auctionAddress from "../../chain-info/deployments/80001/0xC571e33deaBBDbe12b5e36B164395b5b85eEa327.json";
 import { NftContext } from "../../nftContext/context";
 import { auctionContractAddress } from "../contracts/adress";
 
 const useNftToMarketAuction = () => {
-  const { userAddress, setnftToMarketAuction } = useContext(NftContext);
+  const { userAddress, setnftToMarketAuction, setOpenModal } =
+    useContext(NftContext);
   const { Moralis } = useMoralis();
   const { abi } = auctionAddress;
 
@@ -29,7 +30,7 @@ const useNftToMarketAuction = () => {
         msgSender: userAddress,
         params: {
           _nftTokenId: createSellData?.openModalSellData?.option?.TokenId,
-          _duration: 1664916122000,
+          _duration: milliseconds,
           _tokenURI: createSellData?.openModalSellData?.option?.TokenURI,
           _royalty: _royalty,
         },
@@ -39,11 +40,15 @@ const useNftToMarketAuction = () => {
       const nftToMarketAuctionFunc = await Moralis.executeFunction(
         nftToMarketOptions
       );
+      setOpenModal("loading");
       const nftToMarketAuctionConfirmation = await nftToMarketAuctionFunc
         .wait()
         .then((status) => {
           console.log({ status });
-          setnftToMarketAuction(status.events[1].args);
+          setnftToMarketAuction({
+            status: status.events[1].args,
+            owner: createSellData?.openModalSellData?.option?.Owner,
+          });
         })
         .catch((e) => {
           console.log({ e });

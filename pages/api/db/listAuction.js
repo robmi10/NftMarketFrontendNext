@@ -2,6 +2,7 @@ import { client } from "../../../sanityclient/sanity";
 const ListNftToMarketAuction = async (req, res) => {
   console.log("check body tomarket auction->", req.body);
   try {
+    const docCreated = req.body.tokenId + req.body.owner;
     const userDoc = {
       _type: "listedAuctionNftTable",
       _id: req.body.tokenId + req.body.owner + "listedAuctionNftTable",
@@ -18,6 +19,7 @@ const ListNftToMarketAuction = async (req, res) => {
     };
 
     await client.createIfNotExists(userDoc);
+    await client.patch(docCreated).set({ Sale: true }).commit();
     console.log("Success!");
     res.status(200).send({ message: "success" });
   } catch (error) {

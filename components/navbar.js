@@ -6,26 +6,8 @@ import { useMoralis } from "react-moralis";
 import useNftToMarket from "./moralis/useNftToMarket";
 
 const Navbar = () => {
-  const { setUserAddress, userAddress, loginUser, logoutUser } =
-    useContext(NftContext);
-  const { user, isWeb3Enabled } = useMoralis();
-
-  const deleteBid = async () => {
-    try {
-      await fetch("api/db/deleteBid", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          seller: "0xd360E516b7bCC9C1f00638E09314e8523CeC74f0",
-          tokenId: 1,
-        }),
-      });
-    } catch (error) {
-      console.log({ error });
-    }
-  };
+  const { userAddress, loginUser, logoutUser } = useContext(NftContext);
+  const { isWeb3Enabled } = useMoralis();
 
   return (
     <div class="h-35 top-0 flex items-center justify-around rounded-sm bg-blue-600">
@@ -35,14 +17,7 @@ const Navbar = () => {
       <div class="flex items-center justify-center ">
         <SearchBar />
       </div>
-      <button
-        onClick={() => {
-          deleteBid();
-        }}
-      >
-        {" "}
-        DELETE BID
-      </button>
+
       <div class="flex w-1/2 justify-end space-x-10 ">
         {userAddress && (
           <div class="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md text-white">

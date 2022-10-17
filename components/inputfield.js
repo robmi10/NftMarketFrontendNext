@@ -3,6 +3,7 @@ import { NftContext } from "../nftContext/context";
 import { useForm } from "react-hook-form";
 import ipfs from "../pages/api/ipfs/ipfs";
 import useCreateSell from "./moralis/useCreateSell";
+import BouncerLoader from "./animation/loader/bouncerLoader";
 
 const Inputfield = () => {
   const { register, handleSubmit } = useForm();
@@ -11,7 +12,9 @@ const Inputfield = () => {
   const imageIpfs = useRef("");
   const { createSell } = useCreateSell();
   useEffect(() => {
+    console.log({ imageFileInUseffect: imageFile });
     if (imageFile) {
+      console.log("run handle file");
       handleFile();
     }
   }, [imageFile]);
@@ -23,7 +26,7 @@ const Inputfield = () => {
   }, [openModal]);
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log("inside onsubmit check", data);
     setData(data);
     setImageFile(data.image);
   };
@@ -117,21 +120,26 @@ const Inputfield = () => {
             name="third"
             {...register("royalty", { required: true, maxLength: 2 })}
           />
-          <label class="text-white" for="first">
-            Image
-          </label>
+          <label class="text-white">Image</label>
           <input
             class="rounded-md text-white"
             type="file"
-            id="duration"
+            id="image"
             name="fourth"
             {...register("image", { required: true, minLength: 2 })}
           />
 
-          <input
-            type="submit"
-            class="pl-2/4 mt-10 w-96 rounded-md bg-blue-700 text-white"
-          />
+          <div class="pl-2/4 mt-10 flex h-12 w-96 items-center justify-center rounded-md bg-blue-700 text-white">
+            <button class="w-full cursor-pointer" type="submit">
+              <div class="flex items-center justify-center">
+                {openModal === "loading" ? (
+                  <BouncerLoader />
+                ) : (
+                  <div>Submit</div>
+                )}
+              </div>
+            </button>
+          </div>
         </form>
       </div>
     </>

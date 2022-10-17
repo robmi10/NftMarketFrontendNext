@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { NftContext } from "../../nftContext/context";
+import BouncerLoader from "../animation/loader/bouncerLoader";
 import useNftToMarket from "../moralis/useNftToMarket";
 
 const FormSell = ({ openModalSellData }) => {
   const { register, handleSubmit } = useForm();
   const { NftToMarket } = useNftToMarket();
-  const { setOpenModalSell } = useContext(NftContext);
+  const { openModal } = useContext(NftContext);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -33,10 +34,14 @@ const FormSell = ({ openModalSellData }) => {
             minLength: 1,
           })}
         />
-        <input
-          type="submit"
-          class="pl-2/4 mt-10 w-96 rounded-md bg-blue-700 text-white"
-        />
+
+        <div class="pl-2/4 mt-10 flex h-12 w-96 items-center justify-center rounded-md bg-blue-700 text-white">
+          <button class="w-full cursor-pointer" type="submit">
+            <div class="flex items-center justify-center">
+              {openModal === "loading" ? <BouncerLoader /> : <div>Submit</div>}
+            </div>
+          </button>
+        </div>
       </form>
     </>
   );

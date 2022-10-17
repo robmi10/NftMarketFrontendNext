@@ -4,7 +4,8 @@ import Modal from "../components/modal";
 import { NftContext } from "../nftContext/context";
 
 const Profile = () => {
-  const { openModal, openModalSell, setOpenModal } = useContext(NftContext);
+  const { openModal, openModalSell, setOpenModal, nftList } =
+    useContext(NftContext);
   useEffect(() => {
     console.log("inside profile openmodalsale");
   }, [openModalSell]);

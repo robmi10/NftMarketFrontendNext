@@ -5,6 +5,7 @@ const ListNftToMarket = async (req, res) => {
   console.log("ListNftToMarket v2 inside func->");
 
   try {
+    const docCreated = req.body.tokenId + req.body.owner;
     const userDoc = {
       _type: "listedNftTable",
       _id: req.body.tokenId + req.body.owner + "listedNftTable",
@@ -19,6 +20,7 @@ const ListNftToMarket = async (req, res) => {
 
     console.log({ userDoc });
     await client.create(userDoc);
+    await client.patch(docCreated).set({ Sale: true }).commit();
     console.log("Success nftCreated!");
     res.status(200).send({ message: "success" });
   } catch (error) {

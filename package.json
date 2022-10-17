@@ -25,6 +25,8 @@
     "react-hook-form": "^7.34.2",
     "react-icons": "^4.4.0",
     "react-moralis": "^1.4.2",
+    "styled-components": "^5.3.6",
+    "uuidv4": "^6.2.13",
     "web3": "^1.8.0"
   },
   "devDependencies": {

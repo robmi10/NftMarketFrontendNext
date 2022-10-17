@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useMoralis } from "react-moralis";
-import nftAddress from "../../chain-info/deployments/80001/0x6B738D284820aB31A664ee3f498E29D1809b30f0.json";
+import nftAddress from "../../chain-info/deployments/80001/0x43F2BBBC32545f60cf4107070F5a93bFe9c6c676.json";
 
 import { NftContext } from "../../nftContext/context";
 import { nftContractAddress } from "../contracts/adress";
@@ -27,11 +27,11 @@ const useCreateSell = () => {
     };
 
     const createSellFunc = await Moralis.executeFunction(createSellOptions);
+    setOpenModal("loading");
     const createSellConfirmation = await createSellFunc
       .wait()
       .then((status) => {
         setNftCreateData(status.events[2].args);
-        setOpenModal(false);
       })
       .catch((e) => {
         console.log({ e });

@@ -7,7 +7,7 @@ const DeleteFromAuction = async (req, res) => {
     await client.delete(userDoc);
     await client
       .patch(req.body.tokenId + req.body.owner)
-      .set({ Seller: req.body.buyer })
+      .set({ Seller: req.body.buyer, Sale: false })
       .commit();
     console.log("Success!");
     res.status(200).send({ message: "success" });

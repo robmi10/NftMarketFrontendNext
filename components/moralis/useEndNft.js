@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { useMoralis } from "react-moralis";
-import auctionAddress from "../../chain-info/deployments/80001/0x278078b27150871d21406A05668c53a74E8c8E2c.json";
+import auctionAddress from "../../chain-info/deployments/80001/0xC571e33deaBBDbe12b5e36B164395b5b85eEa327.json";
 import { NftContext } from "../../nftContext/context";
 import { auctionContractAddress } from "../contracts/adress";
 
 const useEnd = () => {
-  const { data, tokenURI, userAddress, setBidNft, setWidthdrawNft, setEndNft } =
+  const { userAddress, setTransactionStatus, setEndNft } =
     useContext(NftContext);
   const { Moralis } = useMoralis();
   const { abi } = auctionAddress;
@@ -19,22 +19,23 @@ const useEnd = () => {
       msgSender: userAddress,
       functionName: "end",
       params: {
-        _id: option.AuctionID,
+        _id: option.option.AuctionID,
       },
     };
 
     console.log({ endNFTOptions });
     const endNFTFunc = await Moralis.executeFunction(endNFTOptions);
+    setTransactionStatus({ loading: "loading", id: option.option.AuctionID });
     const endNFTConfirmation = await endNFTFunc
       .wait()
       .then((status) => {
         console.log({ status });
         setEndNft({
           status: status.events[1].args,
-          Seller: option.Seller,
-          Bid: option.Bidder,
-          TokenId: option.TokenId,
-          AuctionID: option.AuctionID,
+          Seller: option.option.Seller,
+          Bid: option.option.Bidder,
+          TokenId: option.option.TokenId,
+          AuctionID: option.option.AuctionID,
         });
       })
       .catch((e) => {

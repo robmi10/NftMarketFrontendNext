@@ -1,10 +1,14 @@
 import { client } from "../../../sanityclient/sanity";
 const DeleteFromAuction = async (req, res) => {
-  console.log("delete bid->", req.body);
+  console.log("delete bid now ->", req.body);
   try {
-    const userDoc = req.body.tokenId + req.body.bidder + "bidsNftTable";
+    const userDoc =
+      req.body.auctionID + req.body.bidder + "bidsNftTable" + req.body.tokenId;
 
-    await client.delete(userDoc);
+    console.log({ userDoc });
+    await client.delete(userDoc).then((res) => {
+      console.log("delete bid result ->", res);
+    });
     console.log("Success!");
     res.status(200).send({ message: "success" });
   } catch (error) {
