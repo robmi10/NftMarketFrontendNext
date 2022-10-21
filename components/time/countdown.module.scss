@@ -1,0 +1,143 @@
+$duration: 0.45s;
+
+.segment {
+  position: relative;
+  width: 148px;
+  height: 140px;
+  perspective: 500px;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
+  border-radius: 7px;
+  // overflow: hidden;
+  box-shadow: 0px 10px 3px rgba(0, 0, 0, 0.2);
+
+  &:before {
+    position: absolute;
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--clr-nt-very-dark-blue-2);
+    top: 50%;
+    right: -6px;
+    z-index: 6;
+    transform: translateY(-50%);
+  }
+  &:after {
+    position: absolute;
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--clr-nt-very-dark-blue-2);
+    top: 50%;
+    left: -6px;
+    z-index: 6;
+    transform: translateY(-50%);
+  }
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  box-shadow: 0px 0px 10px hsla(0, 0%, 0%, 0.2);
+}
+
+.count {
+  background: #202020;
+  color: var(--clr-soft-red);
+  display: block;
+  font-size: 5em;
+  line-height: 2.4em;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  user-select: none;
+}
+
+.top {
+  height: 50%;
+  line-height: 140px;
+  transform-origin: 50% 100%;
+  background: var(--clr-nt-dark-desturated-blue);
+  filter: brightness(90%);
+  border-radius: 7px;
+}
+.bottom {
+  line-height: 0;
+  height: 50%;
+  top: 50%;
+  transform-origin: 50% 0;
+  background: var(--clr-nt-dark-desturated-blue);
+  filter: brightness(115%);
+  border-radius: 7px;
+}
+
+.flipTop {
+  z-index: 1;
+  animation-name: fliptop;
+  animation-duration: $duration;
+  animation-fill-mode: both;
+  transform-origin: bottom;
+}
+.flipBottom {
+  z-index: 1;
+  animation-name: flipbottom;
+  animation-duration: $duration;
+  animation-delay: $duration;
+  animation-fill-mode: both;
+}
+
+@keyframes fliptop {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-90deg);
+  }
+}
+@keyframes flipbottom {
+  0% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .segment {
+    width: 100px;
+    height: 95px;
+  }
+
+  .count {
+    font-size: 4rem;
+  }
+
+  .top {
+    line-height: 95px;
+  }
+}
+@media (max-width: 568px) {
+  .segment {
+    width: 70px;
+    height: 62px;
+  }
+
+  .count {
+    font-size: 2.125rem;
+  }
+
+  .top {
+    line-height: 62px;
+  }
+}

@@ -1,0 +1,58 @@
+.container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tabs {
+  display: flex;
+  position: relative;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15);
+  padding: 0.75rem;
+  border-radius: 1rem;
+  * {
+    z-index: 2;
+  }
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  width: 200px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  border-radius: 99px; // just a high number to create pill effect
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+input[id="radio-1"] {
+  &:checked {
+    & ~ .glider {
+      transform: translateX(0);
+    }
+  }
+}
+
+input[id="radio-2"] {
+  &:checked {
+    & ~ .glider {
+      transform: translateX(100%);
+    }
+  }
+}
+
+.glider {
+  position: absolute;
+  display: flex;
+  height: 3px;
+  bottom: 0;
+  width: 200px;
+  background-color: rgb(0, 195, 255);
+  z-index: 1;
+  border-radius: 99px; // just a high number to create pill effect
+  transition: 0.25s ease-out;
+}

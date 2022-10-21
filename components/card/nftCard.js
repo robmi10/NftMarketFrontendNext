@@ -9,23 +9,22 @@ const NftCard = ({ option, ipfsInfo, handleOpenSellModal }) => {
   };
 
   return (
-    <div class="border-1 h-5/5 flex w-2/6 flex-col items-center justify-center rounded-md border-black bg-slate-100 drop-shadow-xl">
-      <div class="border-1 w-8/10 mt-2 flex items-center justify-center rounded-md border-black bg-slate-400">
+    <div class="border-1 flex h-1/3 w-1/4 flex-col items-center gap-5 rounded-md border-black bg-white bg-opacity-60 drop-shadow-xl backdrop-blur-lg backdrop-filter hover:drop-shadow-2xl">
+      <div class="h-96 w-full">
         <img
-          class="h-56 w-80 rounded-md"
-          src={option?.option?.ipfsInfo?.image}
+          class="h-64 w-full justify-center object-cover"
+          src={option.option?.ipfsInfo?.image}
         />
       </div>
 
-      <h1 class="mt-5">{option?.option?.ipfsInfo?.title}</h1>
+      <div class="flex w-full flex-col pl-5">
+        <h1>{option?.option?.ipfsInfo?.title}</h1>
 
-      <h1 class="mt-5">{option?.option?.TokenId}</h1>
-
-      <div class="mt-5 flex h-4/6 w-5/6 items-center justify-center rounded-sm bg-purple-300">
+        <h1>{option?.option?.TokenId}</h1>
         <h1>{option?.option.ipfsInfo?.description}</h1>
       </div>
 
-      <div class="m-50 mt-10 mb-5 flex h-2/4 w-full flex-row justify-center space-x-10 ">
+      <div class="mt-5 flex h-2/4 w-full items-center justify-center space-x-10">
         {!option?.option.Sale && (
           <button
             onClick={() => {
@@ -40,7 +39,6 @@ const NftCard = ({ option, ipfsInfo, handleOpenSellModal }) => {
             LIST TO MARKET
           </button>
         )}
-
         {option?.option.Sale && <h1>Already On Sale</h1>}
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import BouncerLoader from "../components/animation/loader/bouncerLoader";
+import styles from "../components/animation/TabSlide/tabslide.module.scss";
 import CardAuction from "../components/card/cardAuction";
 import CardBuy from "../components/card/cardBuy";
 import NftCardAuction from "../components/card/nftCardAuction";
@@ -73,40 +74,45 @@ const Market = () => {
   return (
     <div>
       <div class="flex justify-center">
-        <div class="mt-10 flex w-4/6 flex-row justify-center space-x-10">
-          <div
-            class="cursor-pointer underline"
-            onClick={() => {
-              setMarketAuction(false);
-            }}
-          >
-            SALE
-          </div>
-          <div
-            class="cursor-pointer underline"
-            onClick={() => {
-              setMarketAuction(true);
-            }}
-          >
-            AUCTION
+        <div className={styles.container}>
+          <div className={styles.tabs}>
+            <input type="radio" id="radio-1" name="tabs" />
+            <label
+              className={styles.tab}
+              for="radio-1"
+              onClick={() => {
+                setMarketAuction(false);
+              }}
+            >
+              Sale
+            </label>
+            <input type="radio" id="radio-2" name="tabs" />
+            <label
+              className={styles.tab}
+              for="radio-2"
+              onClick={() => {
+                setMarketAuction(true);
+              }}
+            >
+              Auction
+            </label>
+            <span className={styles.glider}></span>
           </div>
         </div>
       </div>
-      <div class="flex justify-center">
-        <div class="mt-10 flex h-screen w-screen flex-wrap justify-center gap-5 overflow-auto rounded-sm">
-          {!marketAuction
-            ? nftsListedSale?.map((option, i) => {
-                return <NftCardBuy option={option} />;
-              })
-            : nftsListedAuction?.map((option, i) => {
-                return (
-                  <NftCardAuction
-                    handleOpenSellModal={handleOpenSellModal}
-                    option={option}
-                  />
-                );
-              })}
-        </div>
+      <div class="mt-5 mb-5 flex h-screen w-screen flex-wrap justify-center gap-5 rounded-sm">
+        {!marketAuction
+          ? nftsListedSale?.map((option, i) => {
+              return <NftCardBuy option={option} />;
+            })
+          : nftsListedAuction?.map((option, i) => {
+              return (
+                <NftCardAuction
+                  handleOpenSellModal={handleOpenSellModal}
+                  option={option}
+                />
+              );
+            })}
       </div>
     </div>
   );

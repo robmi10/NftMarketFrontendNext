@@ -2,12 +2,11 @@ import React, { useContext, useEffect } from "react";
 import { useMoralis } from "react-moralis";
 import { NftContext } from "../../nftContext/context";
 import BouncerLoader from "../animation/loader/bouncerLoader";
-import Modal from "../modal";
 import useEnd from "../moralis/useEndNft";
-import CountDownTimer from "../time/countdownTimer";
+import Timer from "../time/timer";
 
 const NftCardAuction = ({ option, handleOpenSellModal }) => {
-  const { setBidType, bidType, transactionStatus, setOpenModal } =
+  const { setBidType, transactionStatus, setOpenModal } =
     useContext(NftContext);
   const { Moralis } = useMoralis();
   const isTimeOver = new Date().getTime() - option.option.Duration;
@@ -27,34 +26,35 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
   }, [transactionStatus]);
 
   return (
-    <div class="border-1 flex h-3/5 w-2/6 flex-col items-center justify-center rounded-md border-black bg-slate-100 drop-shadow-xl">
-      <div class="border-1 mt-10 h-2/4 w-2/6 rounded-md border-black bg-slate-400">
-        <img src={option?.option.ipfsInfo?.image} />
+    <div class="border-1 flex h-5/6 w-1/4 flex-col items-center gap-2 rounded-md border-black bg-white bg-opacity-60 drop-shadow-xl backdrop-blur-lg backdrop-filter hover:drop-shadow-2xl">
+      <div class="h-96 w-full">
+        <img
+          class="h-64 w-full justify-center object-cover"
+          src={option?.option.ipfsInfo?.image}
+        />
       </div>
-      <h1 class="mt-5">{option?.option.ipfsInfo?.title}</h1>
+      <h1>{option?.option.Seller?.toString()?.substr(0, 10)}</h1>
 
-      <h1 class="mt-5">{option?.option.Seller?.toString()?.substr(0, 10)}</h1>
+      <div class="flex w-full flex-col gap-5 pl-5">
+        <h1>{option?.option.ipfsInfo?.title}</h1>
 
-      <h1 class="mt-5">CURRENT BIDDER</h1>
-
-      <h1 class="mt-5">{option?.option.Bidder?.toString()?.substr(0, 10)}</h1>
-
-      <h1 class="mt-5">{currentPrice} ETH</h1>
-
-      <div class="mt-5 flex h-4/6 w-4/6 items-center justify-center rounded-sm bg-purple-300">
         <h1>{option?.option.ipfsInfo?.description}</h1>
+        <h1 style={{ fontWeight: "light" }}>CURRENT BIDDER</h1>
+        <h1>{option?.option.Bidder?.toString()?.substr(0, 10)}</h1>
+
+        <h1>{currentPrice} MATIC</h1>
       </div>
 
       {isTimeOver < 0 && (
         <>
-          <div class="mt-5 flex h-2/4 w-auto items-center justify-center rounded-sm bg-violet-400">
-            <CountDownTimer
+          <div class="flex w-full items-center justify-center ">
+            <Timer
               countDownTimeMs={option.option.Duration}
               AuctionInfo={option.option}
             />
           </div>
 
-          <div class="m-50 mt-10 flex h-2/4 w-full flex-row justify-center space-x-10 ">
+          <div class="flex h-2/4 w-full flex-row justify-center">
             <button
               onClick={() => {
                 setBidType(option);
@@ -72,7 +72,7 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
         </>
       )}
       {isTimeOver > 0 && (
-        <div class="m-50 mt-10 flex h-2/4 w-full flex-row justify-center space-x-10 ">
+        <div class="mt-10 flex h-2/4 w-full flex-row justify-center space-x-10 ">
           <button
             onClick={() => {
               endNFT(option);
@@ -82,7 +82,7 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
             transactionStatus.id === option?.option?.AuctionID ? (
               <BouncerLoader />
             ) : (
-              <p>END AUCTION</p>
+              <p class="mt-10">END AUCTION</p>
             )}
           </button>
         </div>

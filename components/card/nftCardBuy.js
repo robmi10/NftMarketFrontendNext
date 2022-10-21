@@ -3,6 +3,7 @@ import { useMoralis } from "react-moralis";
 import { NftContext } from "../../nftContext/context";
 import BouncerLoader from "../animation/loader/bouncerLoader";
 import useBuyNft from "../moralis/useBuyNft";
+import { FiShoppingCart } from "react-icons/fi";
 
 const NftCardBuy = ({ option }) => {
   const { Moralis } = useMoralis();
@@ -26,24 +27,25 @@ const NftCardBuy = ({ option }) => {
     : 0;
 
   return (
-    <div class="border-1 flex h-3/5 w-2/6 flex-col items-center justify-center rounded-md border-black bg-slate-100 drop-shadow-xl">
-      <div class="border-1 mt-10 flex h-2/4 w-2/6 items-center justify-center rounded-md border-black bg-slate-400">
-        <img src={option.option?.ipfsInfo?.image} />
+    <div class="border-1 flex h-4/6 w-1/4 flex-col items-center gap-5 rounded-md border-black bg-white bg-opacity-60 drop-shadow-xl backdrop-blur-lg backdrop-filter hover:drop-shadow-2xl">
+      <div class="h-96 w-full">
+        <img
+          class="h-64 w-full justify-center object-cover"
+          src={option.option?.ipfsInfo?.image}
+        />
       </div>
 
-      <h1 class="mt-5">{option.option?.ipfsInfo?.title}</h1>
+      <h1>{option.option?.Seller?.toString()?.substr(0, 10)}</h1>
+      <div class="flex w-full flex-col gap-5 pl-5">
+        <h1>{option.option?.ipfsInfo?.title}</h1>
 
-      <h1 class="mt-5">{option.option?.TokenId}</h1>
-
-      <h1 class="mt-5">{option.option?.Seller?.toString()?.substr(0, 10)}</h1>
-
-      <h1 class="mt-5">{currentPrice} ETH</h1>
-
-      <div class="mt-5 flex h-4/6 w-5/6 items-center justify-center rounded-sm bg-purple-300">
         <h1>{option?.option?.ipfsInfo?.description}</h1>
+        <h1>{currentPrice} MATIC</h1>
       </div>
 
-      <div class="m-50 mt-20 flex h-2/4 w-full flex-row justify-center space-x-10 ">
+      <div class="w-6/6 flex h-1/6 items-center justify-center rounded-sm bg-purple-300"></div>
+
+      <div class="flex h-1/5 w-full flex-row justify-center">
         <button
           onClick={() => {
             buyNft(option?.option);
@@ -53,7 +55,7 @@ const NftCardBuy = ({ option }) => {
           transactionStatus.id === option?.option?.TokenId ? (
             <BouncerLoader />
           ) : (
-            <p>BUY</p>
+            <FiShoppingCart />
           )}
         </button>
       </div>
