@@ -75,9 +75,9 @@ const Inputfield = () => {
   };
   return (
     <>
-      <div class="w-wh relative flex h-full content-center items-center justify-center rounded-md bg-blue-600">
+      <div class="w-wh relative flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300">
         <h1
-          class="absolute top-0 left-0 mt-5 ml-20 w-0 cursor-pointer bg-slate-400 text-white"
+          class="absolute top-0 left-0 mt-5 ml-20 w-0 cursor-pointer bg-slate-400 "
           onClick={() => {
             setOpenModal(false);
             console.log({ openModal });
@@ -89,9 +89,7 @@ const Inputfield = () => {
           onSubmit={handleSubmit(onSubmit)}
           class="m-20 mb-20 mt-10 flex flex-col"
         >
-          <label class="text-white" for="first">
-            NFT
-          </label>
+          <label for="first">NFT</label>
           <input
             class="flex-start rounded-md px-4"
             type="text"
@@ -100,9 +98,7 @@ const Inputfield = () => {
             {...register("nft", { required: true, minLength: 2 })}
           />
 
-          <label class="text-white" for="first">
-            Description
-          </label>
+          <label for="first">Description</label>
           <input
             class="mr-2 h-12 max-w-full rounded-md px-4"
             type="text"
@@ -110,9 +106,7 @@ const Inputfield = () => {
             name="fifth"
             {...register("description", { required: true, minLength: 2 })}
           />
-          <label class="text-white" for="first">
-            Royalty
-          </label>
+          <label for="first">Royalty</label>
           <input
             class="rounded-md px-4"
             type="number"
@@ -120,26 +114,23 @@ const Inputfield = () => {
             name="third"
             {...register("royalty", { required: true, maxLength: 2 })}
           />
-          <label class="text-white">Image</label>
+          <label>Image</label>
           <input
-            class="rounded-md text-white"
+            class="rounded-md "
             type="file"
             id="image"
             name="fourth"
             {...register("image", { required: true, minLength: 2 })}
           />
 
-          <div class="pl-2/4 mt-10 flex h-12 w-96 items-center justify-center rounded-md bg-blue-700 text-white">
-            <button class="w-full cursor-pointer" type="submit">
-              <div class="flex items-center justify-center">
-                {openModal === "loading" ? (
-                  <BouncerLoader />
-                ) : (
-                  <div>Submit</div>
-                )}
-              </div>
-            </button>
-          </div>
+          <button
+            class="pl-2/4 mt-10 flex h-12 w-96 cursor-pointer  items-center justify-center rounded-lg bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
+            type="submit"
+          >
+            <div class="flex items-center justify-center">
+              {openModal === "loading" ? <BouncerLoader /> : <div>Submit</div>}
+            </div>
+          </button>
         </form>
       </div>
     </>

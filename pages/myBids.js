@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import BouncerLoader from "../components/animation/loader/bouncerLoader";
+import styles from "../components/animation/TabSlide/tabslide.module.scss";
 import useWithdraw from "../components/moralis/useWithdraw";
 import { NftContext } from "../nftContext/context";
 
@@ -21,14 +21,15 @@ const MyBids = () => {
   return (
     <>
       <div class="flex flex-col items-center  justify-center">
-        <div class="mt-10 flex w-4/6 flex-row justify-center space-x-10 rounded-sm">
-          <div class="underline">MY BIDS</div>
+        <div class=" mt-10 flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
+          MY BIDS
         </div>
-        <div class="flex h-full w-screen flex-col items-center justify-center gap-4 ">
+
+        <div class="mt-10 flex h-full w-screen flex-col items-center justify-center gap-4 ">
           {myBidsNfts?.map((option, i) => {
             return (
               <div class="flex  w-2/5 flex-col gap-5">
-                <div class="mt-10 flex w-full items-center justify-center rounded-md bg-white bg-opacity-60 drop-shadow-xl backdrop-blur-lg backdrop-filter hover:drop-shadow-2xl">
+                <div class="flex w-full items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]">
                   <div class="flex flex-col gap-10 p-10">
                     <div class="h-full w-full  bg-red-500">
                       <img
@@ -44,23 +45,23 @@ const MyBids = () => {
                       <h1>Amount </h1>
                       <div>{option.Amount} MATIC</div>
                     </div>
+                    <div class="flex w-full justify-center">
+                      <button
+                        class="flex w-2/4 items-center justify-center rounded-lg shadow-lg shadow-[#185ee041]"
+                        onClick={() => {
+                          console.log("withdraw money");
+                          withdrawNFT(option);
+                        }}
+                      >
+                        {transactionStatus.loading === "loading" &&
+                        transactionStatus.id === option?.TokenId ? (
+                          <BouncerLoader />
+                        ) : (
+                          <p>WITHDRAW</p>
+                        )}
+                      </button>
+                    </div>
                   </div>
-                </div>
-
-                <div class="flex items-center justify-center">
-                  <button
-                    onClick={() => {
-                      console.log("withdraw money");
-                      withdrawNFT(option);
-                    }}
-                  >
-                    {transactionStatus.loading === "loading" &&
-                    transactionStatus.id === option?.TokenId ? (
-                      <BouncerLoader />
-                    ) : (
-                      <p>WITHDRAW</p>
-                    )}
-                  </button>
                 </div>
               </div>
             );

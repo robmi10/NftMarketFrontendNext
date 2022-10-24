@@ -9,7 +9,7 @@ const NftCard = ({ option, ipfsInfo, handleOpenSellModal }) => {
   };
 
   return (
-    <div class="border-1 flex h-1/3 w-1/4 flex-col items-center gap-5 rounded-md border-black bg-white bg-opacity-60 drop-shadow-xl backdrop-blur-lg backdrop-filter hover:drop-shadow-2xl">
+    <div class="border-1 flex w-1/4 flex-col items-center gap-5 rounded-md border-black shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]">
       <div class="h-96 w-full">
         <img
           class="h-64 w-full justify-center object-cover"
@@ -27,6 +27,7 @@ const NftCard = ({ option, ipfsInfo, handleOpenSellModal }) => {
       <div class="mt-5 flex h-2/4 w-full items-center justify-center space-x-10">
         {!option?.option.Sale && (
           <button
+            class="flex h-1/5 w-3/6 flex-row items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
             onClick={() => {
               handleOpenSellModal({
                 status: true,

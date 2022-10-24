@@ -26,12 +26,12 @@ const Timer = ({ countDownTimeMs, AuctionInfo }) => {
   };
 
   return (
-    <div class=" flex h-40 items-center gap-12 ">
-      <div>
+    <div class=" flex h-40 items-center gap-10 ">
+      <div class="flex flex-col gap-5">
         <span>Days</span>
         <FlipNumbers
-          height={27}
-          width={27}
+          height={20}
+          width={20}
           color="black"
           background="transparent"
           play
@@ -40,11 +40,11 @@ const Timer = ({ countDownTimeMs, AuctionInfo }) => {
           numberStyle={{ fontWeight: "normal" }}
         />
       </div>
-      <div>
+      <div class="flex flex-col gap-5">
         <span>Hours</span>
         <FlipNumbers
-          height={27}
-          width={27}
+          height={20}
+          width={20}
           color="black"
           background="transparent"
           play
@@ -52,11 +52,11 @@ const Timer = ({ countDownTimeMs, AuctionInfo }) => {
           numbers={String(remainingTime.hours)}
         />
       </div>
-      <div>
+      <div class="flex flex-col gap-5">
         <span>Minutes</span>
         <FlipNumbers
-          height={27}
-          width={27}
+          height={20}
+          width={20}
           color="black"
           background="transparent"
           play
@@ -64,11 +64,11 @@ const Timer = ({ countDownTimeMs, AuctionInfo }) => {
           numbers={String(remainingTime.minutes)}
         />
       </div>
-      <div>
+      <div class="flex flex-col gap-5">
         <span>Seconds</span>
         <FlipNumbers
-          height={27}
-          width={27}
+          height={20}
+          width={20}
           color="black"
           background="transparent"
           play

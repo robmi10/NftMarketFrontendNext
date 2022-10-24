@@ -11,7 +11,7 @@ const Navbar = () => {
   const { isWeb3Enabled } = useMoralis();
 
   return (
-    <div class="h-35 bg-opacity-120 top-0 flex items-center justify-around rounded-sm bg-white drop-shadow-xl backdrop-blur-lg backdrop-filter">
+    <div class="h-35 bg-opacity-120 top-0 flex items-center justify-around rounded-sm bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041]">
       <div class="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md ">
         <Link href="/">
           <AiFillHome />

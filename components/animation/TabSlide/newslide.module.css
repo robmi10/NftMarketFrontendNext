@@ -1,0 +1,27 @@
+.slideContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 15%;
+  background-color: violet;
+  position: relative;
+}
+
+.slideContainer li {
+  list-style: none;
+  width: 150px;
+}
+
+.slideContainer li .a {
+  display: block;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  transition: 0.5s;
+  text-decoration: none;
+}
+
+.slideContainer .li.active {
+  background-color: blue;
+  color: yellow;
+}

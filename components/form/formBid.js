@@ -33,13 +33,11 @@ const FormBid = ({ openModalSellData }) => {
             minLength: 1,
           })}
         />
-        <div class="pl-2/4 mt-10 flex h-12 w-96 items-center justify-center rounded-md bg-blue-700 text-white">
-          <button class="w-full cursor-pointer" type="submit">
-            <div class="flex items-center justify-center">
-              {openModal === "loading" ? <BouncerLoader /> : <div>Submit</div>}
-            </div>
-          </button>
-        </div>
+        <button class="w-full cursor-pointer" type="submit">
+          <div class="flex items-center justify-center">
+            {openModal === "loading" ? <BouncerLoader /> : <div>Submit</div>}
+          </div>
+        </button>
       </form>
     </>
   );

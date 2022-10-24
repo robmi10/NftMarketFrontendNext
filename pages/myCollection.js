@@ -46,8 +46,10 @@ const MyCollection = () => {
   if (myNfts.length === 0) return <h1>Loading</h1>;
   return (
     <>
-      <div class="mt-10 flex justify-center">
-        <div class="underline">COLLECTION</div>
+      <div class="flex justify-center">
+        <div class="mt-10 flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
+          COLLECTION
+        </div>
       </div>
       <div class="mt-10 flex justify-center">
         <div class="flex w-5/6 flex-wrap justify-center gap-5 ">

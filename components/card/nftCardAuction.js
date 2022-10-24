@@ -26,20 +26,24 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
   }, [transactionStatus]);
 
   return (
-    <div class="border-1 flex h-5/6 w-1/4 flex-col items-center gap-2 rounded-md border-black bg-white bg-opacity-60 drop-shadow-xl backdrop-blur-lg backdrop-filter hover:drop-shadow-2xl">
+    <div class="border-1 flex h-5/6 w-1/4 flex-col items-center gap-2 rounded-md border-black shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]">
       <div class="h-96 w-full">
         <img
           class="h-64 w-full justify-center object-cover"
           src={option?.option.ipfsInfo?.image}
         />
       </div>
-      <h1>{option?.option.Seller?.toString()?.substr(0, 10)}</h1>
+      <div class=" mt-5 flex w-3/6 justify-center  shadow-lg shadow-[#185ee041]">
+        <h1>{option?.option.Seller?.toString()?.substr(0, 10)}</h1>
+      </div>
 
       <div class="flex w-full flex-col gap-5 pl-5">
         <h1>{option?.option.ipfsInfo?.title}</h1>
 
         <h1>{option?.option.ipfsInfo?.description}</h1>
-        <h1 style={{ fontWeight: "light" }}>CURRENT BIDDER</h1>
+        <div class=" flex w-3/6 justify-center shadow-lg shadow-[#185ee041]">
+          <h1 style={{ fontWeight: "light" }}>CURRENT BID</h1>
+        </div>
         <h1>{option?.option.Bidder?.toString()?.substr(0, 10)}</h1>
 
         <h1>{currentPrice} MATIC</h1>
@@ -54,26 +58,26 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
             />
           </div>
 
-          <div class="flex h-2/4 w-full flex-row justify-center">
-            <button
-              onClick={() => {
-                setBidType(option);
-                handleOpenSellModal({
-                  status: true,
-                  data: NftCardData,
-                  type: "bid",
-                });
-                setOpenModal(true);
-              }}
-            >
-              <p>PUT BID</p>
-            </button>
-          </div>
+          <button
+            class=" mb-5 flex h-2/4 w-3/6 flex-row justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
+            onClick={() => {
+              setBidType(option);
+              handleOpenSellModal({
+                status: true,
+                data: NftCardData,
+                type: "bid",
+              });
+              setOpenModal(true);
+            }}
+          >
+            <p>PUT BID</p>
+          </button>
         </>
       )}
       {isTimeOver > 0 && (
-        <div class="mt-10 flex h-2/4 w-full flex-row justify-center space-x-10 ">
+        <div class="flex h-2/4 w-full flex-row items-end justify-center space-x-10">
           <button
+            class="mb-10 flex h-1/5 w-3/6 flex-row items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
             onClick={() => {
               endNFT(option);
             }}
@@ -82,7 +86,7 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
             transactionStatus.id === option?.option?.AuctionID ? (
               <BouncerLoader />
             ) : (
-              <p class="mt-10">END AUCTION</p>
+              <p>END AUCTION</p>
             )}
           </button>
         </div>

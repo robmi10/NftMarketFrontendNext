@@ -27,15 +27,16 @@ const NftCardBuy = ({ option }) => {
     : 0;
 
   return (
-    <div class="border-1 flex h-4/6 w-1/4 flex-col items-center gap-5 rounded-md border-black bg-white bg-opacity-60 drop-shadow-xl backdrop-blur-lg backdrop-filter hover:drop-shadow-2xl">
+    <div class="border-1 flex h-4/6 w-1/4 flex-col items-center gap-5 rounded-md border-black shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]">
       <div class="h-96 w-full">
         <img
           class="h-64 w-full justify-center object-cover"
           src={option.option?.ipfsInfo?.image}
         />
       </div>
-
-      <h1>{option.option?.Seller?.toString()?.substr(0, 10)}</h1>
+      <div class=" mt-5 flex w-3/6 justify-center shadow-lg shadow-[#185ee041]">
+        <h1>{option.option?.Seller?.toString()?.substr(0, 10)}</h1>
+      </div>
       <div class="flex w-full flex-col gap-5 pl-5">
         <h1>{option.option?.ipfsInfo?.title}</h1>
 

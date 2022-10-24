@@ -20,9 +20,7 @@ const FormSell = ({ openModalSellData }) => {
         onSubmit={handleSubmit(onSubmit)}
         class="m-20 mb-20 mt-10 flex flex-col"
       >
-        <label class="text-white " for="first">
-          Price
-        </label>
+        <label for="first">Price</label>
         <input
           class="max-w-full rounded-md px-4"
           type="number"
@@ -35,13 +33,14 @@ const FormSell = ({ openModalSellData }) => {
           })}
         />
 
-        <div class="pl-2/4 mt-10 flex h-12 w-96 items-center justify-center rounded-md bg-blue-700 text-white">
-          <button class="w-full cursor-pointer" type="submit">
-            <div class="flex items-center justify-center">
-              {openModal === "loading" ? <BouncerLoader /> : <div>Submit</div>}
-            </div>
-          </button>
-        </div>
+        <button
+          class="pl-2/4 mt-10 flex h-12 w-96 cursor-pointer items-center justify-center rounded-md bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
+          type="submit"
+        >
+          <div class="flex items-center justify-center">
+            {openModal === "loading" ? <BouncerLoader /> : <div>Submit</div>}
+          </div>
+        </button>
       </form>
     </>
   );

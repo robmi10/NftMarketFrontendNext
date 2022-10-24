@@ -36,6 +36,7 @@ const useEnd = () => {
           Bid: option.option.Bidder,
           TokenId: option.option.TokenId,
           AuctionID: option.option.AuctionID,
+          Price: option.option.Bid,
         });
       })
       .catch((e) => {

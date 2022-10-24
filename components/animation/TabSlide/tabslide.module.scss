@@ -1,5 +1,5 @@
 .container {
-  margin-top: 20px;
+  margin-top: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,9 +20,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 54px;
+  height: 20px;
   width: 200px;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 99px; // just a high number to create pill effect
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.tabhover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 350px;
+  font-size: 1.1rem;
   font-weight: 500;
   border-radius: 99px; // just a high number to create pill effect
   cursor: pointer;
@@ -40,19 +53,58 @@ input[id="radio-1"] {
 input[id="radio-2"] {
   &:checked {
     & ~ .glider {
-      transform: translateX(100%);
+      transform: translateX(200%);
+    }
+  }
+}
+
+input[id="radiohover-1"] {
+  &:hover {
+    & ~ .glider2 {
+      transform: translateX(0%);
+    }
+  }
+}
+
+input[id="radiohover-2"] {
+  &:hover {
+    & ~ .glider2 {
+      transform: translateX(230%);
+    }
+  }
+}
+
+input[id="radiohover-3"] {
+  &:hover {
+    & ~ .glider2 {
+      transform: translateX(470%);
     }
   }
 }
 
 .glider {
+  margin-bottom: 0.05rem;
   position: absolute;
   display: flex;
   height: 3px;
   bottom: 0;
-  width: 200px;
-  background-color: rgb(0, 195, 255);
+  width: 100px;
+  background-color: #185ee041;
+  left: 12%;
   z-index: 1;
-  border-radius: 99px; // just a high number to create pill effect
+  border-radius: 200px; // just a high number to create pill effect
+  transition: 0.25s ease-out;
+}
+
+.glider2 {
+  position: absolute;
+  display: flex;
+  height: 3px;
+  bottom: 0;
+  width: 150px;
+  background-color: rgb(157, 218, 238);
+  z-index: 1;
+  left: 10%;
+  border-radius: 200px; // just a high number to create pill effect
   transition: 0.25s ease-out;
 }

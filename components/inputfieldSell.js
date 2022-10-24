@@ -3,6 +3,7 @@ import FormSell from "./form/formSell";
 import FormAuction from "./form/formAuction";
 import FormBid from "./form/formBid";
 import { NftContext } from "../nftContext/context";
+import styles from "./animation/TabSlide/tabslide.module.scss";
 
 const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
   const [sellType, setSellType] = useState(false);
@@ -16,9 +17,9 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
 
   return (
     <>
-      <div class="w-wh relative z-20 flex h-full content-center items-center justify-center rounded-md bg-blue-600">
+      <div class="w-wh relative z-20 flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041]">
         <h1
-          class="absolute top-0 left-0 mt-5 ml-20 flex w-0 cursor-pointer flex-row gap-20 bg-slate-400 text-white"
+          class="absolute top-0 left-0 mt-5 ml-20 flex w-0 cursor-pointer flex-row gap-20 bg-slate-400 "
           onClick={() => {
             handleOpenSellModal(false);
             setOpenModal(false);
@@ -26,9 +27,8 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
         >
           X
         </h1>
-        <div class="absolute top-0 mt-20 flex w-full cursor-pointer flex-row justify-center gap-20 text-white">
+        <div class="absolute top-0 mt-20 flex w-full cursor-pointer flex-row justify-center gap-20 ">
           <button
-            class="underline"
             onClick={() => {
               setSellType(false);
             }}
@@ -36,7 +36,6 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
             SELL
           </button>
           <button
-            class="underline"
             onClick={() => {
               setSellType(true);
             }}

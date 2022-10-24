@@ -8,22 +8,52 @@ import NftCardBuy from "../components/card/nftCardBuy";
 import GetIpfsTokenURI from "../components/filterList";
 import Modal from "../components/modal";
 import { NftContext } from "../nftContext/context";
+import { useToast } from "@chakra-ui/react";
 
 const Market = () => {
   const {
     marketAuction,
-    setMarketAuction,
     nftListOnSale,
     openModal,
     searchInput,
     nftListOnAuction,
     transactionStatus,
+    toastNotifcation,
+    setToastNotifcation,
   } = useContext(NftContext);
   const [openModalBid, setOpenModalBid] = useState(false);
-
+  const [isMarketAuction, setMarketAuction] = useState(false);
+  const toast = useToast();
   useEffect(() => {
-    console.log("inside market open modal here");
-  }, [openModal]);
+    if (toastNotifcation) {
+      toastNotifcation.type === "buy"
+        ? toast({
+            title: "NFT transaction.",
+            description: `${toastNotifcation.to} bought NFT from ${toastNotifcation.seller}.`,
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+          })
+        : toastNotifcation.type === "bid"
+        ? toast({
+            title: "NFT bid.",
+            description: `Your'e NFT bid of ${toastNotifcation.price} is succeded.`,
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+          })
+        : toast({
+            title: "Auction ended.",
+            description: `Auction is ended the highest bidder was ${toastNotifcation.bidder} \n
+                        with ${toastNotifcation.bid} MATIC.`,
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+          });
+
+      setToastNotifcation(false);
+    }
+  }, [openModal, toastNotifcation]);
 
   useEffect(() => {
     console.log(
@@ -75,7 +105,7 @@ const Market = () => {
     <div>
       <div class="flex justify-center">
         <div className={styles.container}>
-          <div className={styles.tabs}>
+          <div class="p-3/4 relative flex h-11 items-center rounded-lg shadow-lg shadow-[#185ee041]">
             <input type="radio" id="radio-1" name="tabs" />
             <label
               className={styles.tab}
@@ -101,7 +131,7 @@ const Market = () => {
         </div>
       </div>
       <div class="mt-5 mb-5 flex h-screen w-screen flex-wrap justify-center gap-5 rounded-sm">
-        {!marketAuction
+        {!isMarketAuction
           ? nftsListedSale?.map((option, i) => {
               return <NftCardBuy option={option} />;
             })

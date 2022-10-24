@@ -30,6 +30,8 @@ const NftProvider = ({ children }) => {
   const [searchInput, setSearchInput] = useState("");
   const [transactionStatus, setTransactionStatus] = useState(false);
   const [nftListOnSaleEdit, setNftListOnSaleEdit] = useState(false);
+  const [toastNotifcation, setToastNotifcation] = useState(false);
+
   const { getipfsInfo } = GetIpfsTokenURI();
   const {
     isWeb3Enabled,
@@ -156,6 +158,13 @@ const NftProvider = ({ children }) => {
       }).then(() => {
         getAllNftList();
         getAllNftsOnAuction();
+        setToastNotifcation({
+          type: "auction",
+          auctionID: endNft.AuctionID,
+          tokenId: endNft.TokenId,
+          owner: endNft.Seller,
+          buyer: endNft.Bid,
+        });
       });
     } catch (error) {
       console.log({ error });
@@ -198,6 +207,7 @@ const NftProvider = ({ children }) => {
           setNftList(res);
           setTransactionStatus(false);
           setOpenModal(false);
+          setToastNotifcation(nftCreateData);
         });
       });
     } catch (error) {
@@ -288,6 +298,15 @@ const NftProvider = ({ children }) => {
       }).then(() => {
         getAllNftsOnAuction();
         getMyBids();
+        setToastNotifcation({
+          type: "bid",
+          tokenId: bidNft.tokenID,
+          bidder: bidNft.status._bidder,
+          seller: bidNft.owner,
+          auctionID: bidNft.auctionID,
+          price: amount,
+          randomID: randomID,
+        });
       });
     } catch (error) {
       console.log({ error });
@@ -315,6 +334,13 @@ const NftProvider = ({ children }) => {
       }).then(() => {
         getAllNftsOnSale();
         getAllNftList();
+        setToastNotifcation({
+          type: "buy",
+          tokenId: tokenId,
+          owner: buyNft.Owner,
+          seller: buyNft.status.to,
+          to: buyNft.status.from,
+        });
       });
     } catch (error) {
       console.log({ error });
@@ -489,6 +515,8 @@ const NftProvider = ({ children }) => {
         setTransactionStatus,
         nftListOnSaleEdit,
         setNftListOnSaleEdit,
+        toastNotifcation,
+        setToastNotifcation,
       }}
     >
       {children}

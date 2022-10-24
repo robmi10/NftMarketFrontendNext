@@ -23,7 +23,7 @@ const InputfieldBid = ({ handleOpenSellModal, openModalSellData }) => {
 
   return (
     <>
-      <div class="w-wh relative flex h-full content-center items-center justify-center rounded-md bg-blue-600">
+      <div class="w-wh relative flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041]">
         <h1
           class="absolute top-0 left-0 mt-5 ml-20 w-0 cursor-pointer bg-slate-400 text-white"
           onClick={() => {
@@ -47,17 +47,14 @@ const InputfieldBid = ({ handleOpenSellModal, openModalSellData }) => {
             {...register("bid", { required: true, minLength: 2 })}
           />
 
-          <div class="pl-2/4 mt-10 flex h-12 w-96 items-center justify-center rounded-md bg-blue-700 text-white">
-            <button class="w-full cursor-pointer" type="submit">
-              <div class="flex items-center justify-center">
-                {openModal === "loading" ? (
-                  <BouncerLoader />
-                ) : (
-                  <div>Submit</div>
-                )}
-              </div>
-            </button>
-          </div>
+          <button
+            class="pl-2/4 mt-10 flex h-12 w-96 cursor-pointer  items-center justify-center rounded-lg bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
+            type="submit"
+          >
+            <div class="flex items-center justify-center">
+              {openModal === "loading" ? <BouncerLoader /> : <div>Submit</div>}
+            </div>
+          </button>
         </form>
       </div>
     </>

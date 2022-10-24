@@ -16,7 +16,10 @@ const bounceranimation = keyframes`
 export const BouncerDiv = styled.div`
   width: 10px;
   height: 10px;
-  background-color: red;
+  background-color: #818cf8;
+  background-color: #c4b5fd;
+  background-color: #f9a8d4;
+
   border-radius: 50%;
   animation: ${bounceranimation} 0.5s cubic-bezier(0.19, 0.57, 0.3, 0.98)
     infinite alternate;
