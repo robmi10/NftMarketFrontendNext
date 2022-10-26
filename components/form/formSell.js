@@ -34,7 +34,7 @@ const FormSell = ({ openModalSellData }) => {
         />
 
         <button
-          class="pl-2/4 mt-10 flex h-12 w-96 cursor-pointer items-center justify-center rounded-md bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
+          class="pl-2/4 mt-10 flex h-12 cursor-pointer items-center justify-center rounded-md bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041] lg:w-96"
           type="submit"
         >
           <div class="flex items-center justify-center">

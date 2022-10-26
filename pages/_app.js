@@ -5,6 +5,7 @@ import NftProvider from "../nftContext/context";
 import { MoralisProvider } from "react-moralis";
 import InputfieldSell from "../components/inputfieldSell";
 import { ChakraProvider } from "@chakra-ui/react";
+import Layout from "../components/layout";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -14,10 +15,10 @@ function MyApp({ Component, pageProps }) {
         serverUrl="https://l8byxuhjvmaz.usemoralis.com:2053/server"
       >
         <NftProvider>
-          <ChakraProvider>
+          <Layout>
             <Navbar />
             <Component {...pageProps} />
-          </ChakraProvider>
+          </Layout>
         </NftProvider>
       </MoralisProvider>
     </>

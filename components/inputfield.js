@@ -75,9 +75,9 @@ const Inputfield = () => {
   };
   return (
     <>
-      <div class="w-wh relative flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300">
+      <div class="lg:w-wh relative flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300">
         <h1
-          class="absolute top-0 left-0 mt-5 ml-20 w-0 cursor-pointer bg-slate-400 "
+          class="cursor-pointe absolute top-0 mt-5 w-4/5 lg:left-0 lg:ml-20 lg:w-0"
           onClick={() => {
             setOpenModal(false);
             console.log({ openModal });
@@ -87,7 +87,7 @@ const Inputfield = () => {
         </h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          class="m-20 mb-20 mt-10 flex flex-col"
+          class="m-10 mb-20 mt-10 flex flex-col lg:m-20"
         >
           <label for="first">NFT</label>
           <input
@@ -124,7 +124,7 @@ const Inputfield = () => {
           />
 
           <button
-            class="pl-2/4 mt-10 flex h-12 w-96 cursor-pointer  items-center justify-center rounded-lg bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
+            class="pl-2/4 mt-10 flex h-12 cursor-pointer items-center justify-center rounded-lg bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041] lg:w-96"
             type="submit"
           >
             <div class="flex items-center justify-center">

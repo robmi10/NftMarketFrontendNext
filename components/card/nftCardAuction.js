@@ -26,7 +26,7 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
   }, [transactionStatus]);
 
   return (
-    <div class="border-1 flex h-5/6 w-1/4 flex-col items-center gap-2 rounded-md border-black shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]">
+    <div class=" border-1 h-5/8 flex w-3/4 flex-col items-center gap-2 rounded-md border-black shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041] lg:h-5/6 lg:w-1/4">
       <div class="h-96 w-full">
         <img
           class="h-64 w-full justify-center object-cover"

@@ -25,6 +25,7 @@ const Market = () => {
   const [isMarketAuction, setMarketAuction] = useState(false);
   const toast = useToast();
   useEffect(() => {
+    console.log({ toastNotifcation });
     if (toastNotifcation) {
       toastNotifcation.type === "buy"
         ? toast({
@@ -44,8 +45,8 @@ const Market = () => {
           })
         : toast({
             title: "Auction ended.",
-            description: `Auction is ended the highest bidder was ${toastNotifcation.bidder} \n
-                        with ${toastNotifcation.bid} MATIC.`,
+            description: `Auction is ended the highest bidder was ${toastNotifcation.owner} \n
+                        with ${toastNotifcation.price} MATIC.`,
             status: "success",
             duration: 4000,
             isClosable: true,
@@ -105,7 +106,7 @@ const Market = () => {
     <div>
       <div class="flex justify-center">
         <div className={styles.container}>
-          <div class="p-3/4 relative flex h-11 items-center rounded-lg shadow-lg shadow-[#185ee041]">
+          <div class="lg:p-3/4 flex h-11 w-3/4 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:relative lg:w-auto">
             <input type="radio" id="radio-1" name="tabs" />
             <label
               className={styles.tab}

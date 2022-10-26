@@ -21,13 +21,15 @@ const Profile = () => {
     console.log("inside profile openmodalsale");
     if (toastNotifcation) {
       console.log("run toastNotifcation");
+
       toast({
         title: "NFT created.",
-        description: "Your'e NFT is created.",
+        description: "Your'e NFT is sucessfully created.",
         status: "success",
         duration: 9000,
         isClosable: true,
       });
+
       setToastNotifcation(false);
     }
     console.log({ toastNotifcation });
@@ -38,8 +40,8 @@ const Profile = () => {
       <div>
         <div class="flex w-screen justify-center">
           <div class="mt-24 flex h-56 w-4/6 items-center justify-start">
-            <div class="float-left h-full w-3/6 rounded-sm bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-2xl shadow-[#185ee041]"></div>
-            <div class="float-right flex h-full w-3/6 flex-col items-center justify-center gap-10 rounded-md">
+            <div class="h-full w-full rounded-sm bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-2xl shadow-[#185ee041] lg:float-left lg:w-3/6"></div>
+            <div class="flex h-full flex-col items-center justify-center gap-10 rounded-md lg:float-right lg:w-3/6">
               <h1>{userAddress?.toString()?.substr(0, 10)}</h1>
 
               <GiEgyptianProfile size={"200px"} />
@@ -47,8 +49,8 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className={styles.container}>
-          <div class=" p-4/4 relative mt-10 flex h-11 items-center rounded-lg shadow-lg shadow-[#185ee041]">
+        <div class="mt-16 flex items-center justify-center lg:mt-32">
+          <div class="p-4/4 relative mt-10 flex h-64 flex-col items-center justify-center gap-20 rounded-lg shadow-lg shadow-[#185ee041] lg:h-11 lg:flex-row">
             <input
               onClick={() => {
                 setOpenModal(true);

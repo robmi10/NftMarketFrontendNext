@@ -4,15 +4,34 @@ import NftCard from "../components/card/nftCard";
 import GetIpfsTokenURI from "../components/filterList";
 import Modal from "../components/modal";
 import { NftContext } from "../nftContext/context";
+import { useToast } from "@chakra-ui/react";
 
 const MyCollection = () => {
-  const { nftList, userAddress, searchInput } = useContext(NftContext);
+  const toast = useToast();
+  const {
+    nftList,
+    userAddress,
+    searchInput,
+    toastNotifcation,
+    setToastNotifcation,
+  } = useContext(NftContext);
   const [openModalSell, setOpenModalSell] = useState(false);
 
   useEffect(() => {
     console.log("update nftListOnSale and nftListOnAuction and check lol!");
     console.log({ nftList });
-  }, [nftList, searchInput]);
+
+    if (toastNotifcation) {
+      toast({
+        title: "NFT listing.",
+        description: `Your'e NFT is now listed to the market!`,
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+      setToastNotifcation(false);
+    }
+  }, [nftList, searchInput, toastNotifcation]);
 
   const myNfts = nftList
     ?.filter(

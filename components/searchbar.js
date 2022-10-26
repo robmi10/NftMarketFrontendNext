@@ -16,7 +16,7 @@ const Searchbar = () => {
       <div class="relative block w-4/5">
         <AiOutlineSearch class=" absolute ml-3  mt-1 h-4 w-5" />
         <input
-          class="ml-2 flex w-80 items-center justify-center rounded-md border-black text-center"
+          class="ml-2 flex items-center justify-center rounded-md border-black text-center lg:w-80"
           placeholder="Search..."
           title="searchBar"
           type="text"

@@ -2,13 +2,31 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "../components/animation/TabSlide/tabslide.module.scss";
 import useWithdraw from "../components/moralis/useWithdraw";
 import { NftContext } from "../nftContext/context";
+import { useToast } from "@chakra-ui/react";
+import BouncerLoader from "../components/animation/loader/bouncerLoader";
 
 const MyBids = () => {
-  const { myBids, userAddress, transactionStatus } = useContext(NftContext);
+  const toast = useToast();
+  const {
+    myBids,
+    userAddress,
+    transactionStatus,
+    toastNotifcation,
+    setToastNotifcation,
+  } = useContext(NftContext);
 
   useEffect(() => {
-    "inside my bids useffect ";
-  }, [myBids, transactionStatus]);
+    if (toastNotifcation) {
+      toast({
+        title: "NFT widthdraw.",
+        description: `Your'e NFT widthdraw of ${toastNotifcation.auctionID} is succeded.`,
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+    }
+    setToastNotifcation(false);
+  }, [myBids, transactionStatus, toastNotifcation]);
 
   const myBidsNfts = myBids?.filter(
     (option) => option?.Bidder?.toLowerCase() === userAddress[0]

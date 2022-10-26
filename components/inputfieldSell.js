@@ -17,9 +17,9 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
 
   return (
     <>
-      <div class="w-wh relative z-20 flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041]">
+      <div class="w-wh relative z-20 flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041] lg:h-full">
         <h1
-          class="absolute top-0 left-0 mt-5 ml-20 flex w-0 cursor-pointer flex-row gap-20 bg-slate-400 "
+          class="absolute top-0 left-0 mt-5 ml-20 flex w-0 cursor-pointer flex-row gap-20"
           onClick={() => {
             handleOpenSellModal(false);
             setOpenModal(false);
@@ -27,21 +27,32 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
         >
           X
         </h1>
-        <div class="absolute top-0 mt-20 flex w-full cursor-pointer flex-row justify-center gap-20 ">
-          <button
-            onClick={() => {
-              setSellType(false);
-            }}
-          >
-            SELL
-          </button>
-          <button
-            onClick={() => {
-              setSellType(true);
-            }}
-          >
-            AUCTION
-          </button>
+        <div class=" absolute top-0 mt-10 flex w-10 cursor-pointer flex-row justify-center gap-10 lg:w-full">
+          <div className={styles.container}>
+            <div class=" p-3/4 relative flex h-11 w-52 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:w-full">
+              <input type="radio" id="radio-1" name="tabs" />
+              <label
+                className={styles.tab}
+                for="radio-1"
+                onClick={() => {
+                  setSellType(false);
+                }}
+              >
+                Sale
+              </label>
+              <input type="radio" id="radio-2" name="tabs" />
+              <label
+                className={styles.tab}
+                for="radio-2"
+                onClick={() => {
+                  setSellType(true);
+                }}
+              >
+                Auction
+              </label>
+              <span className={styles.glider}></span>
+            </div>
+          </div>
         </div>
 
         {!sellType && (

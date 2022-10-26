@@ -1,39 +1,50 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
 import SearchBar from "./searchbar";
 import { NftContext } from "../nftContext/context";
 import { useMoralis } from "react-moralis";
 import { AiFillHome } from "react-icons/ai";
-import useNftToMarket from "./moralis/useNftToMarket";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
-  const { userAddress, loginUser, logoutUser } = useContext(NftContext);
+  const { userAddress, loginUser, logoutUser, setOpenLinkModal } =
+    useContext(NftContext);
   const { isWeb3Enabled } = useMoralis();
 
   return (
-    <div class="h-35 bg-opacity-120 top-0 flex items-center justify-around rounded-sm bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041]">
-      <div class="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md ">
+    <div class=" lg:h-35 lg:bg-opacity-120 flex h-24 items-center justify-center bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041] lg:justify-around lg:rounded-sm">
+      <div class="w-2/2 flex cursor-pointer flex-row items-center justify-around gap-14 rounded-md lg:justify-start lg:gap-20">
         <Link href="/">
-          <AiFillHome />
+          <AiFillHome size={"20px"} />
         </Link>
-      </div>
-      <div class="flex items-center justify-center ">
-        <SearchBar />
+        <div class="flex items-center justify-center ">
+          <SearchBar />
+        </div>
+
+        <div class="lg:hidden">
+          <GiHamburgerMenu
+            size={"20px"}
+            onClick={() => {
+              setOpenLinkModal(true);
+            }}
+          />
+        </div>
       </div>
 
-      <div class="flex w-1/2 justify-end space-x-10 ">
+      <div class=" hidden lg:flex lg:w-1/2 lg:justify-end lg:space-x-10 ">
         {userAddress && (
           <div class="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md ">
             <h1 href="/market">{userAddress?.toString()?.substr(0, 10)}</h1>
           </div>
         )}
-        <div class="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md ">
+        <div class="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 ">
           <Link href="/market">MARKET</Link>
         </div>
 
-        <div class="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md ">
+        <div class="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 ">
           <Link href="/profile">PROFILE</Link>
         </div>
+
         {!isWeb3Enabled && (
           <div
             onClick={() => {

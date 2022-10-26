@@ -69,7 +69,7 @@ input[id="radiohover-1"] {
 input[id="radiohover-2"] {
   &:hover {
     & ~ .glider2 {
-      transform: translateX(230%);
+      transform: translateX(285%);
     }
   }
 }
@@ -77,7 +77,23 @@ input[id="radiohover-2"] {
 input[id="radiohover-3"] {
   &:hover {
     & ~ .glider2 {
-      transform: translateX(470%);
+      transform: translateX(578%);
+    }
+  }
+}
+
+input[id="radiocheck-1"] {
+  &:checked {
+    & ~ .glider3 {
+      transform: translateX(0%);
+    }
+  }
+}
+
+input[id="radiohovercheck-2"] {
+  &:checked {
+    & ~ .glider3 {
+      transform: translateX(420%);
     }
   }
 }
@@ -104,7 +120,33 @@ input[id="radiohover-3"] {
   width: 150px;
   background-color: rgb(157, 218, 238);
   z-index: 1;
-  left: 10%;
+  left: 8%;
   border-radius: 200px; // just a high number to create pill effect
   transition: 0.25s ease-out;
+}
+
+.glider3 {
+  position: absolute;
+  display: flex;
+  height: 3px;
+
+  bottom: 0;
+  width: 75px;
+  background-color: rgb(157, 218, 238);
+  z-index: 1;
+  left: 14%;
+  border-radius: 200px; // just a high number to create pill effect
+  transition: 0.25s ease-out;
+}
+
+@media screen and (max-width: 600px) {
+  .glider {
+    display: none;
+  }
+  .glider2 {
+    display: none;
+  }
+  .container {
+    width: 80%;
+  }
 }

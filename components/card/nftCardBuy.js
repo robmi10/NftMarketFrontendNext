@@ -27,7 +27,7 @@ const NftCardBuy = ({ option }) => {
     : 0;
 
   return (
-    <div class="border-1 flex h-4/6 w-1/4 flex-col items-center gap-5 rounded-md border-black shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]">
+    <div class=" border-1 flex w-3/4 flex-col items-center gap-5 rounded-md border-black shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041] lg:h-4/6 lg:w-1/4">
       <div class="h-96 w-full">
         <img
           class="h-64 w-full justify-center object-cover"

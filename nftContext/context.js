@@ -31,6 +31,7 @@ const NftProvider = ({ children }) => {
   const [transactionStatus, setTransactionStatus] = useState(false);
   const [nftListOnSaleEdit, setNftListOnSaleEdit] = useState(false);
   const [toastNotifcation, setToastNotifcation] = useState(false);
+  const [openLinkModal, setOpenLinkModal] = useState(false);
 
   const { getipfsInfo } = GetIpfsTokenURI();
   const {
@@ -164,6 +165,7 @@ const NftProvider = ({ children }) => {
           tokenId: endNft.TokenId,
           owner: endNft.Seller,
           buyer: endNft.Bid,
+          price: endNft.Price,
         });
       });
     } catch (error) {
@@ -186,6 +188,11 @@ const NftProvider = ({ children }) => {
         }),
       }).then(() => {
         getMyBids();
+        setToastNotifcation({
+          bidder: widthdrawNft.Bidder,
+          tokenId: widthdrawNft.TokenId,
+          auctionID: widthdrawNft.AuctionID,
+        });
       });
     } catch (error) {
       console.log({ error });
@@ -411,6 +418,12 @@ const NftProvider = ({ children }) => {
         console.log("inside get all nfts after to market");
         getAllNftList();
         getAllNftsOnSale();
+        setToastNotifcation({
+          type: "listing",
+          owner: nftCreateData.owner,
+          seller: nftCreateData.seller,
+          tokenId: _tokenId,
+        });
       });
     } catch (error) {
       console.log({ error });
@@ -517,6 +530,8 @@ const NftProvider = ({ children }) => {
         setNftListOnSaleEdit,
         toastNotifcation,
         setToastNotifcation,
+        openLinkModal,
+        setOpenLinkModal,
       }}
     >
       {children}
