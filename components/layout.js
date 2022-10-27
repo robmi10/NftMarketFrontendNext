@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { NftContext } from "../nftContext/context";
 import { AiFillHome } from "react-icons/ai";
 import Footer from "./footer";
+import { useTheme } from "next-themes";
+import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 
 const Layout = ({ children }) => {
   const {
@@ -12,7 +14,14 @@ const Layout = ({ children }) => {
     isWeb3Enabled,
     openLinkModal,
     setOpenLinkModal,
+    setThemeColor,
   } = useContext(NftContext);
+  const { systemTheme, theme, setTheme } = useTheme();
+  const currenTheme = theme === "system" ? systemTheme : theme;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     console.log({ openLinkModal });
@@ -22,7 +31,7 @@ const Layout = ({ children }) => {
   if (openLinkModal)
     return (
       <>
-        <div class="flex h-screen flex-col items-center justify-center gap-10 bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg">
+        <div class="flex h-screen flex-col items-center justify-center gap-10 bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400">
           <button
             onClick={() => {
               setOpenLinkModal(false);
@@ -36,6 +45,30 @@ const Layout = ({ children }) => {
             <div class="left-2/5 absolute top-10 ">
               <h1 href="/market">{userAddress?.toString()?.substr(0, 10)}</h1>
             </div>
+          )}
+
+          {mounted && currenTheme === "dark" && (
+            <SunIcon
+              className="h-6 w-6"
+              role="button"
+              onClick={() => {
+                setTheme("light");
+                setThemeColor("light");
+                console.log("setToLight");
+              }}
+            />
+          )}
+
+          {mounted && currenTheme === "light" && (
+            <MoonIcon
+              className="h-6 w-6"
+              role="button"
+              onClick={() => {
+                setTheme("dark");
+                setThemeColor("dark");
+                console.log("setToDark");
+              }}
+            />
           )}
 
           <div class="flex h-20 cursor-pointer items-center justify-center rounded-md focus:text-white lg:w-20 ">

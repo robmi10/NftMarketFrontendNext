@@ -1,9 +1,10 @@
 import classes from "./Timer.module.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 // const PLANNED_DATE = new Date("2022-05-30").getTime();
 
 import FlipNumbers from "react-flip-numbers";
 import { GetRemainingTimeUnitMsTimeStamp } from "./getRemainingTimeUnitMsTimeStamp";
+import { NftContext } from "../../nftContext/context";
 const defaultRemainingTime = {
   seconds: "00",
   minutes: "00",
@@ -12,6 +13,7 @@ const defaultRemainingTime = {
 };
 
 const Timer = ({ countDownTimeMs, AuctionInfo }) => {
+  const { themeColor } = useContext(NftContext);
   const [remainingTime, setRemainingTime] = useState(defaultRemainingTime);
   countDownTimeMs, AuctionInfo;
   useEffect(() => {
@@ -25,14 +27,16 @@ const Timer = ({ countDownTimeMs, AuctionInfo }) => {
     setRemainingTime(GetRemainingTimeUnitMsTimeStamp(countdown));
   };
 
+  const color = themeColor === "light" ? "black" : "white";
+
   return (
-    <div class=" flex h-40 items-center gap-10 ">
+    <div class=" flex h-40 items-center gap-5 lg:gap-10 ">
       <div class="flex flex-col gap-5">
         <span>Days</span>
         <FlipNumbers
           height={20}
           width={20}
-          color="black"
+          color={color}
           background="transparent"
           play
           perspective={500}
@@ -45,7 +49,7 @@ const Timer = ({ countDownTimeMs, AuctionInfo }) => {
         <FlipNumbers
           height={20}
           width={20}
-          color="black"
+          color={color}
           background="transparent"
           play
           perspective={500}
@@ -57,7 +61,7 @@ const Timer = ({ countDownTimeMs, AuctionInfo }) => {
         <FlipNumbers
           height={20}
           width={20}
-          color="black"
+          color={color}
           background="transparent"
           play
           perspective={300}
@@ -69,7 +73,7 @@ const Timer = ({ countDownTimeMs, AuctionInfo }) => {
         <FlipNumbers
           height={20}
           width={20}
-          color="black"
+          color={color}
           background="transparent"
           play
           perspective={500}

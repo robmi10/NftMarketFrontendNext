@@ -6,8 +6,13 @@ import useEnd from "../moralis/useEndNft";
 import Timer from "../time/timer";
 
 const NftCardAuction = ({ option, handleOpenSellModal }) => {
-  const { setBidType, transactionStatus, setOpenModal } =
-    useContext(NftContext);
+  const {
+    setBidType,
+    transactionStatus,
+    setOpenModal,
+    themeColor,
+    setThemeColor,
+  } = useContext(NftContext);
   const { Moralis } = useMoralis();
   const isTimeOver = new Date().getTime() - option.option.Duration;
   const { endNFT } = useEnd();
@@ -27,7 +32,7 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
 
   return (
     <div class=" border-1 h-5/8 flex w-3/4 animate-fade flex-col items-center gap-2 rounded-md border-black shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]  lg:w-1/4">
-      <div class="h-96 w-full">
+      <div class="h-62 w-full">
         <img
           class="h-64 w-full justify-center object-cover"
           src={option?.option.ipfsInfo?.image}
@@ -59,7 +64,7 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
           </div>
 
           <button
-            class=" mb-5 flex h-2/4 w-3/6 flex-row justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
+            class=" mb-5 flex h-14 w-3/6 flex-row items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
             onClick={() => {
               setBidType(option);
               handleOpenSellModal({
@@ -77,7 +82,7 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
       {isTimeOver > 0 && (
         <div class="flex h-2/4 w-full flex-row items-end justify-center space-x-10">
           <button
-            class="mb-10 flex h-1/5 w-3/6 flex-row items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
+            class="mb-5 flex h-14 w-3/6 flex-row items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
             onClick={() => {
               endNFT(option);
             }}

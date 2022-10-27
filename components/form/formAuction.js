@@ -28,7 +28,7 @@ const FormAuction = ({ openModalSellData }) => {
       >
         <label for="first">Startprice</label>
         <input
-          class="max-w-full rounded-md px-4"
+          class="max-w-full rounded-md px-4 dark:bg-white dark:text-black"
           type="number"
           step="any"
           id="price"
@@ -38,14 +38,14 @@ const FormAuction = ({ openModalSellData }) => {
 
         <label for="first">Duration</label>
         <input
-          class="rounded-md px-4"
+          class="rounded-md px-4 dark:bg-white dark:text-black"
           type="date"
           id="date"
           {...register("date", { required: true })}
         />
 
         <button
-          class="pl-2/4 mt-10 flex h-12 cursor-pointer items-center justify-center rounded-md bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041] lg:w-96"
+          class="pl-2/4 mt-10 flex h-12 cursor-pointer items-center justify-center rounded-md bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041] dark:text-black lg:w-96"
           type="submit"
         >
           <div class="flex items-center justify-center">

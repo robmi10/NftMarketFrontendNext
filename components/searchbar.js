@@ -13,10 +13,10 @@ const Searchbar = () => {
 
   return (
     <form>
-      <div class="relative block w-4/5">
-        <AiOutlineSearch class=" absolute ml-3  mt-1 h-4 w-5" />
+      <div>
+        <AiOutlineSearch class=" absolute ml-3  mt-1 h-4 w-5 dark:text-black" />
         <input
-          class="ml-2 flex items-center justify-center rounded-md border-black text-center lg:w-80"
+          class="ml-2 flex items-center justify-center rounded-md border-black text-center dark:bg-white dark:text-black lg:w-80"
           placeholder="Search..."
           title="searchBar"
           type="text"

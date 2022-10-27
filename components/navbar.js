@@ -9,8 +9,13 @@ import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 
 const Navbar = () => {
-  const { userAddress, loginUser, logoutUser, setOpenLinkModal } =
-    useContext(NftContext);
+  const {
+    userAddress,
+    loginUser,
+    logoutUser,
+    setOpenLinkModal,
+    setThemeColor,
+  } = useContext(NftContext);
   const { isWeb3Enabled } = useMoralis();
   const { systemTheme, theme, setTheme } = useTheme();
   const currenTheme = theme === "system" ? systemTheme : theme;
@@ -52,6 +57,7 @@ const Navbar = () => {
               role="button"
               onClick={() => {
                 setTheme("light");
+                setThemeColor("light");
                 console.log("setToLight");
               }}
             />
@@ -63,6 +69,7 @@ const Navbar = () => {
               role="button"
               onClick={() => {
                 setTheme("dark");
+                setThemeColor("dark");
                 console.log("setToDark");
               }}
             />

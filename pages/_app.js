@@ -18,10 +18,12 @@ function MyApp({ Component, pageProps }) {
       >
         <NftProvider>
           <ThemeProvider enableSystem={true} attribute="class">
-            <Layout>
-              <Navbar />
-              <Component {...pageProps} />
-            </Layout>
+            <ChakraProvider>
+              <Layout>
+                <Navbar />
+                <Component {...pageProps} />
+              </Layout>
+            </ChakraProvider>
           </ThemeProvider>
         </NftProvider>
       </MoralisProvider>

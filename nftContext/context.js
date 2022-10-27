@@ -32,6 +32,7 @@ const NftProvider = ({ children }) => {
   const [nftListOnSaleEdit, setNftListOnSaleEdit] = useState(false);
   const [toastNotifcation, setToastNotifcation] = useState(false);
   const [openLinkModal, setOpenLinkModal] = useState(false);
+  const [themeColor, setThemeColor] = useState(false);
 
   const { getipfsInfo } = GetIpfsTokenURI();
   const {
@@ -532,6 +533,8 @@ const NftProvider = ({ children }) => {
         setToastNotifcation,
         openLinkModal,
         setOpenLinkModal,
+        themeColor,
+        setThemeColor,
       }}
     >
       {children}
