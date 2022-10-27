@@ -38,7 +38,7 @@ const MyBids = () => {
 
   return (
     <>
-      <div class="flex flex-col items-center  justify-center">
+      <div class="flex h-screen flex-col items-center justify-center">
         <div class=" mt-10 flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
           MY BIDS
         </div>

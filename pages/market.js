@@ -104,7 +104,7 @@ const Market = () => {
 
   return (
     <div>
-      <div class="flex justify-center">
+      <div class="flex justify-center ">
         <div className={styles.container}>
           <div class="lg:p-3/4 flex h-11 w-3/4 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:relative lg:w-auto">
             <input type="radio" id="radio-1" name="tabs" />
@@ -131,7 +131,7 @@ const Market = () => {
           </div>
         </div>
       </div>
-      <div class="mt-5 mb-5 flex h-screen w-screen flex-wrap justify-center gap-5 rounded-sm">
+      <div class="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
         {!isMarketAuction
           ? nftsListedSale?.map((option, i) => {
               return <NftCardBuy option={option} />;

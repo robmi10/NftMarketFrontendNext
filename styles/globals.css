@@ -4,10 +4,11 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 
-body {
-  font-family: "Roboto", sans-serif;
-  /* background-color: rgba(0, 0, 0, 0.896);
-  color: white; */
+@layer base {
+  body {
+    font-family: "Roboto", sans-serif;
+    @apply dark:bg-black dark:text-white;
+  }
 }
 input[type="radio"] {
   display: none;

@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { NftContext } from "../nftContext/context";
 import { AiFillHome } from "react-icons/ai";
+import Footer from "./footer";
 
 const Layout = ({ children }) => {
   const {
@@ -106,6 +107,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <main>{children}</main>
+      <Footer />
     </>
   );
 };

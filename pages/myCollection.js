@@ -71,7 +71,7 @@ const MyCollection = () => {
         </div>
       </div>
       <div class="mt-10 flex justify-center">
-        <div class="flex w-5/6 flex-wrap justify-center gap-5 ">
+        <div class="mb-5 flex w-5/6 flex-wrap justify-center gap-5 ">
           {myNfts?.map((option, i) => {
             return (
               <NftCard

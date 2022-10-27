@@ -4,8 +4,36 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
+      animation: {
+        fade: "fadeIn 0.5s ease-in",
+        fadeAfter: "fadeInAfter 0.8s ease-in",
+      },
+      keyframes: (theme) => ({
+        fadeIn: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+
+        fadeInAfter: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+      }),
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
