@@ -8,6 +8,7 @@
   body {
     font-family: "Roboto", sans-serif;
     @apply dark:bg-black dark:text-white;
+    color: rgb(253, 193, 191, 1);
   }
 }
 input[type="radio"] {
