@@ -26,7 +26,7 @@ export const Logo = () => {
               size={2}
               weight={300}
               time={4}
-              text="THE BEST NFT MARKET IN THE PLANET"
+              text="THE BEST NFT MARKET IN THE WORLD"
             />
           </div>
           <div class="body-font mt-10 font-poppins text-2xl">
