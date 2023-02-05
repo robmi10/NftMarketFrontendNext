@@ -1,12 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { useMoralis } from "react-moralis";
 import { NftContext } from "../../nftContext/context";
 import BouncerLoader from "../animation/loader/bouncerLoader";
 import useBuyNft from "../moralis/useBuyNft";
 import { FiShoppingCart } from "react-icons/fi";
+import { parseUnits } from "ethers/lib/utils";
 
 const NftCardBuy = ({ option }) => {
-  const { Moralis } = useMoralis();
   const { buyNft } = useBuyNft();
   const { transactionStatus, nftListOnSale, setTransactionStatus } =
     useContext(NftContext);
@@ -23,7 +22,7 @@ const NftCardBuy = ({ option }) => {
   });
 
   const currentPrice = option?.option?.Price
-    ? Moralis.Units.FromWei(option?.option?.Price.toString())
+    ? parseUnits(option?.option?.Price.toString(), 18).toString()
     : 0;
 
   return (

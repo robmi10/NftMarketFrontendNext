@@ -9,13 +9,20 @@ import Layout from "../components/layout";
 import Footer from "../components/footer";
 import { ThemeProvider } from "next-themes";
 
+import { ChainId } from "@thirdweb-dev/react";
+import { DAppProvider, Localhost } from "@usedapp/core";
+
 function MyApp({ Component, pageProps }) {
+  const config = {
+    networks: [Localhost],
+    readOnlyChainId: ChainId.Localhost,
+    readOnlyUrls: {
+      [ChainId.Localhost]: "http://localhost:7545",
+    },
+  };
   return (
     <>
-      <MoralisProvider
-        appId="CWGcND4PclcBd3ubnyW2SU9t04Uvqj8NVHI4MXNv"
-        serverUrl="https://l8byxuhjvmaz.usemoralis.com:2053/server"
-      >
+      <DAppProvider config={config}>
         <NftProvider>
           <ThemeProvider enableSystem={true} attribute="class">
             <ChakraProvider>
@@ -26,7 +33,7 @@ function MyApp({ Component, pageProps }) {
             </ChakraProvider>
           </ThemeProvider>
         </NftProvider>
-      </MoralisProvider>
+      </DAppProvider>
     </>
   );
 }

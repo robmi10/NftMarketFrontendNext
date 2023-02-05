@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
-import { useMoralis } from "react-moralis";
 import { NftContext } from "../../nftContext/context";
 import BouncerLoader from "../animation/loader/bouncerLoader";
 import useEnd from "../moralis/useEndNft";
 import Timer from "../time/timer";
+import { parseUnits } from "ethers/lib/utils";
 
 const NftCardAuction = ({ option, handleOpenSellModal }) => {
   const {
@@ -13,13 +13,12 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
     themeColor,
     setThemeColor,
   } = useContext(NftContext);
-  const { Moralis } = useMoralis();
   const isTimeOver = new Date().getTime() - option.option.Duration;
   const { endNFT } = useEnd();
   console.log({ isTimeOver });
   const NftCardData = { option, ipfsInfo: option?.option.ipfsInfo };
   const currentPrice = option?.option.Price
-    ? Moralis.Units.FromWei(option?.option.Price?.toString())
+    ? parseUnits(option?.option?.Price.toString(), 18).toString()
     : 0;
 
   console.log({ optionAuction: option });

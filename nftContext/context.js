@@ -35,38 +35,6 @@ const NftProvider = ({ children }) => {
   const [themeColor, setThemeColor] = useState(false);
 
   const { getipfsInfo } = GetIpfsTokenURI();
-  const {
-    isWeb3Enabled,
-    user,
-    isAuthenticating,
-    enableWeb3,
-    authenticate,
-    deactivateWeb3,
-  } = useMoralis();
-
-  useEffect(() => {
-    if (
-      isWeb3Enabled ||
-      (isAuthenticating &&
-        user !== null &&
-        user.attributes.accounts !== undefined)
-    ) {
-      console.log({ user });
-      setUserAddress(user?.attributes?.accounts);
-    } else {
-      setUserAddress(false);
-    }
-  });
-
-  const loginUser = async () => {
-    await enableWeb3();
-    await authenticate();
-  };
-
-  const logoutUser = async () => {
-    await deactivateWeb3();
-    setUserAddress(false);
-  };
 
   useEffect(() => {
     if (nftCreateData) {
@@ -490,8 +458,7 @@ const NftProvider = ({ children }) => {
         settokenURI,
         setUserAddress,
         userAddress,
-        loginUser,
-        logoutUser,
+
         nftCreateData,
         setNftCreateData,
         data,
