@@ -1,6 +1,6 @@
 import { NftContext } from "../../nftContext/context";
 import { nftContractAddress } from "../contracts/adress";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useContractFunction } from "@usedapp/core";
 import nftInfo from "../../chain-info/contracts/NftMarketPlace.json";
 import { ethers } from "ethers";
@@ -13,6 +13,7 @@ const useBuyNft = () => {
   const nftAddress = nftContractAddress;
   const nftInterface = new ethers.utils.Interface(nftInfo.abi);
   const nftAddressContract = new Contract(nftAddress, nftInterface);
+  const [input, setInput] = useState(false);
 
   const {
     state: buyNftStatus,
@@ -22,13 +23,16 @@ const useBuyNft = () => {
 
   useEffect(() => {
     if (buyNftStatus.status === "Success") {
-      setBuyNft(buyNftEvents);
+      console.log({ inputCheck: input });
+      setBuyNft({ status: buyNftEvents[0].args, owner: input.Owner });
     }
-  }, [buyNftStatus]);
+  }, [buyNftStatus, input]);
 
   const buyNft = async (option) => {
     console.log({ option });
+    setInput(option);
 
+    console.log({ firstInput: input });
     buyNftfunction(option.TokenId, account, option.Seller, {
       value: option?.Price?.toString(),
     });

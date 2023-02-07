@@ -17,7 +17,7 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
 
   return (
     <>
-      <div class="w-wh relative z-20 flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041] dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 lg:h-full">
+      <div class="w-wh relative z-20 flex h-full  content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041] dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 lg:h-full">
         <h1
           class="absolute top-0 left-0 mt-5 ml-20 flex w-0 cursor-pointer flex-row gap-20"
           onClick={() => {

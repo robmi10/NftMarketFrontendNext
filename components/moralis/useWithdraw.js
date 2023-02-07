@@ -1,6 +1,6 @@
 import { auctionContractAddress } from "../contracts/adress";
 import { NftContext } from "../../nftContext/context";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useContractFunction } from "@usedapp/core";
 import { ethers } from "ethers";
 import { Contract } from "@ethersproject/contracts";
@@ -8,10 +8,11 @@ import { useEthers } from "@usedapp/core";
 import auctionInfo from "../../chain-info/contracts/Auction.json";
 
 const useWithdraw = () => {
-  const { setWidthdrawNft } = useContext(NftContext);
+  const { setWidthdrawNft, setOpenModal } = useContext(NftContext);
   const auctionAddress = auctionContractAddress;
   const auctionInterface = new ethers.utils.Interface(auctionInfo.abi);
   const auctionAddressContract = new Contract(auctionAddress, auctionInterface);
+  const [input, setInput] = useState(false);
 
   const {
     state: widthdrawStatus,
@@ -22,10 +23,10 @@ const useWithdraw = () => {
   useEffect(() => {
     if (widthdrawStatus.status === "Success") {
       setWidthdrawNft({
-        status: widthdrawEvents,
-        Bidder: option.Bidder,
-        TokenId: option.TokenId,
-        AuctionID: option.AuctionID,
+        status: widthdrawEvents[0].args,
+        Bidder: input.Bidder,
+        TokenId: input.TokenId,
+        AuctionID: input.AuctionID,
       });
       setOpenModal("loading");
     }
@@ -33,7 +34,7 @@ const useWithdraw = () => {
 
   const withdrawNFT = async (option) => {
     console.log({ option });
-
+    setInput(option);
     widthdrawfunction(option.AuctionID);
   };
   return { withdrawNFT };

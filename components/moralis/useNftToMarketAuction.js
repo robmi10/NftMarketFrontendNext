@@ -1,6 +1,6 @@
 import { auctionContractAddress } from "../contracts/adress";
 import { NftContext } from "../../nftContext/context";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useContractFunction } from "@usedapp/core";
 import { ethers } from "ethers";
 import { Contract } from "@ethersproject/contracts";
@@ -9,11 +9,12 @@ import auctionInfo from "../../chain-info/contracts/Auction.json";
 import { parseUnits } from "ethers/lib/utils";
 
 const useNftToMarketAuction = () => {
+  const { activateBrowserWallet, deactivate, account } = useEthers();
   const { setnftToMarketAuction, setOpenModal } = useContext(NftContext);
   const auctionAddress = auctionContractAddress;
   const auctionInterface = new ethers.utils.Interface(auctionInfo.abi);
   const auctionAddressContract = new Contract(auctionAddress, auctionInterface);
-  const [input, setInput] = useState(second);
+  const [input, setInput] = useState(false);
 
   const {
     state: nftToMarketAuctionStatus,
@@ -27,7 +28,7 @@ const useNftToMarketAuction = () => {
     }
     if (nftToMarketAuctionStatus.status === "Success") {
       setnftToMarketAuction({
-        status: nftToMarketAuctionEvents,
+        status: nftToMarketAuctionEvents[0].args,
         owner: input?.openModalSellData?.option?.Owner,
       });
     }

@@ -1,34 +1,34 @@
-import { auctionContractAddress } from "../contracts/adress";
+import { nftContractAddress } from "../contracts/adress";
 import { NftContext } from "../../nftContext/context";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useContractFunction } from "@usedapp/core";
 import { ethers } from "ethers";
 import { Contract } from "@ethersproject/contracts";
 import { useEthers } from "@usedapp/core";
-import auctionInfo from "../../chain-info/contracts/Auction.json";
+import nftInfo from "../../chain-info/contracts/NftMarketPlace.json";
 import { parseUnits } from "ethers/lib/utils";
 
 const useNftToMarket = () => {
   const { setnftToMarket, setOpenModal } = useContext(NftContext);
-  const auctionAddress = auctionContractAddress;
-  const auctionInterface = new ethers.utils.Interface(auctionInfo.abi);
-  const auctionAddressContract = new Contract(auctionAddress, auctionInterface);
-  const [input, setInput] = useState(second);
+  const nftAddress = nftContractAddress;
+  const nftInterface = new ethers.utils.Interface(nftInfo.abi);
+  const nftAddressContract = new Contract(nftAddress, nftInterface);
+  const [input, setInput] = useState(false);
 
   const {
     state: nftToMarketStatus,
     send: nftToMarketfunction,
     events: nftToMarketEvents,
-  } = useContractFunction(auctionAddressContract, "nftToMarket");
+  } = useContractFunction(nftAddressContract, "nftToMarket");
 
   useEffect(() => {
-    if (nftToMarketAuctionStatus.status === "Mining") {
+    if (nftToMarketStatus.status === "Mining") {
       setOpenModal("loading");
     }
-    if (nftToMarketAuctionStatus.status === "Success") {
+    if (nftToMarketStatus.status === "Success") {
       setnftToMarket({
-        status: nftToMarketEvents,
-        Owner: createSellData.openModalSellData.option.Owner,
+        status: nftToMarketEvents[0].args,
+        Owner: input.openModalSellData.option.Owner,
       });
     }
   }, [nftToMarketStatus]);
@@ -38,7 +38,7 @@ const useNftToMarket = () => {
     setInput(createSellData);
     nftToMarketfunction(
       createSellData.openModalSellData.option.TokenId,
-      parseUnits(createSellData.form.price.toString(), 18).toString()
+      parseUnits(createSellData.form.price, 18).toString()
     );
   };
   return { NftToMarket };

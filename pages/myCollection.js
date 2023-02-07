@@ -5,8 +5,10 @@ import GetIpfsTokenURI from "../components/filterList";
 import Modal from "../components/modal";
 import { NftContext } from "../nftContext/context";
 import { useToast } from "@chakra-ui/react";
+import { useEthers } from "@usedapp/core";
 
 const MyCollection = () => {
+  const { activateBrowserWallet, deactivate, account } = useEthers();
   const toast = useToast();
   const {
     nftList,
@@ -33,10 +35,9 @@ const MyCollection = () => {
     }
   }, [nftList, searchInput, toastNotifcation]);
 
+  console.log({ account });
   const myNfts = nftList
-    ?.filter(
-      (option) => option?.option.Seller?.toLowerCase() === userAddress[0]
-    )
+    ?.filter((option) => option?.option.Seller === account)
     ?.filter((optionMyNft) => {
       return searchInput === ""
         ? optionMyNft

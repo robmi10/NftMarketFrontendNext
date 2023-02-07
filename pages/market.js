@@ -9,6 +9,7 @@ import GetIpfsTokenURI from "../components/filterList";
 import Modal from "../components/modal";
 import { NftContext } from "../nftContext/context";
 import { useToast } from "@chakra-ui/react";
+import { parseUnits } from "ethers/lib/utils";
 
 const Market = () => {
   const {
@@ -63,6 +64,7 @@ const Market = () => {
     );
   }, [transactionStatus, nftListOnSale, nftListOnAuction]);
 
+  if (!nftListOnSale) return false;
   const nftsListedSale = nftListOnSale?.filter((optionMyNft) => {
     return searchInput === ""
       ? optionMyNft
@@ -104,7 +106,7 @@ const Market = () => {
 
   return (
     <div>
-      <div class="flex justify-center ">
+      <div class="flex justify-center">
         <div className={styles.container}>
           <div class="lg:p-3/4 flex h-11 w-3/4 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:relative lg:w-auto">
             <input type="radio" id="radio-1" name="tabs" />

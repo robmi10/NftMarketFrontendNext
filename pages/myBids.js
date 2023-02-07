@@ -4,8 +4,10 @@ import useWithdraw from "../components/moralis/useWithdraw";
 import { NftContext } from "../nftContext/context";
 import { useToast } from "@chakra-ui/react";
 import BouncerLoader from "../components/animation/loader/bouncerLoader";
+import { useEthers } from "@usedapp/core";
 
 const MyBids = () => {
+  const { activateBrowserWallet, deactivate, account } = useEthers();
   const toast = useToast();
   const {
     myBids,
@@ -28,9 +30,7 @@ const MyBids = () => {
     setToastNotifcation(false);
   }, [myBids, transactionStatus, toastNotifcation]);
 
-  const myBidsNfts = myBids?.filter(
-    (option) => option?.Bidder?.toLowerCase() === userAddress[0]
-  );
+  const myBidsNfts = myBids?.filter((option) => option?.Bidder === account);
 
   const { withdrawNFT } = useWithdraw();
   console.log({ myBids });
@@ -38,17 +38,17 @@ const MyBids = () => {
 
   return (
     <>
-      <div class="flex h-screen flex-col items-center justify-center">
-        <div class=" mt-10 flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
+      <div class=" mb-52 mt-10 flex flex-col items-center justify-center gap-4 ">
+        <div class=" flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
           MY BIDS
         </div>
 
-        <div class="mt-10 flex h-full w-screen flex-col items-center justify-center gap-4 ">
+        <div class="flex h-full w-screen flex-col items-center justify-center gap-4 ">
           {myBidsNfts?.map((option, i) => {
             return (
-              <div class="flex  w-2/5 flex-col gap-5">
+              <div class="flex h-auto w-2/6 flex-col gap-5 ">
                 <div class="flex w-full items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]">
-                  <div class="flex flex-col gap-10 p-10">
+                  <div class="flex flex-col gap-10 p-4">
                     <div class="h-full w-full  bg-red-500">
                       <img
                         class="rounded-sm"
@@ -86,7 +86,6 @@ const MyBids = () => {
           })}
         </div>
       </div>
-      <div class="flex justify-center"></div>
     </>
   );
 };

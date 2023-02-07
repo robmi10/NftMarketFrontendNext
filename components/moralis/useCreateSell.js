@@ -5,6 +5,7 @@ import { useContractFunction } from "@usedapp/core";
 import nftInfo from "../../chain-info/contracts/NftMarketPlace.json";
 import { ethers } from "ethers";
 import { Contract } from "@ethersproject/contracts";
+import { parseUnits } from "ethers/lib/utils";
 
 const useCreateSell = () => {
   const { data, setNftCreateData } = useContext(NftContext);
@@ -20,14 +21,18 @@ const useCreateSell = () => {
 
   useEffect(() => {
     if (createNftStatus.status === "Success") {
-      setNftCreateData(createNftEvents);
+      setNftCreateData(createNftEvents[1].args);
     }
   }, [createNftStatus]);
 
   const createSell = async (hashResult) => {
     console.log({ data });
     console.log({ hashResult });
-    createNft(hashResult.path, data.royalty);
+
+    // Moralis.Units.ETH("0.00060");
+    createNft(hashResult.path, data.royalty, {
+      value: parseUnits("0.00060", 18).toString(),
+    });
   };
   return { createSell };
 };

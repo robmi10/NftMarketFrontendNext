@@ -21,13 +21,15 @@ const Timer = ({ countDownTimeMs, AuctionInfo }) => {
       updateTimeRemaining(countDownTimeMs);
     }, 1000);
     return () => clearInterval(intervalId);
-  }, [countDownTimeMs]);
+  }, [countDownTimeMs, themeColor]);
 
   const updateTimeRemaining = (countdown) => {
     setRemainingTime(GetRemainingTimeUnitMsTimeStamp(countdown));
   };
 
   const color = themeColor === "light" ? "black" : "white";
+
+  console.log({ color });
 
   return (
     <div class=" flex h-40 items-center gap-5 lg:gap-10 ">

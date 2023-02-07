@@ -3,8 +3,7 @@ import { NftContext } from "../../nftContext/context";
 import BouncerLoader from "../animation/loader/bouncerLoader";
 import useEnd from "../moralis/useEndNft";
 import Timer from "../time/timer";
-import { parseUnits } from "ethers/lib/utils";
-
+import { formatEther, parseUnits } from "ethers/lib/utils";
 const NftCardAuction = ({ option, handleOpenSellModal }) => {
   const {
     setBidType,
@@ -17,8 +16,8 @@ const NftCardAuction = ({ option, handleOpenSellModal }) => {
   const { endNFT } = useEnd();
   console.log({ isTimeOver });
   const NftCardData = { option, ipfsInfo: option?.option.ipfsInfo };
-  const currentPrice = option?.option.Price
-    ? parseUnits(option?.option?.Price.toString(), 18).toString()
+  const currentPrice = option?.option?.Price
+    ? formatEther(option?.option?.Price.toString())
     : 0;
 
   console.log({ optionAuction: option });

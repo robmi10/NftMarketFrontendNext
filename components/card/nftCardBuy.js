@@ -3,7 +3,7 @@ import { NftContext } from "../../nftContext/context";
 import BouncerLoader from "../animation/loader/bouncerLoader";
 import useBuyNft from "../moralis/useBuyNft";
 import { FiShoppingCart } from "react-icons/fi";
-import { parseUnits } from "ethers/lib/utils";
+import { parseUnits, formatEther, formatUnits } from "ethers/lib/utils";
 
 const NftCardBuy = ({ option }) => {
   const { buyNft } = useBuyNft();
@@ -22,7 +22,7 @@ const NftCardBuy = ({ option }) => {
   });
 
   const currentPrice = option?.option?.Price
-    ? parseUnits(option?.option?.Price.toString(), 18).toString()
+    ? formatEther(option?.option?.Price.toString())
     : 0;
 
   return (
@@ -39,7 +39,7 @@ const NftCardBuy = ({ option }) => {
       <div class="flex w-full flex-col gap-5 pl-5">
         <h1>{option.option?.ipfsInfo?.title}</h1>
 
-        <h1>{option?.option?.ipfsInfo?.description}</h1>
+        <h1>{option?.option?.ipfsInfo?.description}</h1>  
         <h1>{currentPrice} MATIC</h1>
       </div>
 

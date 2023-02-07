@@ -291,7 +291,7 @@ const NftProvider = ({ children }) => {
 
   const updateAndDeleteNftSeller = async () => {
     console.log("updateAndDeleteNftSeller data now->", buyNft);
-    const tokenIdString = buyNft.status.id._hex.toString(16);
+    const tokenIdString = buyNft?.status?.id?._hex.toString(16);
     const tokenId = Number(tokenIdString);
 
     try {
@@ -303,9 +303,9 @@ const NftProvider = ({ children }) => {
         },
         body: JSON.stringify({
           tokenId: tokenId,
-          owner: buyNft.Owner,
-          seller: buyNft.status.to,
-          to: buyNft.status.from,
+          owner: buyNft?.owner,
+          seller: buyNft?.status?.to,
+          to: buyNft?.status?.from,
         }),
       }).then(() => {
         getAllNftsOnSale();
@@ -313,9 +313,9 @@ const NftProvider = ({ children }) => {
         setToastNotifcation({
           type: "buy",
           tokenId: tokenId,
-          owner: buyNft.Owner,
-          seller: buyNft.status.to,
-          to: buyNft.status.from,
+          owner: buyNft?.owner,
+          seller: buyNft.status?.to,
+          to: buyNft.status?.from,
         });
       });
     } catch (error) {
@@ -458,7 +458,6 @@ const NftProvider = ({ children }) => {
         settokenURI,
         setUserAddress,
         userAddress,
-
         nftCreateData,
         setNftCreateData,
         data,

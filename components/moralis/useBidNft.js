@@ -1,11 +1,12 @@
 import { NftContext } from "../../nftContext/context";
 import { nftContractAddress } from "../contracts/adress";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useContractFunction } from "@usedapp/core";
 import nftInfo from "../../chain-info/contracts/NftMarketPlace.json";
 import { ethers } from "ethers";
 import { Contract } from "@ethersproject/contracts";
 import { useEthers } from "@usedapp/core";
+import { formatEther, parseUnits } from "ethers/lib/utils";
 
 const useBidNft = () => {
   const { activateBrowserWallet, deactivate, account } = useEthers();
@@ -13,6 +14,7 @@ const useBidNft = () => {
   const nftAddress = nftContractAddress;
   const nftInterface = new ethers.utils.Interface(nftInfo.abi);
   const nftAddressContract = new Contract(nftAddress, nftInterface);
+  const [input, setInput] = useState(false);
 
   const {
     state: bidNftStatus,
@@ -25,21 +27,24 @@ const useBidNft = () => {
       setOpenModal("loading");
     }
 
+    console.log({ input });
+
     if (bidNftStatus.status === "Success") {
       setBidNft({
-        status: bidNftEvents,
-        owner: option.openModalSellData.option.option.Seller,
-        tokenID: option.openModalSellData.option.option.TokenId,
-        auctionID: option.openModalSellData.option.option.AuctionID,
+        status: bidNftEvents[0].args,
+        owner: input.openModalSellData.option.option.Seller,
+        tokenID: input.openModalSellData.option.option.TokenId,
+        auctionID: input.openModalSellData.option.option.AuctionID,
       });
     }
   }, [bidNftStatus]);
 
   const bidNFT = async (option) => {
-    console.log({ option });
+    console.log({ optionCheck: option });
+    setInput(option);
 
     bidNftfunction(option.openModalSellData.option.option.AuctionID, {
-      value: option?.form?.bid,
+      value: parseUnits(option?.form?.bid, 18).toString(),
     });
   };
   return { bidNFT };
