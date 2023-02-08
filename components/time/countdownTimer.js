@@ -1,6 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { NftContext } from "../../nftContext/context";
-import useEnd from "../moralis/useEndNft";
+import React, { useEffect, useState } from "react";
 import { GetRemainingTimeUnitMsTimeStamp } from "./getRemainingTimeUnitMsTimeStamp";
 import styled, { keyframes } from "styled-components";
 
@@ -80,7 +78,6 @@ const defaultRemainingTime = {
 };
 
 const CountDownTimer = ({ countDownTimeMs, AuctionInfo }) => {
-  const { setAuctionStatus } = useContext(NftContext);
   const [remainingTime, setRemainingTime] = useState(defaultRemainingTime);
 
   useEffect(() => {

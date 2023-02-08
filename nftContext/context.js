@@ -1,6 +1,5 @@
 import React from "react";
 import { createContext, useState, useEffect } from "react";
-import { useMoralis } from "react-moralis";
 import { client } from "../sanityclient/sanity";
 import { uuid } from "uuidv4";
 import GetIpfsTokenURI from "../components/filterList";
@@ -38,14 +37,12 @@ const NftProvider = ({ children }) => {
 
   useEffect(() => {
     if (nftCreateData) {
-      console.log("inside first nftCreateData context ");
       createNftList(nftCreateData);
     }
   }, [nftCreateData]);
 
   useEffect(() => {
     if (bidNft) {
-      console.log("inside put bid context");
       putBid(nftCreateData);
     }
   }, [bidNft]);
@@ -58,7 +55,6 @@ const NftProvider = ({ children }) => {
 
   useEffect(() => {
     if (nftToMarket) {
-      console.log("listNftToMarket func");
       listNftToMarket(nftToMarket);
     }
   }, [nftToMarket]);
@@ -71,14 +67,12 @@ const NftProvider = ({ children }) => {
 
   useEffect(() => {
     if (!nftList) {
-      console.log("inside getAllNftList nftCreateData ->", nftCreateData);
       getAllNftList();
     }
   });
 
   useEffect(() => {
     if (!nftListOnSale) {
-      console.log("inside getAllNftsOnSale nftToMarket ->", nftToMarket);
       getAllNftsOnSale();
     }
   });
@@ -91,29 +85,24 @@ const NftProvider = ({ children }) => {
 
   useEffect(() => {
     if (widthdrawNft) {
-      console.log("useffect deleteBid!");
       deleteBid();
     }
   }, [widthdrawNft]);
 
   useEffect(() => {
     if (buyNft) {
-      console.log("useffect buyNft!");
       updateAndDeleteNftSeller();
     }
   }, [buyNft]);
 
   useEffect(() => {
     if (endNft) {
-      console.log("useffect endNft!");
-
       deleteAuction();
     }
   }, [endNft]);
 
   const deleteAuction = async () => {
     try {
-      console.log("endNft check ->", endNft);
       await fetch("api/db/deleteAuction", {
         method: "POST",
         headers: {
@@ -144,7 +133,6 @@ const NftProvider = ({ children }) => {
 
   const deleteBid = async () => {
     try {
-      console.log("widthdrawNft check new ->", widthdrawNft);
       await fetch("api/db/deleteBid", {
         method: "POST",
         headers: {
@@ -172,14 +160,10 @@ const NftProvider = ({ children }) => {
     const query_createdNfts = '*[_type=="nftCreated"]';
     try {
       await client.fetch(query_createdNfts).then((res) => {
-        console.log("inside getAllNftList before filter", res);
         const nftListfilter = async () => {
           return await Promise.all(res.map((option) => getipfsInfo(option)));
         };
-
         nftListfilter().then((res) => {
-          console.log("getAllNftList res ->", res);
-          console.log("inside getAllNftList after filter", res);
           setNftList(res);
           setTransactionStatus(false);
           setOpenModal(false);
@@ -200,8 +184,6 @@ const NftProvider = ({ children }) => {
         };
 
         nftListfilter().then((res) => {
-          console.log("getAllNftListOnSale res ->", res);
-          console.log("inside getAllNftListOnSale after filter", res);
           setNftListOnSale(res);
           setTransactionStatus(false);
           setOpenModal(false);
@@ -221,8 +203,6 @@ const NftProvider = ({ children }) => {
         };
 
         nftListfilter().then((res) => {
-          console.log("getAllNftListOnSale res ->", res);
-          console.log("inside getAllNftListOnSale after filter", res);
           setNftListOnAuction(res);
           setTransactionStatus(false);
           setOpenModal(false);
@@ -234,13 +214,10 @@ const NftProvider = ({ children }) => {
   };
 
   const getMyBids = async () => {
-    // const query_myBids = `*[_type=="bidsNftTable" && bid == ${userAddress}]`;
     const query_myBids = `*[_type=="bidsNftTable"]`;
     try {
       await client.fetch(query_myBids).then((res) => {
-        console.log({ getMyBids: res });
         setMyBids(res);
-        console.log({ myBids });
       });
     } catch (error) {
       console.log({ error });
@@ -249,7 +226,6 @@ const NftProvider = ({ children }) => {
 
   const putBid = async () => {
     const randomID = uuid();
-    console.log("putBid data now->", bidNft);
     const amountString = bidNft?.status?._amount?._hex.toString(16);
     const amount = Number(amountString);
 
@@ -257,7 +233,6 @@ const NftProvider = ({ children }) => {
     const id = Number(idString);
 
     try {
-      console.log("data ->", data);
       await fetch("api/db/updateBid", {
         method: "POST",
         headers: {
@@ -290,12 +265,10 @@ const NftProvider = ({ children }) => {
   };
 
   const updateAndDeleteNftSeller = async () => {
-    console.log("updateAndDeleteNftSeller data now->", buyNft);
     const tokenIdString = buyNft?.status?.id?._hex.toString(16);
     const tokenId = Number(tokenIdString);
 
     try {
-      console.log("data ->", data);
       await fetch("api/db/updateSeller", {
         method: "POST",
         headers: {
@@ -324,13 +297,11 @@ const NftProvider = ({ children }) => {
   };
 
   const createNftList = async () => {
-    console.log("createNftList ->", nftCreateData);
     const tokenIdString = nftCreateData.tokenId._hex.toString(16);
     const _tokenId = Number(tokenIdString);
     const royaltyString = nftCreateData.royalties._hex.toString(16);
     const _royalty = Number(royaltyString);
     try {
-      console.log("data ->", data);
       await fetch("api/db/createNft", {
         method: "POST",
         headers: {
@@ -348,7 +319,6 @@ const NftProvider = ({ children }) => {
           sale: nftCreateData.sale,
         }),
       }).then(() => {
-        console.log("inside get all nfts after to created");
         getAllNftList();
       });
     } catch (error) {
@@ -357,7 +327,6 @@ const NftProvider = ({ children }) => {
   };
 
   const listNftToMarket = async () => {
-    console.log("listNftToMarket new test ->", nftToMarket);
     const tokenIdString = nftToMarket?.status.tokenId?._hex?.toString(16);
     const _tokenId = Number(tokenIdString);
     const royaltyString = nftToMarket?.status.royalties?._hex?.toString(16);
@@ -365,7 +334,6 @@ const NftProvider = ({ children }) => {
     const priceString = nftToMarket?.status.price?._hex?.toString(16);
     const _price = Number(priceString);
     try {
-      console.log("data ->", data);
       await fetch("api/db/listNft", {
         method: "POST",
         headers: {
@@ -384,7 +352,6 @@ const NftProvider = ({ children }) => {
           sale: nftToMarket.status.sale,
         }),
       }).then(() => {
-        console.log("inside get all nfts after to market");
         getAllNftList();
         getAllNftsOnSale();
         setToastNotifcation({
@@ -400,8 +367,6 @@ const NftProvider = ({ children }) => {
   };
 
   const listNftToMarketAuction = async () => {
-    console.log({ nftToMarketAuction });
-
     const priceString = nftToMarketAuction.status._amount._hex.toString(16);
     const _price = Number(priceString);
 

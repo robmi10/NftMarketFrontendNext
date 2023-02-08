@@ -1,6 +1,6 @@
 import { NftContext } from "../../nftContext/context";
 import { nftContractAddress } from "../contracts/adress";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useContractFunction } from "@usedapp/core";
 import nftInfo from "../../chain-info/contracts/NftMarketPlace.json";
 import { ethers } from "ethers";
@@ -26,10 +26,6 @@ const useCreateSell = () => {
   }, [createNftStatus]);
 
   const createSell = async (hashResult) => {
-    console.log({ data });
-    console.log({ hashResult });
-
-    // Moralis.Units.ETH("0.00060");
     createNft(hashResult.path, data.royalty, {
       value: parseUnits("0.00060", 18).toString(),
     });
@@ -37,41 +33,3 @@ const useCreateSell = () => {
   return { createSell };
 };
 export default useCreateSell;
-
-// const useCreateSell = () => {
-//   const { data, userAddress, setNftCreateData, setOpenModal } =
-//     useContext(NftContext);
-//   const { Moralis } = useMoralis();
-//   const { abi } = nftAddress;
-
-//   const createSell = async (hashResult) => {
-//     console.log("inside create sell hashResult", hashResult.path);
-//     console.log("inside create sell royalty", data.royalty);
-//     console.log("nftContractAddress -->", nftContractAddress);
-//     console.log("userAddress -->", userAddress[0]);
-
-//     const createSellOptions = {
-//       abi,
-//       contractAddress: nftContractAddress,
-//       functionName: "createNft",
-//       msgValue: Moralis.Units.ETH("0.00060"),
-//       msgSender: userAddress,
-//       params: { _tokenURI: hashResult.path, _royalites: data.royalty },
-//     };
-
-//     const createSellFunc = await Moralis.executeFunction(createSellOptions);
-//     setOpenModal("loading");
-//     const createSellConfirmation = await createSellFunc
-//       .wait()
-//       .then((status) => {
-//         setNftCreateData(status.events[2].args);
-//       })
-//       .catch((e) => {
-//         console.log({ e });
-//       });
-//     console.log({ createSellConfirmation });
-//   };
-//   return { createSell };
-// };
-
-// export default useCreateSell;

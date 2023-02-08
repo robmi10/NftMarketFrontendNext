@@ -1,21 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import styles from "../components/animation/TabSlide/tabslide.module.scss";
 import useWithdraw from "../components/moralis/useWithdraw";
 import { NftContext } from "../nftContext/context";
 import { useToast } from "@chakra-ui/react";
 import BouncerLoader from "../components/animation/loader/bouncerLoader";
 import { useEthers } from "@usedapp/core";
+import { formatEther } from "ethers/lib/utils";
 
 const MyBids = () => {
-  const { activateBrowserWallet, deactivate, account } = useEthers();
+  const { account } = useEthers();
   const toast = useToast();
-  const {
-    myBids,
-    userAddress,
-    transactionStatus,
-    toastNotifcation,
-    setToastNotifcation,
-  } = useContext(NftContext);
+  const { myBids, transactionStatus, toastNotifcation, setToastNotifcation } =
+    useContext(NftContext);
 
   useEffect(() => {
     if (toastNotifcation) {
@@ -30,11 +25,9 @@ const MyBids = () => {
     setToastNotifcation(false);
   }, [myBids, transactionStatus, toastNotifcation]);
 
-  const myBidsNfts = myBids?.filter((option) => option?.Bidder === account);
+  const myBidsNfts = myBids?.filter((Nft) => Nft?.Bidder === account);
 
   const { withdrawNFT } = useWithdraw();
-  console.log({ myBids });
-  console.log({ myBidsNfts });
 
   return (
     <>
@@ -44,7 +37,7 @@ const MyBids = () => {
         </div>
 
         <div class="flex h-full w-screen flex-col items-center justify-center gap-4 ">
-          {myBidsNfts?.map((option, i) => {
+          {myBidsNfts?.map((Nft, i) => {
             return (
               <div class="flex h-auto w-2/6 flex-col gap-5 ">
                 <div class="flex w-full items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]">
@@ -57,22 +50,21 @@ const MyBids = () => {
                     </div>
                     <div>
                       <h1>AuctionID </h1>
-                      <div>{option.AuctionID}</div>
+                      <div>{Nft.AuctionID}</div>
                     </div>
                     <div>
                       <h1>Amount </h1>
-                      <div>{option.Amount} MATIC</div>
+                      <div>{formatEther(Nft.Amount.toString())} MATIC</div>
                     </div>
                     <div class="flex w-full justify-center">
                       <button
                         class="flex w-2/4 items-center justify-center rounded-lg shadow-lg shadow-[#185ee041]"
                         onClick={() => {
-                          console.log("withdraw money");
-                          withdrawNFT(option);
+                          withdrawNFT(Nft);
                         }}
                       >
                         {transactionStatus.loading === "loading" &&
-                        transactionStatus.id === option?.TokenId ? (
+                        transactionStatus.id === Nft?.TokenId ? (
                           <BouncerLoader />
                         ) : (
                           <p>WITHDRAW</p>

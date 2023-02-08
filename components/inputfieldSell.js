@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import FormSell from "./form/formSell";
 import FormAuction from "./form/formAuction";
-import FormBid from "./form/formBid";
+
 import { NftContext } from "../nftContext/context";
 import styles from "./animation/TabSlide/tabslide.module.scss";
 
 const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
   const [sellType, setSellType] = useState(false);
-  const { bidType, setOpenModal, openModal } = useContext(NftContext);
+  const { setOpenModal, openModal } = useContext(NftContext);
 
   useEffect(() => {
     if (!openModal) {
@@ -58,13 +58,13 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
         {!sellType && (
           <FormSell
             handleOpenSellModal={handleOpenSellModal}
-            openModalSellData={openModalSellData}
+            {...openModalSellData}
           />
         )}
         {sellType && (
           <FormAuction
             handleOpenSellModal={handleOpenSellModal}
-            openModalSellData={openModalSellData}
+            {...openModalSellData}
           />
         )}
       </div>

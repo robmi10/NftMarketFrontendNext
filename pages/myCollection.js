@@ -1,28 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
-import BouncerLoader from "../components/animation/loader/bouncerLoader";
 import NftCard from "../components/card/nftCard";
-import GetIpfsTokenURI from "../components/filterList";
 import Modal from "../components/modal";
 import { NftContext } from "../nftContext/context";
 import { useToast } from "@chakra-ui/react";
 import { useEthers } from "@usedapp/core";
 
 const MyCollection = () => {
-  const { activateBrowserWallet, deactivate, account } = useEthers();
+  const { account } = useEthers();
   const toast = useToast();
-  const {
-    nftList,
-    userAddress,
-    searchInput,
-    toastNotifcation,
-    setToastNotifcation,
-  } = useContext(NftContext);
+  const { nftList, searchInput, toastNotifcation, setToastNotifcation } =
+    useContext(NftContext);
   const [openModalSell, setOpenModalSell] = useState(false);
 
   useEffect(() => {
-    console.log("update nftListOnSale and nftListOnAuction and check lol!");
-    console.log({ nftList });
-
     if (toastNotifcation) {
       toast({
         title: "NFT listing.",
@@ -35,21 +25,18 @@ const MyCollection = () => {
     }
   }, [nftList, searchInput, toastNotifcation]);
 
-  console.log({ account });
   const myNfts = nftList
-    ?.filter((option) => option?.option.Seller === account)
+    ?.filter((option) => option?.Nft.Seller === account)
     ?.filter((optionMyNft) => {
       return searchInput === ""
         ? optionMyNft
-        : optionMyNft?.option.ipfsInfo?.description
+        : optionMyNft?.Nft.ipfsInfo?.description
             .toLowerCase()
             .includes(searchInput) ||
-            optionMyNft?.option.ipfsInfo?.title
+            optionMyNft?.Nft.ipfsInfo?.title
               .toLowerCase()
               .includes(searchInput);
     });
-
-  console.log({ myNfts });
 
   const handleOpenSellModal = (e) => {
     setOpenModalSell(e);
@@ -73,11 +60,11 @@ const MyCollection = () => {
       </div>
       <div class="mt-10 flex justify-center">
         <div class="mb-5 flex w-5/6 flex-wrap justify-center gap-5 ">
-          {myNfts?.map((option, i) => {
+          {myNfts?.map((nft, i) => {
             return (
               <NftCard
                 key={i}
-                option={option}
+                {...nft}
                 handleOpenSellModal={handleOpenSellModal}
               />
             );

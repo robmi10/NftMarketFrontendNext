@@ -1,13 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { NftContext } from "../nftContext/context";
-import Filter from "./filterList";
 
 const Searchbar = () => {
-  const { searchInput, setSearchInput } = useContext(NftContext);
+  const { setSearchInput } = useContext(NftContext);
 
   const handleChange = (e) => {
-    // console.log({ eValue: e.target.value });
     setSearchInput(e.target.value);
   };
 

@@ -23,10 +23,7 @@ const Layout = ({ children }) => {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    console.log({ openLinkModal });
-    console.log({ isWeb3Enabled });
-  }, [isWeb3Enabled]);
+  useEffect(() => {}, [isWeb3Enabled]);
 
   if (openLinkModal)
     return (
@@ -54,7 +51,6 @@ const Layout = ({ children }) => {
               onClick={() => {
                 setTheme("light");
                 setThemeColor("light");
-                console.log("setToLight");
               }}
             />
           )}
@@ -66,7 +62,6 @@ const Layout = ({ children }) => {
               onClick={() => {
                 setTheme("dark");
                 setThemeColor("dark");
-                console.log("setToDark");
               }}
             />
           )}

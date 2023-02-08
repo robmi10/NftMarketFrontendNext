@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { NftContext } from "../nftContext/context";
+import React from "react";
 import Inputfield from "./inputfield";
 import InputfieldBid from "./inputfieldBid";
 import InputfieldSell from "./inputfieldSell";
@@ -19,7 +18,7 @@ const Modal = ({ openModalSell, handleOpenSellModal }) => {
           {openModalSell?.type === "bid" && (
             <InputfieldBid
               handleOpenSellModal={handleOpenSellModal}
-              openModalSellData={openModalSell.data}
+              {...openModalSell.data}
             />
           )}
         </div>

@@ -1,6 +1,5 @@
 import { client } from "../../../sanityclient/sanity";
 const ListNftToMarketAuction = async (req, res) => {
-  console.log("check body tomarket auction->", req.body);
   try {
     const docCreated = req.body.tokenId + req.body.owner;
     const userDoc = {

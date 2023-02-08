@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { NftContext } from "../../nftContext/context";
 
-const NftCard = ({ option, ipfsInfo, handleOpenSellModal }) => {
+const NftCard = ({ Nft, handleOpenSellModal }) => {
   const { setOpenModal } = useContext(NftContext);
   const NftCardData = {
-    option: option?.option,
-    ipfsInfo: option?.option.ipfsInfo,
+    nft: Nft,
+    ipfsInfo: Nft.ipfsInfo,
   };
 
   return (
@@ -13,19 +13,19 @@ const NftCard = ({ option, ipfsInfo, handleOpenSellModal }) => {
       <div class="h-96 w-full">
         <img
           class="h-64 w-full justify-center object-cover"
-          src={option.option?.ipfsInfo?.image}
+          src={Nft.ipfsInfo?.image}
         />
       </div>
 
       <div class="flex w-full flex-col pl-5">
-        <h1>{option?.option?.ipfsInfo?.title}</h1>
+        <h1>{Nft.ipfsInfo?.title}</h1>
 
-        <h1>{option?.option?.TokenId}</h1>
-        <h1>{option?.option.ipfsInfo?.description}</h1>
+        <h1>{Nft.TokenId}</h1>
+        <h1>{Nft.ipfsInfo?.description}</h1>
       </div>
 
       <div class="mb-8 mt-5 flex w-full items-center justify-center space-x-10 lg:mb-0 lg:h-2/4">
-        {!option?.option.Sale && (
+        {!Nft?.Sale && (
           <button
             class="flex h-1/5 w-3/6 flex-row items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041]"
             onClick={() => {
@@ -40,7 +40,7 @@ const NftCard = ({ option, ipfsInfo, handleOpenSellModal }) => {
             LIST TO MARKET
           </button>
         )}
-        {option?.option.Sale && <h1>Already On Sale</h1>}
+        {Nft?.Sale && <h1>Already On Sale</h1>}
       </div>
     </div>
   );

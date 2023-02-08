@@ -1,14 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import NftCard from "./nftCard";
 
-const CardProfile = ({ option, handleOpenSellModal }) => {
-  return (
-    <NftCard
-      ipfsInfo={option.ipfsInfo}
-      option={option}
-      handleOpenSellModal={handleOpenSellModal}
-    />
-  );
+const CardProfile = ({ nft, handleOpenSellModal }) => {
+  return <NftCard {...nft} handleOpenSellModal={handleOpenSellModal} />;
 };
 
 export default CardProfile;

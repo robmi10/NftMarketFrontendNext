@@ -4,20 +4,16 @@ import { NftContext } from "../../nftContext/context";
 import BouncerLoader from "../animation/loader/bouncerLoader";
 import useNftToMarketAuction from "../moralis/useNftToMarketAuction";
 
-const FormAuction = ({ openModalSellData }) => {
+const FormAuction = (listToMarketAuction) => {
   const { openModal } = useContext(NftContext);
   const { register, handleSubmit } = useForm();
   const { NftToMarketAuction } = useNftToMarketAuction();
 
-  useEffect(() => {
-    console.log("update modal in auction", openModal);
-  }, [openModal]);
+  useEffect(() => {}, [openModal]);
 
-  const onSubmitAuction = (data) => {
-    console.log({ data });
-    const createSellData = { form: data, openModalSellData: openModalSellData };
-    console.log({ createSellData });
-    NftToMarketAuction(createSellData);
+  const onSubmitAuction = (form) => {
+    const { price, date } = form;
+    NftToMarketAuction({ ...{ price, date, listToMarketAuction } });
   };
 
   return (

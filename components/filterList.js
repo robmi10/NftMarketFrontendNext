@@ -1,14 +1,9 @@
-import React, { useContext, useState } from "react";
-import { NftContext } from "../nftContext/context";
-
 const GetIpfsTokenURI = () => {
-  const getipfsInfo = async (option) => {
-    var response = await fetch(`https://ipfs.io/ipfs/${option.TokenURI}`);
+  const getipfsInfo = async (Nft) => {
+    var response = await fetch(`https://ipfs.io/ipfs/${Nft.TokenURI}`);
     var body = await response.json();
-    option.ipfsInfo = body;
-
-    console.log("option", option);
-    return { option };
+    Nft.ipfsInfo = body;
+    return { Nft };
   };
   return { getipfsInfo };
 };

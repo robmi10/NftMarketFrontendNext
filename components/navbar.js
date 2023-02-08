@@ -52,7 +52,6 @@ const Navbar = () => {
               onClick={() => {
                 setTheme("light");
                 setThemeColor("light");
-                console.log("setToLight");
               }}
             />
           )}
@@ -64,7 +63,6 @@ const Navbar = () => {
               onClick={() => {
                 setTheme("dark");
                 setThemeColor("dark");
-                console.log("setToDark");
               }}
             />
           )}

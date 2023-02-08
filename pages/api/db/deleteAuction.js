@@ -1,7 +1,5 @@
 import { client } from "../../../sanityclient/sanity";
 const DeleteFromAuction = async (req, res) => {
-  console.log("delete from auction now ->", req.body);
-  console.log("delete from auction buyer ->", req.body.buyer);
   try {
     const userDoc = req.body.tokenId + req.body.owner + "listedAuctionNftTable";
     await client.delete(userDoc);

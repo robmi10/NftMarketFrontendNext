@@ -1,7 +1,6 @@
 import classes from "./Timer.module.scss";
 import { useState, useEffect } from "react";
 import CountDownTimer from "./countdownTimer";
-// const PLANNED_DATE = new Date("2022-05-30").getTime();
 
 const Timer = (props) => {
   const PLANNED_DATE = props.countDownTimeMs + new Date().getTime();

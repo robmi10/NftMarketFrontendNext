@@ -1,18 +1,17 @@
-import { useContext, useEffect, useState } from "react";
-import FormBid from "./form/formBid";
+import { useContext, useEffect } from "react";
 import { NftContext } from "../nftContext/context";
 import { useForm } from "react-hook-form";
 import useBidNft from "./moralis/useBidNft";
 import BouncerLoader from "./animation/loader/bouncerLoader";
 
-const InputfieldBid = ({ handleOpenSellModal, openModalSellData }) => {
+const InputfieldBid = (bidInfo) => {
+  const { handleOpenSellModal } = bidInfo;
   const { register, handleSubmit } = useForm();
-  const { setOpenModal, bidType, openModal } = useContext(NftContext);
+  const { openModal } = useContext(NftContext);
   const { bidNFT } = useBidNft();
   const onSubmit = (data) => {
-    console.log(data);
-    const createSellData = { form: data, openModalSellData: openModalSellData };
-    bidNFT(createSellData);
+    const { bid } = data;
+    bidNFT({ ...{ bid, bidInfo } });
   };
 
   useEffect(() => {

@@ -10,6 +10,5 @@ async function getIpfsFunc(option) {
   } catch (error) {
     console.log({ error });
   }
-  console.log("body outside", body);
   return body;
 }

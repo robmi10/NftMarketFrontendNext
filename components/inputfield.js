@@ -12,9 +12,7 @@ const Inputfield = () => {
   const imageIpfs = useRef("");
   const { createSell } = useCreateSell();
   useEffect(() => {
-    console.log({ imageFileInUseffect: imageFile });
     if (imageFile) {
-      console.log("run handle file");
       handleFile();
     }
   }, [imageFile]);
@@ -26,22 +24,17 @@ const Inputfield = () => {
   }, [openModal]);
 
   const onSubmit = (data) => {
-    console.log("inside onsubmit check", data);
     setData(data);
     setImageFile(data.image);
   };
 
   const handleFile = () => {
-    console.log({ imageFile });
     var reader = new window.FileReader();
     reader.readAsArrayBuffer(imageFile[0]);
 
     reader.onload = () => {
-      console.log("inside reader onloaded!");
       try {
-        var ipfsAdd = ipfs.add(reader.result).then((res) => {
-          console.log({ res });
-          console.log("ipfsAdd", ipfsAdd);
+        ipfs.add(reader.result).then((res) => {
           imageIpfs.current = res.path;
           handleMetadata();
         });
@@ -51,36 +44,26 @@ const Inputfield = () => {
     };
   };
   const handleMetadata = async () => {
-    console.log({ data });
-    console.log({ imageIpfs: imageIpfs.current });
     const currImage = `https://ipfs.io/ipfs/${imageIpfs.current}`;
-    const newImage = JSON.stringify(currImage);
     const metadata = {
       title: data.nft,
       description: data.description,
       image: currImage,
     };
     try {
-      console.log(
-        "Buffer.from(JSON.stringify(metadata)",
-        Buffer.from(JSON.stringify(metadata))
-      );
       const hashResult = await ipfs.add(Buffer.from(JSON.stringify(metadata)));
-      console.log("hashResult ->", hashResult);
-      console.log({ data });
       createSell(hashResult, data.duration);
-    } catch (e) {
-      console.log("error ->", e);
+    } catch (error) {
+      console.log({ error });
     }
   };
   return (
     <>
-      <div class="lg:w-wh relative flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300">
+      <div class="lg:w-wh relative flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 dark:text-black">
         <h1
-          class="cursor-pointe absolute top-0 mt-5 w-4/5 lg:left-0 lg:ml-20 lg:w-0"
+          class="cursor-pointer absolute top-0 mt-5 w-4/5 lg:left-0 lg:ml-20 lg:w-0"
           onClick={() => {
             setOpenModal(false);
-            console.log({ openModal });
           }}
         >
           X

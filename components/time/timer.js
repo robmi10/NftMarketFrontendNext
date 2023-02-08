@@ -1,7 +1,4 @@
-import classes from "./Timer.module.scss";
 import { useState, useEffect, useContext } from "react";
-// const PLANNED_DATE = new Date("2022-05-30").getTime();
-
 import FlipNumbers from "react-flip-numbers";
 import { GetRemainingTimeUnitMsTimeStamp } from "./getRemainingTimeUnitMsTimeStamp";
 import { NftContext } from "../../nftContext/context";
@@ -28,8 +25,6 @@ const Timer = ({ countDownTimeMs, AuctionInfo }) => {
   };
 
   const color = themeColor === "light" ? "black" : "white";
-
-  console.log({ color });
 
   return (
     <div class=" flex h-40 items-center gap-5 lg:gap-10 ">

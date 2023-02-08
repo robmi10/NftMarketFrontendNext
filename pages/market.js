@@ -1,19 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import BouncerLoader from "../components/animation/loader/bouncerLoader";
 import styles from "../components/animation/TabSlide/tabslide.module.scss";
-import CardAuction from "../components/card/cardAuction";
-import CardBuy from "../components/card/cardBuy";
 import NftCardAuction from "../components/card/nftCardAuction";
 import NftCardBuy from "../components/card/nftCardBuy";
-import GetIpfsTokenURI from "../components/filterList";
 import Modal from "../components/modal";
 import { NftContext } from "../nftContext/context";
 import { useToast } from "@chakra-ui/react";
-import { parseUnits } from "ethers/lib/utils";
 
 const Market = () => {
   const {
-    marketAuction,
     nftListOnSale,
     openModal,
     searchInput,
@@ -26,7 +20,6 @@ const Market = () => {
   const [isMarketAuction, setMarketAuction] = useState(false);
   const toast = useToast();
   useEffect(() => {
-    console.log({ toastNotifcation });
     if (toastNotifcation) {
       toastNotifcation.type === "buy"
         ? toast({
@@ -57,40 +50,31 @@ const Market = () => {
     }
   }, [openModal, toastNotifcation]);
 
-  useEffect(() => {
-    console.log(
-      '"update nftListOnSale and nftListOnAuction IN Market!"',
-      transactionStatus
-    );
-  }, [transactionStatus, nftListOnSale, nftListOnAuction]);
+  useEffect(() => {}, [transactionStatus, nftListOnSale, nftListOnAuction]);
 
   if (!nftListOnSale) return false;
-  const nftsListedSale = nftListOnSale?.filter((optionMyNft) => {
+  const nftsListedSale = nftListOnSale?.filter((option) => {
+    const { Nft } = option;
+    const { ipfsInfo } = option.Nft;
+
     return searchInput === ""
-      ? optionMyNft
-      : optionMyNft?.ipfsInfo?.description
-          .toLowerCase()
-          .includes(searchInput) ||
-          optionMyNft?.option.ipfsInfo?.title
-            .toLowerCase()
-            .includes(searchInput) ||
-          optionMyNft?.option.Owner.toLowerCase().includes(searchInput);
+      ? option
+      : ipfsInfo?.description.toLowerCase().includes(searchInput) ||
+          ipfsInfo?.title.toLowerCase().includes(searchInput) ||
+          Nft?.Owner.toLowerCase().includes(searchInput);
   });
 
-  const nftsListedAuction = nftListOnAuction?.filter((optionMyNft) => {
+  const nftsListedAuction = nftListOnAuction?.filter((option) => {
+    const { Nft } = option;
+    const { ipfsInfo } = option.Nft;
     return searchInput === ""
-      ? optionMyNft
-      : optionMyNft?.ipfsInfo?.description
-          .toLowerCase()
-          .includes(searchInput) ||
-          optionMyNft?.option.ipfsInfo?.title
-            .toLowerCase()
-            .includes(searchInput) ||
-          optionMyNft?.option.Owner.toLowerCase().includes(searchInput);
+      ? option
+      : ipfsInfo?.description.toLowerCase().includes(searchInput) ||
+          ipfsInfo?.title.toLowerCase().includes(searchInput) ||
+          Nft?.Owner?.toLowerCase().includes(searchInput);
   });
 
   const handleOpenSellModal = (e) => {
-    console.log("inside handleOpenSellModal market");
     setOpenModalBid(e);
   };
 
@@ -135,14 +119,14 @@ const Market = () => {
       </div>
       <div class="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
         {!isMarketAuction
-          ? nftsListedSale?.map((option, i) => {
-              return <NftCardBuy option={option} />;
+          ? nftsListedSale?.map((nft, i) => {
+              return <NftCardBuy {...nft} />;
             })
-          : nftsListedAuction?.map((option, i) => {
+          : nftsListedAuction?.map((nft, i) => {
               return (
                 <NftCardAuction
                   handleOpenSellModal={handleOpenSellModal}
-                  option={option}
+                  {...nft}
                 />
               );
             })}

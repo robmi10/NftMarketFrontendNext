@@ -1,9 +1,6 @@
 import { client } from "../../../sanityclient/sanity";
 
 const ListNftToMarket = async (req, res) => {
-  console.log("check body ->", req.body);
-  console.log("ListNftToMarket v2 inside func->");
-
   try {
     const docCreated = req.body.tokenId + req.body.owner;
     const userDoc = {
@@ -18,10 +15,8 @@ const ListNftToMarket = async (req, res) => {
       Sale: req.body.sale,
     };
 
-    console.log({ userDoc });
     await client.create(userDoc);
     await client.patch(docCreated).set({ Sale: true }).commit();
-    console.log("Success nftCreated!");
     res.status(200).send({ message: "success" });
   } catch (error) {
     res.status(500).send({ message: "error", data: error.message });

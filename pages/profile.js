@@ -8,22 +8,17 @@ import { useToast } from "@chakra-ui/react";
 import { useEthers } from "@usedapp/core";
 
 const Profile = () => {
-  const { activateBrowserWallet, deactivate, account } = useEthers();
+  const { account } = useEthers();
   const toast = useToast();
   const {
     openModal,
     openModalSell,
     setOpenModal,
-    nftList,
-    userAddress,
     toastNotifcation,
     setToastNotifcation,
   } = useContext(NftContext);
   useEffect(() => {
-    console.log("inside profile openmodalsale");
     if (toastNotifcation) {
-      console.log("run toastNotifcation");
-
       toast({
         title: "NFT created.",
         description: "Your'e NFT is sucessfully created.",
@@ -34,7 +29,6 @@ const Profile = () => {
 
       setToastNotifcation(false);
     }
-    console.log({ toastNotifcation });
   }, [openModalSell, toastNotifcation]);
   if (openModal) return <Modal />;
   return (

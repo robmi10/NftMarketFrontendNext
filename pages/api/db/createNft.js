@@ -1,9 +1,6 @@
 import { client } from "../../../sanityclient/sanity";
 
 const CreateNft = async (req, res) => {
-  console.log("check body ->", req.body);
-  console.log("createNftList inside func->");
-
   try {
     const userDoc = {
       _type: "nftCreated",
@@ -16,7 +13,6 @@ const CreateNft = async (req, res) => {
       Sale: req.body.sale,
     };
 
-    console.log({ userDoc });
     await client.createIfNotExists(userDoc);
     console.log("Success !");
     res.status(200).send({ message: "success" });
