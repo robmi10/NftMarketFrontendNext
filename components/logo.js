@@ -2,7 +2,7 @@ import React from "react";
 import { useRive } from "@rive-app/react-canvas";
 import RiveComponent from "@rive-app/react-canvas";
 import PharaoRiv from "./rive/pharao.riv";
-import { AnimatedTitle } from "./animation/AnimatedText/AnimationText";
+import { AnimatedTitle } from "./animation/AnimatedText/animationtext";
 import pharao from "./rive/boxes.riv";
 export const Logo = () => {
   // const { rive } = useRive({
