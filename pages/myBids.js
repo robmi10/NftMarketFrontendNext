@@ -25,6 +25,13 @@ const MyBids = () => {
     setToastNotifcation(false);
   }, [myBids, transactionStatus, toastNotifcation]);
 
+  if (!myBids)
+    return (
+      <div className="flex h-screen w-screen items-center justify-center ">
+        {" "}
+        <BouncerLoader />
+      </div>
+    );
   const myBidsNfts = myBids?.filter((Nft) => Nft?.Bidder === account);
 
   const { withdrawNFT } = useWithdraw();
