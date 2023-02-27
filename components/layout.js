@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
 
           {mounted && currenTheme === "dark" && (
             <SunIcon
-              classNameName="h-6 w-6"
+              className="h-6 w-6"
               role="button"
               onClick={() => {
                 setTheme("light");
@@ -57,7 +57,7 @@ const Layout = ({ children }) => {
 
           {mounted && currenTheme === "light" && (
             <MoonIcon
-              classNameName="h-6 w-6"
+              className="h-6 w-6"
               role="button"
               onClick={() => {
                 setTheme("dark");

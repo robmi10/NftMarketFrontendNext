@@ -74,7 +74,7 @@ const Inputfield = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="m-10 mb-20 mt-10 flex flex-col lg:m-20"
         >
-          <label for="first">NFT</label>
+          <label htmlFor="first">NFT</label>
           <input
             className="flex-start rounded-md px-4"
             type="text"
@@ -83,7 +83,7 @@ const Inputfield = () => {
             {...register("nft", { required: true, minLength: 2 })}
           />
 
-          <label for="first">Description</label>
+          <label htmlFor="first">Description</label>
           <input
             className="mr-2 h-12 max-w-full rounded-md px-4"
             type="text"
@@ -91,7 +91,7 @@ const Inputfield = () => {
             name="fifth"
             {...register("description", { required: true, minLength: 2 })}
           />
-          <label for="first">Royalty</label>
+          <label htmlFor="first">Royalty</label>
           <input
             className="rounded-md px-4"
             type="number"

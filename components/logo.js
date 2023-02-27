@@ -46,7 +46,7 @@ export const Logo = () => {
             onMouseEnter={() => rive && rive.play()}
             onMouseLeave={() => rive && rive.pause()}
           /> */}
-          {/* <RiveComponent src={PharaoRiv} classNameName="base-canvas-size" /> */}
+          {/* <RiveComponent src={PharaoRiv} className="base-canvas-size" /> */}
         </div>
       </div>
     </div>

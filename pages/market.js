@@ -91,13 +91,13 @@ const Market = () => {
   console.log({ nftsListedAuction });
 
   return (
-    <div classNameName="pb-36">
-      <div classNameName="mt-20   flex justify-center">
+    <div className="pb-36">
+      <div className="mt-20   flex justify-center">
         <div className="lg:p-3/4 flex h-11 w-3/4 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:relative lg:w-auto">
           <input type="radio" id="radio-1" name="tabs" />
           <label
-            classNameName={styles.tab}
-            for="radio-1"
+            className={styles.tab}
+            htmlFor="radio-1"
             onClick={() => {
               setMarketAuction(false);
             }}
@@ -106,22 +106,22 @@ const Market = () => {
           </label>
           <input type="radio" id="radio-2" name="tabs" />
           <label
-            classNameName={styles.tab}
-            for="radio-2"
+            className={styles.tab}
+            htmlFor="radio-2"
             onClick={() => {
               setMarketAuction(true);
             }}
           >
             Auction
           </label>
-          <span classNameName={styles.glider}></span>
+          <span className={styles.glider}></span>
         </div>
       </div>
 
       {nftListOnSale.length <= 0 && (
         <div className="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
           {nftsListedSale.length <= 0 && (
-            <h1 classNameName=" text-4xl font-extrabold">No Nfts ...</h1>
+            <h1 className=" text-4xl font-extrabold">No Nfts ...</h1>
           )}{" "}
         </div>
       )}
@@ -150,9 +150,7 @@ const Market = () => {
             {
               <div className="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
                 {nftsListedAuction.length <= 0 && (
-                  <h1 classNameName=" text-4xl font-extrabold">
-                    No Auctions ...
-                  </h1>
+                  <h1 className=" text-4xl font-extrabold">No Auctions ...</h1>
                 )}{" "}
               </div>
             }
@@ -163,7 +161,7 @@ const Market = () => {
             {
               <div className="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
                 {nftsListedAuction.length <= 0 && (
-                  <h1 classNameName=" text-4xl font-extrabold">No Nfts ...</h1>
+                  <h1 className=" text-4xl font-extrabold">No Nfts ...</h1>
                 )}{" "}
               </div>
             }

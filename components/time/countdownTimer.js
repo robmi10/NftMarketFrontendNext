@@ -96,9 +96,9 @@ const CountDownTimer = ({ countDownTimeMs, AuctionInfo }) => {
       <div className="container-segment">
         <div className="segment">
           <div className="segment-title">Days</div>
-          <div classNameName={styles.flipCard} dataCurrent={dataCurrent}>
-            <span classNameName={styles.top}>{remainingTime.days}</span>
-            <span classNameName={styles.bottom}>{remainingTime.days}</span>
+          <div className={styles.flipCard} dataCurrent={dataCurrent}>
+            <span className={styles.top}>{remainingTime.days}</span>
+            <span className={styles.bottom}>{remainingTime.days}</span>
           </div>
         </div>
       </div>
@@ -106,9 +106,9 @@ const CountDownTimer = ({ countDownTimeMs, AuctionInfo }) => {
       <div className="container-segment">
         <div className="segment">
           <div className="segment-title">Hours</div>
-          <div classNameName={styles.flipCard}>
-            <span classNameName={styles.top}>{remainingTime.hours}</span>
-            <span classNameName={styles.bottom}>{remainingTime.hours}</span>
+          <div className={styles.flipCard}>
+            <span className={styles.top}>{remainingTime.hours}</span>
+            <span className={styles.bottom}>{remainingTime.hours}</span>
           </div>
         </div>
       </div>
@@ -116,9 +116,9 @@ const CountDownTimer = ({ countDownTimeMs, AuctionInfo }) => {
       <div className="container-segment">
         <div className="segment">
           <div className="segment-title">Minutes</div>
-          <div classNameName={styles.flipCard}>
-            <span classNameName={styles.top}>{remainingTime.minutes}</span>
-            <span classNameName={styles.bottom}>{remainingTime.minutes}</span>
+          <div className={styles.flipCard}>
+            <span className={styles.top}>{remainingTime.minutes}</span>
+            <span className={styles.bottom}>{remainingTime.minutes}</span>
           </div>
         </div>
       </div>
@@ -126,9 +126,9 @@ const CountDownTimer = ({ countDownTimeMs, AuctionInfo }) => {
       <div className="container-segment">
         <div className="segment">
           <div className="segment-title">Minutes</div>
-          <div classNameName={styles.flipCard}>
-            <span classNameName={styles.top}>{remainingTime.seconds}</span>
-            <span classNameName={styles.bottom}>{remainingTime.seconds}</span>
+          <div className={styles.flipCard}>
+            <span className={styles.top}>{remainingTime.seconds}</span>
+            <span className={styles.bottom}>{remainingTime.seconds}</span>
           </div>
         </div>
       </div>

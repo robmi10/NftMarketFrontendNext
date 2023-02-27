@@ -22,7 +22,7 @@ const FormAuction = (listToMarketAuction) => {
         onSubmit={handleSubmit(onSubmitAuction)}
         className="m-20 mb-20 mt-10 flex flex-col"
       >
-        <label for="first">Startprice</label>
+        <label htmlFor="first">Startprice</label>
         <input
           className="max-w-full rounded-md px-4 dark:bg-white dark:text-black"
           type="number"
@@ -32,7 +32,7 @@ const FormAuction = (listToMarketAuction) => {
           {...register("price", { required: true, minLength: 1 })}
         />
 
-        <label for="first">Duration</label>
+        <label htmlFor="first">Duration</label>
         <input
           className="rounded-md px-4 dark:bg-white dark:text-black"
           type="date"

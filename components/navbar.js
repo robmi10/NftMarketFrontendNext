@@ -47,7 +47,7 @@ const Navbar = () => {
         <div className="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 ">
           {mounted && currenTheme === "dark" && (
             <SunIcon
-              classNameName="h-6 w-6"
+              className="h-6 w-6"
               role="button"
               onClick={() => {
                 setTheme("light");
@@ -58,7 +58,7 @@ const Navbar = () => {
 
           {mounted && currenTheme === "light" && (
             <MoonIcon
-              classNameName="h-6 w-6"
+              className="h-6 w-6"
               role="button"
               onClick={() => {
                 setTheme("dark");

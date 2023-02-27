@@ -26,20 +26,20 @@ const Timer = (props) => {
   );
 
   return (
-    <div classNameName={classNamees.timer}>
-      <div classNameName={classNamees.segment}>
+    <div className={classNamees.timer}>
+      <div className={classNamees.segment}>
         <CountDownTimer countDownTimeMs={days} type="days" />
         <p>Days</p>
       </div>
-      <div classNameName={classNamees.segment}>
+      <div className={classNamees.segment}>
         <CountDownTimer countDownTimeMs={hours} type="hours" />
         <p>Hours</p>
       </div>
-      <div classNameName={classNamees.segment}>
+      <div className={classNamees.segment}>
         <CountDownTimer countDownTimeMs={minutes} type="minutes" />
         <p>Minutes</p>
       </div>
-      <div classNameName={classNamees.segment}>
+      <div className={classNamees.segment}>
         <CountDownTimer countDownTimeMs={seconds} type="seconds" />
         <p>Seconds</p>
       </div>

@@ -29,7 +29,7 @@ const MyCollection = () => {
   console.log({ nftList });
   if (!nftList)
     return (
-      <div classNameName="h-screen w-screen">
+      <div className="h-screen w-screen">
         {" "}
         <BouncerLoader />
       </div>
@@ -61,12 +61,12 @@ const MyCollection = () => {
 
   if (myNfts.length === 0)
     return (
-      <div classNameName=" flex h-screen w-screen items-center justify-center">
-        <h1 classNameName=" text-4xl font-extrabold">No Collection</h1>
+      <div className=" flex h-screen w-screen items-center justify-center">
+        <h1 className=" text-4xl font-extrabold">No Collection</h1>
       </div>
     );
   return (
-    <div classNameName="pb-36">
+    <div className="pb-36">
       <div className="flex justify-center">
         <div className="mt-10 flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
           COLLECTION

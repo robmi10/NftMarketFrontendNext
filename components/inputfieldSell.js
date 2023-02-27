@@ -28,12 +28,12 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
           X
         </h1>
         <div className=" absolute top-0 mt-10 flex w-10 cursor-pointer flex-row justify-center gap-10 lg:w-full">
-          <div classNameName={styles.container}>
+          <div className={styles.container}>
             <div className=" p-3/4 relative flex h-11 w-52 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:w-full">
               <input type="radio" id="radio-1" name="tabs" />
               <label
-                classNameName={styles.tab}
-                for="radio-1"
+                className={styles.tab}
+                htmlFor="radio-1"
                 onClick={() => {
                   setSellType(false);
                 }}
@@ -42,15 +42,15 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
               </label>
               <input type="radio" id="radio-2" name="tabs" />
               <label
-                classNameName={styles.tab}
-                for="radio-2"
+                className={styles.tab}
+                htmlFor="radio-2"
                 onClick={() => {
                   setSellType(true);
                 }}
               >
                 Auction
               </label>
-              <span classNameName={styles.glider}></span>
+              <span className={styles.glider}></span>
             </div>
           </div>
         </div>

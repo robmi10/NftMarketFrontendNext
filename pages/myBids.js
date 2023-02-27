@@ -38,7 +38,7 @@ const MyBids = () => {
 
         <div className="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
           {myBidsNfts.length <= 0 && (
-            <h1 classNameName=" text-4xl font-extrabold">No Bids</h1>
+            <h1 className=" text-4xl font-extrabold">No Bids</h1>
           )}
 
           {myBidsNfts?.map((Nft, i) => {

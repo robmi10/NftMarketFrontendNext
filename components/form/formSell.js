@@ -19,7 +19,7 @@ const FormSell = (listToMarket) => {
         onSubmit={handleSubmit(onSubmit)}
         className="m-20 mb-20 mt-10 flex flex-col"
       >
-        <label for="first">Price</label>
+        <label htmlFor="first">Price</label>
         <input
           className="max-w-full rounded-md px-4 dark:bg-white dark:text-black"
           type="number"
