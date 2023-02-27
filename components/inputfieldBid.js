@@ -35,7 +35,7 @@ const InputfieldBid = (bidInfo) => {
           onSubmit={handleSubmit(onSubmit)}
           className="m-20 mb-20 mt-10 flex flex-col"
         >
-          <label className="text-white" htmlFor=""="first">
+          <label className="text-white" htmlFor="first">
             BID
           </label>
           <input
