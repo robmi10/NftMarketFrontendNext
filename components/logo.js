@@ -3,12 +3,17 @@ import { useRive } from "@rive-app/react-canvas";
 import RiveComponent from "@rive-app/react-canvas";
 import PharaoRiv from "./rive/pharao.riv";
 import { AnimatedTitle } from "./animation/AnimatedText/AnimationText";
-
+import pharao from "./rive/boxes.riv";
 export const Logo = () => {
   // const { rive } = useRive({
   //   src: "../pharao.riv",
   //   autoplay: false,
   // });
+
+  const { rive, RiveComponent } = useRive({
+    src: "https://rive.app/community/3679-7682-birdy/",
+    autoplay: false,
+  });
   return (
     <div class="flex h-screen justify-center">
       <div class="mt-10 flex h-5/6 w-4/6 rounded-md ">
@@ -37,7 +42,10 @@ export const Logo = () => {
               text="START BUY CREATING YOUR FIRST NFT"
             />
           </div>
-
+          <RiveComponent
+            onMouseEnter={() => rive && rive.play()}
+            onMouseLeave={() => rive && rive.pause()}
+          />
           {/* <RiveComponent src={PharaoRiv} className="base-canvas-size" /> */}
         </div>
       </div>

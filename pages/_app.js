@@ -2,22 +2,18 @@ import "../styles/globals.css";
 import "tailwindcss/tailwind.css";
 import Navbar from "../components/navbar";
 import NftProvider from "../nftContext/context";
-import { MoralisProvider } from "react-moralis";
-import InputfieldSell from "../components/inputfieldSell";
 import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "../components/layout";
-import Footer from "../components/footer";
 import { ThemeProvider } from "next-themes";
 
-import { ChainId } from "@thirdweb-dev/react";
-import { DAppProvider, Localhost } from "@usedapp/core";
+import { DAppProvider, Mumbai } from "@usedapp/core";
 
 function MyApp({ Component, pageProps }) {
   const config = {
-    networks: [Localhost],
-    readOnlyChainId: ChainId.Localhost,
+    networks: [Mumbai],
+    readOnlyChainId: 80001,
     readOnlyUrls: {
-      [ChainId.Localhost]: "http://localhost:7545",
+      [80001]: `https://polygon-mumbai.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY}`,
     },
   };
   return (
