@@ -43,7 +43,7 @@ const MyBids = () => {
 
           {myBidsNfts?.map((Nft, i) => {
             return (
-              <div className="flex h-auto w-2/6 flex-col gap-5 ">
+              <div key={i} className="flex h-auto w-2/6 flex-col gap-5 ">
                 <div className="flex w-full items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]">
                   <div className="flex flex-col gap-10 p-4">
                     <div className="h-full w-full  bg-red-500">

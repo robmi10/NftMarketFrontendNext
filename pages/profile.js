@@ -55,15 +55,15 @@ const Profile = () => {
               id="radiohover-1"
               name="tabhover"
             />
-            <label className={styles.tabhover} for="radiohover-1">
+            <label className={styles.tabhover} htmlFor="radiohover-1">
               Create NFT
             </label>
             <input type="radio" id="radiohover-2" name="tabhover" />
-            <label className={styles.tabhover} for="radiohover-2">
+            <label className={styles.tabhover} htmlFor="radiohover-2">
               <Link href="/myCollection"> My Collection</Link>
             </label>
             <input type="radio" id="radiohover-3" name="tabhover" />
-            <label className={styles.tabhover} for="radiohover-3">
+            <label className={styles.tabhover} htmlFor="radiohover-3">
               <Link href="/myBids"> My Bids</Link>
             </label>
             <span className={styles.glider2}></span>

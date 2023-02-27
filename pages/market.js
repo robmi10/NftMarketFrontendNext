@@ -129,7 +129,7 @@ const Market = () => {
       <div className="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
         {!isMarketAuction && nftsListedSale.length > 0 ? (
           nftsListedSale?.map((nft, i) => {
-            return <NftCardBuy {...nft} />;
+            return <NftCardBuy key={i} {...nft} />;
           })
         ) : isMarketAuction && nftsListedAuction.length > 0 ? (
           nftsListedAuction?.map((nft, i) => {
@@ -137,6 +137,7 @@ const Market = () => {
               <div className="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
                 {nftsListedAuction.length > 0 && (
                   <NftCardAuction
+                    key={i}
                     handleOpenSellModal={handleOpenSellModal}
                     {...nft}
                   />
