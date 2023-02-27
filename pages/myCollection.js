@@ -4,6 +4,7 @@ import Modal from "../components/modal";
 import { NftContext } from "../nftContext/context";
 import { useToast } from "@chakra-ui/react";
 import { useEthers } from "@usedapp/core";
+import BouncerLoader from "../components/animation/loader/bouncerLoader";
 
 const MyCollection = () => {
   const { account } = useEthers();
@@ -25,6 +26,14 @@ const MyCollection = () => {
     }
   }, [nftList, searchInput, toastNotifcation]);
 
+  console.log({ nftList });
+  if (!nftList)
+    return (
+      <div className="h-screen w-screen">
+        {" "}
+        <BouncerLoader />
+      </div>
+    );
   const myNfts = nftList
     ?.filter((option) => option?.Nft.Seller === account)
     ?.filter((optionMyNft) => {
@@ -50,9 +59,14 @@ const MyCollection = () => {
       />
     );
 
-  if (myNfts.length === 0) return <h1>Loading</h1>;
+  if (myNfts.length === 0)
+    return (
+      <div className=" flex h-screen w-screen items-center justify-center">
+        <h1 className=" text-4xl font-extrabold">No Collection</h1>
+      </div>
+    );
   return (
-    <>
+    <div className="pb-36">
       <div class="flex justify-center">
         <div class="mt-10 flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
           COLLECTION
@@ -71,7 +85,7 @@ const MyCollection = () => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

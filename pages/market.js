@@ -88,48 +88,85 @@ const Market = () => {
 
   if (!nftListOnSale) return <h1>LOADING...</h1>;
 
+  console.log({ nftsListedAuction });
+
   return (
-    <div>
-      <div class="flex justify-center">
-        <div className={styles.container}>
-          <div class="lg:p-3/4 flex h-11 w-3/4 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:relative lg:w-auto">
-            <input type="radio" id="radio-1" name="tabs" />
-            <label
-              className={styles.tab}
-              for="radio-1"
-              onClick={() => {
-                setMarketAuction(false);
-              }}
-            >
-              Sale
-            </label>
-            <input type="radio" id="radio-2" name="tabs" />
-            <label
-              className={styles.tab}
-              for="radio-2"
-              onClick={() => {
-                setMarketAuction(true);
-              }}
-            >
-              Auction
-            </label>
-            <span className={styles.glider}></span>
-          </div>
+    <div className="pb-36">
+      <div className="mt-20   flex justify-center">
+        <div class="lg:p-3/4 flex h-11 w-3/4 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:relative lg:w-auto">
+          <input type="radio" id="radio-1" name="tabs" />
+          <label
+            className={styles.tab}
+            for="radio-1"
+            onClick={() => {
+              setMarketAuction(false);
+            }}
+          >
+            Sale
+          </label>
+          <input type="radio" id="radio-2" name="tabs" />
+          <label
+            className={styles.tab}
+            for="radio-2"
+            onClick={() => {
+              setMarketAuction(true);
+            }}
+          >
+            Auction
+          </label>
+          <span className={styles.glider}></span>
         </div>
       </div>
+
+      {nftListOnSale.length <= 0 && (
+        <div class="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+          {nftsListedSale.length <= 0 && (
+            <h1 className=" text-4xl font-extrabold">No Nfts ...</h1>
+          )}{" "}
+        </div>
+      )}
+
       <div class="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
-        {!isMarketAuction
-          ? nftsListedSale?.map((nft, i) => {
-              return <NftCardBuy {...nft} />;
-            })
-          : nftsListedAuction?.map((nft, i) => {
-              return (
-                <NftCardAuction
-                  handleOpenSellModal={handleOpenSellModal}
-                  {...nft}
-                />
-              );
-            })}
+        {!isMarketAuction && nftsListedSale.length > 0 ? (
+          nftsListedSale?.map((nft, i) => {
+            return <NftCardBuy {...nft} />;
+          })
+        ) : isMarketAuction && nftsListedAuction.length > 0 ? (
+          nftsListedAuction?.map((nft, i) => {
+            return (
+              <div class="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
+                {nftsListedAuction.length > 0 && (
+                  <NftCardAuction
+                    handleOpenSellModal={handleOpenSellModal}
+                    {...nft}
+                  />
+                )}
+              </div>
+            );
+          })
+        ) : isMarketAuction && nftsListedAuction.length <= 0 ? (
+          <>
+            {" "}
+            {
+              <div class="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+                {nftsListedAuction.length <= 0 && (
+                  <h1 className=" text-4xl font-extrabold">No Auctions ...</h1>
+                )}{" "}
+              </div>
+            }
+          </>
+        ) : (
+          <>
+            {" "}
+            {
+              <div class="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+                {nftsListedAuction.length <= 0 && (
+                  <h1 className=" text-4xl font-extrabold">No Nfts ...</h1>
+                )}{" "}
+              </div>
+            }
+          </>
+        )}
       </div>
     </div>
   );

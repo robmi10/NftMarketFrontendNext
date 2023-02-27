@@ -297,9 +297,9 @@ const NftProvider = ({ children }) => {
   };
 
   const createNftList = async () => {
-    const tokenIdString = nftCreateData.tokenId._hex.toString(16);
+    const tokenIdString = nftCreateData?.tokenId?._hex?.toString(16);
     const _tokenId = Number(tokenIdString);
-    const royaltyString = nftCreateData.royalties._hex.toString(16);
+    const royaltyString = nftCreateData?.royalties?._hex?.toString(16);
     const _royalty = Number(royaltyString);
     try {
       await fetch("api/db/createNft", {

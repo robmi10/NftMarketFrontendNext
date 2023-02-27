@@ -7,7 +7,7 @@ import { AiOutlineTwitter } from "react-icons/ai";
 
 const Footer = () => {
   return (
-    <div class=" bottom-0 flex w-full justify-start bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041] dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 lg:h-48 lg:items-center">
+    <div class="bottom-0  flex w-full justify-start bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041] dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 lg:h-48 lg:items-center">
       <div class="mt-2 flex h-full w-1/3 items-center justify-center lg:mt-0 ">
         <GiEgyptianProfile size={58} />
       </div>

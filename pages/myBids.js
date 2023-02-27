@@ -31,12 +31,16 @@ const MyBids = () => {
 
   return (
     <>
-      <div class=" mb-52 mt-10 flex flex-col items-center justify-center gap-4 ">
+      <div class="mt-10  flex  flex-col items-center justify-center gap-4 ">
         <div class=" flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
           MY BIDS
         </div>
 
-        <div class="flex h-full w-screen flex-col items-center justify-center gap-4 ">
+        <div class="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+          {myBidsNfts.length <= 0 && (
+            <h1 className=" text-4xl font-extrabold">No Bids</h1>
+          )}
+
           {myBidsNfts?.map((Nft, i) => {
             return (
               <div class="flex h-auto w-2/6 flex-col gap-5 ">

@@ -42,10 +42,10 @@ export const Logo = () => {
               text="START BUY CREATING YOUR FIRST NFT"
             />
           </div>
-          <RiveComponent
+          {/* <RiveComponent
             onMouseEnter={() => rive && rive.play()}
             onMouseLeave={() => rive && rive.pause()}
-          />
+          /> */}
           {/* <RiveComponent src={PharaoRiv} className="base-canvas-size" /> */}
         </div>
       </div>

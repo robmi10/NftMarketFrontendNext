@@ -7,7 +7,8 @@ import BouncerLoader from "./animation/loader/bouncerLoader";
 
 const Inputfield = () => {
   const { register, handleSubmit } = useForm();
-  const { setOpenModal, openModal, data, setData } = useContext(NftContext);
+  const { setOpenModal, openModal, data, setData, nftCreateData } =
+    useContext(NftContext);
   const [imageFile, setImageFile] = useState("");
   const imageIpfs = useRef("");
   const { createSell } = useCreateSell();
@@ -21,7 +22,8 @@ const Inputfield = () => {
     if (!openModal) {
       handleOpenSellModal(false);
     }
-  }, [openModal]);
+    console.log({ nftCreateData });
+  }, [openModal, nftCreateData]);
 
   const onSubmit = (data) => {
     setData(data);
@@ -61,7 +63,7 @@ const Inputfield = () => {
     <>
       <div class="lg:w-wh relative flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 dark:text-black">
         <h1
-          class="cursor-pointer absolute top-0 mt-5 w-4/5 lg:left-0 lg:ml-20 lg:w-0"
+          class="absolute top-0 mt-5 w-4/5 cursor-pointer lg:left-0 lg:ml-20 lg:w-0"
           onClick={() => {
             setOpenModal(false);
           }}
@@ -111,7 +113,11 @@ const Inputfield = () => {
             type="submit"
           >
             <div class="flex items-center justify-center">
-              {openModal === "loading" ? <BouncerLoader /> : <div>Submit</div>}
+              {nftCreateData === "loading" ? (
+                <BouncerLoader />
+              ) : (
+                <div>Submit</div>
+              )}
             </div>
           </button>
         </form>

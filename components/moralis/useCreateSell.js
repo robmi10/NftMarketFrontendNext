@@ -20,6 +20,10 @@ const useCreateSell = () => {
   } = useContractFunction(nftAddressContract, "createNft");
 
   useEffect(() => {
+    if (createNftStatus.status === "Mining") {
+      setNftCreateData("loading");
+    }
+
     if (createNftStatus.status === "Success") {
       setNftCreateData(createNftEvents[1].args);
     }
