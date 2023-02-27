@@ -1,4 +1,4 @@
-import { client } from "../../../sanityclient/sanity";
+import { client } from "../../../client/sanity";
 
 const CreateNft = async (req, res) => {
   try {

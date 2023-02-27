@@ -1,4 +1,4 @@
-import { client } from "../../../sanityclient/sanity";
+import { client } from "../../../client/sanity";
 const ListNftToMarketAuction = async (req, res) => {
   try {
     const docCreated = req.body.tokenId + req.body.owner;

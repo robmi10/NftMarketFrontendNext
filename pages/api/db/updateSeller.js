@@ -1,4 +1,4 @@
-import { client } from "../../../sanityclient/sanity";
+import { client } from "../../../client/sanity";
 const UpdateSeller = async (req, res) => {
   try {
     const docDelete = req.body.tokenId + req.body.owner + "listedNftTable";

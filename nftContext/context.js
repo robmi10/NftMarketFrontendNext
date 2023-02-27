@@ -1,6 +1,6 @@
 import React from "react";
 import { createContext, useState, useEffect } from "react";
-import { client } from "../Sanityclient/sanity";
+import { client } from "../client/sanity";
 import { uuid } from "uuidv4";
 import GetIpfsTokenURI from "../components/filterList";
 export const NftContext = createContext();

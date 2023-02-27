@@ -1,4 +1,4 @@
-import { client } from "../../../sanityclient/sanity";
+import { client } from "../../../client/sanity";
 const UpdateDuration = async (req, res) => {
   try {
     const docAuction =
