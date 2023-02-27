@@ -29,7 +29,7 @@ const MyCollection = () => {
   console.log({ nftList });
   if (!nftList)
     return (
-      <div className="h-screen w-screen">
+      <div classnameName="h-screen w-screen">
         {" "}
         <BouncerLoader />
       </div>
@@ -61,19 +61,19 @@ const MyCollection = () => {
 
   if (myNfts.length === 0)
     return (
-      <div className=" flex h-screen w-screen items-center justify-center">
-        <h1 className=" text-4xl font-extrabold">No Collection</h1>
+      <div classnameName=" flex h-screen w-screen items-center justify-center">
+        <h1 classnameName=" text-4xl font-extrabold">No Collection</h1>
       </div>
     );
   return (
-    <div className="pb-36">
-      <div class="flex justify-center">
-        <div class="mt-10 flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
+    <div classnameName="pb-36">
+      <div classname="flex justify-center">
+        <div classname="mt-10 flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
           COLLECTION
         </div>
       </div>
-      <div class="mt-10 flex justify-center">
-        <div class="mb-5 flex w-5/6 flex-wrap justify-center gap-5 ">
+      <div classname="mt-10 flex justify-center">
+        <div classname="mb-5 flex w-5/6 flex-wrap justify-center gap-5 ">
           {myNfts?.map((nft, i) => {
             return (
               <NftCard

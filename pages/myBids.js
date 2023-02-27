@@ -31,24 +31,24 @@ const MyBids = () => {
 
   return (
     <>
-      <div class="mt-10  flex  flex-col items-center justify-center gap-4 ">
-        <div class=" flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
+      <div classname="mt-10  flex  flex-col items-center justify-center gap-4 ">
+        <div classname=" flex h-12 w-2/6 items-center justify-center rounded-xl shadow-lg shadow-[#185ee041]">
           MY BIDS
         </div>
 
-        <div class="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+        <div classname="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
           {myBidsNfts.length <= 0 && (
-            <h1 className=" text-4xl font-extrabold">No Bids</h1>
+            <h1 classnameName=" text-4xl font-extrabold">No Bids</h1>
           )}
 
           {myBidsNfts?.map((Nft, i) => {
             return (
-              <div class="flex h-auto w-2/6 flex-col gap-5 ">
-                <div class="flex w-full items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]">
-                  <div class="flex flex-col gap-10 p-4">
-                    <div class="h-full w-full  bg-red-500">
+              <div classname="flex h-auto w-2/6 flex-col gap-5 ">
+                <div classname="flex w-full items-center justify-center rounded-md shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041]">
+                  <div classname="flex flex-col gap-10 p-4">
+                    <div classname="h-full w-full  bg-red-500">
                       <img
-                        class="rounded-sm"
+                        classname="rounded-sm"
                         src="https://sm.ign.com/t/ign_ap/screenshot/default/cropped-155786657620190514n-dragon-ball-broly-data_xjzd.h960.jpg"
                       />
                     </div>
@@ -60,9 +60,9 @@ const MyBids = () => {
                       <h1>Amount </h1>
                       <div>{formatEther(Nft.Amount.toString())} MATIC</div>
                     </div>
-                    <div class="flex w-full justify-center">
+                    <div classname="flex w-full justify-center">
                       <button
-                        class="flex w-2/4 items-center justify-center rounded-lg shadow-lg shadow-[#185ee041]"
+                        classname="flex w-2/4 items-center justify-center rounded-lg shadow-lg shadow-[#185ee041]"
                         onClick={() => {
                           withdrawNFT(Nft);
                         }}

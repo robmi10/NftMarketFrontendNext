@@ -17,11 +17,11 @@ const FormSell = (listToMarket) => {
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        class="m-20 mb-20 mt-10 flex flex-col"
+        classname="m-20 mb-20 mt-10 flex flex-col"
       >
         <label for="first">Price</label>
         <input
-          class="max-w-full rounded-md px-4 dark:bg-white dark:text-black"
+          classname="max-w-full rounded-md px-4 dark:bg-white dark:text-black"
           type="number"
           step="any"
           id="price"
@@ -33,10 +33,10 @@ const FormSell = (listToMarket) => {
         />
 
         <button
-          class="pl-2/4 mt-10 flex h-12 cursor-pointer items-center justify-center rounded-md bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041] dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 dark:text-black lg:w-96"
+          classname="pl-2/4 mt-10 flex h-12 cursor-pointer items-center justify-center rounded-md bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041] dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 dark:text-black lg:w-96"
           type="submit"
         >
-          <div class="flex items-center justify-center">
+          <div classname="flex items-center justify-center">
             {openModal === "loading" ? <BouncerLoader /> : <div>Submit</div>}
           </div>
         </button>

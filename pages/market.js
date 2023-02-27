@@ -91,12 +91,12 @@ const Market = () => {
   console.log({ nftsListedAuction });
 
   return (
-    <div className="pb-36">
-      <div className="mt-20   flex justify-center">
-        <div class="lg:p-3/4 flex h-11 w-3/4 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:relative lg:w-auto">
+    <div classnameName="pb-36">
+      <div classnameName="mt-20   flex justify-center">
+        <div classname="lg:p-3/4 flex h-11 w-3/4 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:relative lg:w-auto">
           <input type="radio" id="radio-1" name="tabs" />
           <label
-            className={styles.tab}
+            classnameName={styles.tab}
             for="radio-1"
             onClick={() => {
               setMarketAuction(false);
@@ -106,7 +106,7 @@ const Market = () => {
           </label>
           <input type="radio" id="radio-2" name="tabs" />
           <label
-            className={styles.tab}
+            classnameName={styles.tab}
             for="radio-2"
             onClick={() => {
               setMarketAuction(true);
@@ -114,19 +114,19 @@ const Market = () => {
           >
             Auction
           </label>
-          <span className={styles.glider}></span>
+          <span classnameName={styles.glider}></span>
         </div>
       </div>
 
       {nftListOnSale.length <= 0 && (
-        <div class="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+        <div classname="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
           {nftsListedSale.length <= 0 && (
-            <h1 className=" text-4xl font-extrabold">No Nfts ...</h1>
+            <h1 classnameName=" text-4xl font-extrabold">No Nfts ...</h1>
           )}{" "}
         </div>
       )}
 
-      <div class="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
+      <div classname="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
         {!isMarketAuction && nftsListedSale.length > 0 ? (
           nftsListedSale?.map((nft, i) => {
             return <NftCardBuy {...nft} />;
@@ -134,7 +134,7 @@ const Market = () => {
         ) : isMarketAuction && nftsListedAuction.length > 0 ? (
           nftsListedAuction?.map((nft, i) => {
             return (
-              <div class="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
+              <div classname="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
                 {nftsListedAuction.length > 0 && (
                   <NftCardAuction
                     handleOpenSellModal={handleOpenSellModal}
@@ -148,9 +148,11 @@ const Market = () => {
           <>
             {" "}
             {
-              <div class="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+              <div classname="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
                 {nftsListedAuction.length <= 0 && (
-                  <h1 className=" text-4xl font-extrabold">No Auctions ...</h1>
+                  <h1 classnameName=" text-4xl font-extrabold">
+                    No Auctions ...
+                  </h1>
                 )}{" "}
               </div>
             }
@@ -159,9 +161,9 @@ const Market = () => {
           <>
             {" "}
             {
-              <div class="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+              <div classname="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
                 {nftsListedAuction.length <= 0 && (
-                  <h1 className=" text-4xl font-extrabold">No Nfts ...</h1>
+                  <h1 classnameName=" text-4xl font-extrabold">No Nfts ...</h1>
                 )}{" "}
               </div>
             }
