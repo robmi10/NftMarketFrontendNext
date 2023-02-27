@@ -8,6 +8,7 @@ import { formatEther } from "ethers/lib/utils";
 
 const MyBids = () => {
   const { account } = useEthers();
+  const { withdrawNFT } = useWithdraw();
   const toast = useToast();
   const { myBids, transactionStatus, toastNotifcation, setToastNotifcation } =
     useContext(NftContext);
@@ -33,8 +34,6 @@ const MyBids = () => {
       </div>
     );
   const myBidsNfts = myBids?.filter((Nft) => Nft?.Bidder === account);
-
-  const { withdrawNFT } = useWithdraw();
 
   return (
     <>
