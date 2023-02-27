@@ -61,9 +61,9 @@ const Inputfield = () => {
   };
   return (
     <>
-      <div classname="lg:w-wh relative flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 dark:text-black">
+      <div className="lg:w-wh relative flex h-full content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 dark:text-black">
         <h1
-          classname="absolute top-0 mt-5 w-4/5 cursor-pointer lg:left-0 lg:ml-20 lg:w-0"
+          className="absolute top-0 mt-5 w-4/5 cursor-pointer lg:left-0 lg:ml-20 lg:w-0"
           onClick={() => {
             setOpenModal(false);
           }}
@@ -72,11 +72,11 @@ const Inputfield = () => {
         </h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          classname="m-10 mb-20 mt-10 flex flex-col lg:m-20"
+          className="m-10 mb-20 mt-10 flex flex-col lg:m-20"
         >
           <label for="first">NFT</label>
           <input
-            classname="flex-start rounded-md px-4"
+            className="flex-start rounded-md px-4"
             type="text"
             id="name"
             name="first"
@@ -85,7 +85,7 @@ const Inputfield = () => {
 
           <label for="first">Description</label>
           <input
-            classname="mr-2 h-12 max-w-full rounded-md px-4"
+            className="mr-2 h-12 max-w-full rounded-md px-4"
             type="text"
             id="text"
             name="fifth"
@@ -93,7 +93,7 @@ const Inputfield = () => {
           />
           <label for="first">Royalty</label>
           <input
-            classname="rounded-md px-4"
+            className="rounded-md px-4"
             type="number"
             id="royalty"
             name="third"
@@ -101,7 +101,7 @@ const Inputfield = () => {
           />
           <label>Image</label>
           <input
-            classname="rounded-md "
+            className="rounded-md "
             type="file"
             id="image"
             name="fourth"
@@ -109,10 +109,10 @@ const Inputfield = () => {
           />
 
           <button
-            classname="pl-2/4 mt-10 flex h-12 cursor-pointer items-center justify-center rounded-lg bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041] lg:w-96"
+            className="pl-2/4 mt-10 flex h-12 cursor-pointer items-center justify-center rounded-lg bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041] lg:w-96"
             type="submit"
           >
-            <div classname="flex items-center justify-center">
+            <div className="flex items-center justify-center">
               {nftCreateData === "loading" ? (
                 <BouncerLoader />
               ) : (

@@ -12,9 +12,9 @@ const Searchbar = () => {
   return (
     <form>
       <div>
-        <AiOutlineSearch classname=" absolute ml-3  mt-1 h-4 w-5 dark:text-black" />
+        <AiOutlineSearch className=" absolute ml-3  mt-1 h-4 w-5 dark:text-black" />
         <input
-          classname="ml-2 flex items-center justify-center rounded-md border-black text-center dark:bg-white dark:text-black lg:w-80"
+          className="ml-2 flex items-center justify-center rounded-md border-black text-center dark:bg-white dark:text-black lg:w-80"
           placeholder="Search..."
           title="searchBar"
           type="text"

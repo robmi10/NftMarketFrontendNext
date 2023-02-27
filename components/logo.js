@@ -15,10 +15,10 @@ export const Logo = () => {
     autoplay: false,
   });
   return (
-    <div classname="flex h-screen justify-center">
-      <div classname="mt-10 flex h-5/6 w-4/6 rounded-md ">
-        <div classname="space-y-30 flex w-full flex-col items-center">
-          <div classname="body-font mt-10 font-poppins text-7xl font-bold ">
+    <div className="flex h-screen justify-center">
+      <div className="mt-10 flex h-5/6 w-4/6 rounded-md ">
+        <div className="space-y-30 flex w-full flex-col items-center">
+          <div className="body-font mt-10 font-poppins text-7xl font-bold ">
             <AnimatedTitle
               size={3}
               weight={600}
@@ -26,7 +26,7 @@ export const Logo = () => {
               text="WELCOME TO NFT MARKET"
             />
           </div>
-          <div classname="body-font mt-10 font-poppins text-2xl">
+          <div className="body-font mt-10 font-poppins text-2xl">
             <AnimatedTitle
               size={2}
               weight={300}
@@ -34,7 +34,7 @@ export const Logo = () => {
               text="THE BEST NFT MARKET IN THE WORLD"
             />
           </div>
-          <div classname="body-font mt-10 font-poppins text-2xl">
+          <div className="body-font mt-10 font-poppins text-2xl">
             <AnimatedTitle
               size={1}
               weight={150}
@@ -46,7 +46,7 @@ export const Logo = () => {
             onMouseEnter={() => rive && rive.play()}
             onMouseLeave={() => rive && rive.pause()}
           /> */}
-          {/* <RiveComponent src={PharaoRiv} classnameName="base-canvas-size" /> */}
+          {/* <RiveComponent src={PharaoRiv} classNameName="base-canvas-size" /> */}
         </div>
       </div>
     </div>

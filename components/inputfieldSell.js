@@ -17,9 +17,9 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
 
   return (
     <>
-      <div classname="w-wh relative z-20 flex h-full  content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041] dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 lg:h-full">
+      <div className="w-wh relative z-20 flex h-full  content-center items-center justify-center rounded-md bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041] dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 lg:h-full">
         <h1
-          classname="absolute top-0 left-0 mt-5 ml-20 flex w-0 cursor-pointer flex-row gap-20"
+          className="absolute top-0 left-0 mt-5 ml-20 flex w-0 cursor-pointer flex-row gap-20"
           onClick={() => {
             handleOpenSellModal(false);
             setOpenModal(false);
@@ -27,12 +27,12 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
         >
           X
         </h1>
-        <div classname=" absolute top-0 mt-10 flex w-10 cursor-pointer flex-row justify-center gap-10 lg:w-full">
-          <div classnameName={styles.container}>
-            <div classname=" p-3/4 relative flex h-11 w-52 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:w-full">
+        <div className=" absolute top-0 mt-10 flex w-10 cursor-pointer flex-row justify-center gap-10 lg:w-full">
+          <div classNameName={styles.container}>
+            <div className=" p-3/4 relative flex h-11 w-52 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:w-full">
               <input type="radio" id="radio-1" name="tabs" />
               <label
-                classnameName={styles.tab}
+                classNameName={styles.tab}
                 for="radio-1"
                 onClick={() => {
                   setSellType(false);
@@ -42,7 +42,7 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
               </label>
               <input type="radio" id="radio-2" name="tabs" />
               <label
-                classnameName={styles.tab}
+                classNameName={styles.tab}
                 for="radio-2"
                 onClick={() => {
                   setSellType(true);
@@ -50,7 +50,7 @@ const InputfieldSell = ({ handleOpenSellModal, openModalSellData }) => {
               >
                 Auction
               </label>
-              <span classnameName={styles.glider}></span>
+              <span classNameName={styles.glider}></span>
             </div>
           </div>
         </div>

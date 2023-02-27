@@ -28,25 +28,25 @@ const Layout = ({ children }) => {
   if (openLinkModal)
     return (
       <>
-        <div classname="flex h-screen flex-col items-center justify-center gap-10 bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400">
+        <div className="flex h-screen flex-col items-center justify-center gap-10 bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400">
           <button
             onClick={() => {
               setOpenLinkModal(false);
             }}
-            classname=" absolute left-10 top-10 "
+            className=" absolute left-10 top-10 "
           >
             X
           </button>
 
           {userAddress && (
-            <div classname="left-2/5 absolute top-10 ">
+            <div className="left-2/5 absolute top-10 ">
               <h1 href="/market">{userAddress?.toString()?.substr(0, 10)}</h1>
             </div>
           )}
 
           {mounted && currenTheme === "dark" && (
             <SunIcon
-              classnameName="h-6 w-6"
+              classNameName="h-6 w-6"
               role="button"
               onClick={() => {
                 setTheme("light");
@@ -57,7 +57,7 @@ const Layout = ({ children }) => {
 
           {mounted && currenTheme === "light" && (
             <MoonIcon
-              classnameName="h-6 w-6"
+              classNameName="h-6 w-6"
               role="button"
               onClick={() => {
                 setTheme("dark");
@@ -66,7 +66,7 @@ const Layout = ({ children }) => {
             />
           )}
 
-          <div classname="flex h-20 cursor-pointer items-center justify-center rounded-md focus:text-white lg:w-20 ">
+          <div className="flex h-20 cursor-pointer items-center justify-center rounded-md focus:text-white lg:w-20 ">
             <Link href="/">
               <button
                 onClick={() => {
@@ -78,7 +78,7 @@ const Layout = ({ children }) => {
             </Link>
           </div>
 
-          <div classname="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 ">
+          <div className="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 ">
             <Link href="/market">
               <button
                 onClick={() => {
@@ -94,7 +94,7 @@ const Layout = ({ children }) => {
             onClick={() => {
               setOpenLinkModal(false);
             }}
-            classname="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 "
+            className="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 "
           >
             <Link
               onClick={() => {
@@ -112,7 +112,7 @@ const Layout = ({ children }) => {
                 loginUser();
                 setOpenLinkModal(false);
               }}
-              classname="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md "
+              className="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md "
             >
               CONNECT
             </button>
@@ -123,7 +123,7 @@ const Layout = ({ children }) => {
                 logoutUser();
                 setOpenLinkModal(false);
               }}
-              classname="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md "
+              className="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md "
             >
               <Link href="/">LOGOUT</Link>
             </button>

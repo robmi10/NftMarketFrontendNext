@@ -20,11 +20,11 @@ const FormAuction = (listToMarketAuction) => {
     <div>
       <form
         onSubmit={handleSubmit(onSubmitAuction)}
-        classname="m-20 mb-20 mt-10 flex flex-col"
+        className="m-20 mb-20 mt-10 flex flex-col"
       >
         <label for="first">Startprice</label>
         <input
-          classname="max-w-full rounded-md px-4 dark:bg-white dark:text-black"
+          className="max-w-full rounded-md px-4 dark:bg-white dark:text-black"
           type="number"
           step="any"
           id="price"
@@ -34,17 +34,17 @@ const FormAuction = (listToMarketAuction) => {
 
         <label for="first">Duration</label>
         <input
-          classname="rounded-md px-4 dark:bg-white dark:text-black"
+          className="rounded-md px-4 dark:bg-white dark:text-black"
           type="date"
           id="date"
           {...register("date", { required: true })}
         />
 
         <button
-          classname="pl-2/4 mt-10 flex h-12 cursor-pointer items-center justify-center rounded-md bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041] dark:text-black lg:w-96"
+          className="pl-2/4 mt-10 flex h-12 cursor-pointer items-center justify-center rounded-md bg-white shadow-lg shadow-[#185ee041] hover:shadow-xl hover:shadow-[#185ee041] dark:text-black lg:w-96"
           type="submit"
         >
-          <div classname="flex items-center justify-center">
+          <div className="flex items-center justify-center">
             {openModal === "loading" ? <BouncerLoader /> : <div>Submit</div>}
           </div>
         </button>

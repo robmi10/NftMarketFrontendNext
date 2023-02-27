@@ -92,43 +92,43 @@ const CountDownTimer = ({ countDownTimeMs, AuctionInfo }) => {
   };
 
   return (
-    <div classname="gap flex flex-row gap-5 text-4xl">
-      <div classname="container-segment">
-        <div classname="segment">
-          <div classname="segment-title">Days</div>
-          <div classnameName={styles.flipCard} dataCurrent={dataCurrent}>
-            <span classnameName={styles.top}>{remainingTime.days}</span>
-            <span classnameName={styles.bottom}>{remainingTime.days}</span>
+    <div className="gap flex flex-row gap-5 text-4xl">
+      <div className="container-segment">
+        <div className="segment">
+          <div className="segment-title">Days</div>
+          <div classNameName={styles.flipCard} dataCurrent={dataCurrent}>
+            <span classNameName={styles.top}>{remainingTime.days}</span>
+            <span classNameName={styles.bottom}>{remainingTime.days}</span>
           </div>
         </div>
       </div>
 
-      <div classname="container-segment">
-        <div classname="segment">
-          <div classname="segment-title">Hours</div>
-          <div classnameName={styles.flipCard}>
-            <span classnameName={styles.top}>{remainingTime.hours}</span>
-            <span classnameName={styles.bottom}>{remainingTime.hours}</span>
+      <div className="container-segment">
+        <div className="segment">
+          <div className="segment-title">Hours</div>
+          <div classNameName={styles.flipCard}>
+            <span classNameName={styles.top}>{remainingTime.hours}</span>
+            <span classNameName={styles.bottom}>{remainingTime.hours}</span>
           </div>
         </div>
       </div>
 
-      <div classname="container-segment">
-        <div classname="segment">
-          <div classname="segment-title">Minutes</div>
-          <div classnameName={styles.flipCard}>
-            <span classnameName={styles.top}>{remainingTime.minutes}</span>
-            <span classnameName={styles.bottom}>{remainingTime.minutes}</span>
+      <div className="container-segment">
+        <div className="segment">
+          <div className="segment-title">Minutes</div>
+          <div classNameName={styles.flipCard}>
+            <span classNameName={styles.top}>{remainingTime.minutes}</span>
+            <span classNameName={styles.bottom}>{remainingTime.minutes}</span>
           </div>
         </div>
       </div>
 
-      <div classname="container-segment">
-        <div classname="segment">
-          <div classname="segment-title">Minutes</div>
-          <div classnameName={styles.flipCard}>
-            <span classnameName={styles.top}>{remainingTime.seconds}</span>
-            <span classnameName={styles.bottom}>{remainingTime.seconds}</span>
+      <div className="container-segment">
+        <div className="segment">
+          <div className="segment-title">Minutes</div>
+          <div classNameName={styles.flipCard}>
+            <span classNameName={styles.top}>{remainingTime.seconds}</span>
+            <span classNameName={styles.bottom}>{remainingTime.seconds}</span>
           </div>
         </div>
       </div>

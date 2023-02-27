@@ -16,26 +16,26 @@ const NftCardBuy = ({ Nft }) => {
   const currentPrice = Nft?.Price ? formatEther(Nft?.Price.toString()) : 0;
 
   return (
-    <div classname="border-1 flex w-3/4 animate-fade flex-col items-center gap-5 rounded-md border-black shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041] lg:w-1/4">
-      <div classname="h-96 w-full">
+    <div className="border-1 flex w-3/4 animate-fade flex-col items-center gap-5 rounded-md border-black shadow-lg shadow-[#185ee041] hover:shadow-2xl hover:shadow-[#185ee041] lg:w-1/4">
+      <div className="h-96 w-full">
         <img
-          classname="h-64 w-full justify-center object-cover"
+          className="h-64 w-full justify-center object-cover"
           src={Nft?.ipfsInfo?.image}
         />
       </div>
-      <div classname=" mt-5 flex w-3/6 justify-center shadow-lg shadow-[#185ee041]">
+      <div className=" mt-5 flex w-3/6 justify-center shadow-lg shadow-[#185ee041]">
         <h1>{Nft?.Seller?.toString()?.substr(0, 10)}</h1>
       </div>
-      <div classname="flex w-full flex-col gap-5 pl-5">
+      <div className="flex w-full flex-col gap-5 pl-5">
         <h1>{Nft?.ipfsInfo?.title}</h1>
 
         <h1>{Nft?.ipfsInfo?.description}</h1>
         <h1>{currentPrice} MATIC</h1>
       </div>
 
-      <div classname="w-6/6 flex h-1/6 items-center justify-center rounded-sm bg-purple-300"></div>
+      <div className="w-6/6 flex h-1/6 items-center justify-center rounded-sm bg-purple-300"></div>
 
-      <div classname="flex h-1/5 w-full flex-row justify-center">
+      <div className="flex h-1/5 w-full flex-row justify-center">
         <button
           onClick={() => {
             buyNft(Nft);

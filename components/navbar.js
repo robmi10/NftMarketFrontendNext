@@ -19,16 +19,16 @@ const Navbar = () => {
     setMounted(true);
   }, []);
   return (
-    <div classname="lg:h-35 lg:bg-opacity-120 flex h-24 items-center justify-center bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041] dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 lg:justify-around lg:rounded-sm">
-      <div classname="w-2/2 flex cursor-pointer flex-row items-center justify-around gap-14 rounded-md lg:justify-start lg:gap-20">
+    <div className="lg:h-35 lg:bg-opacity-120 flex h-24 items-center justify-center bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-300 shadow-lg shadow-[#185ee041] dark:from-indigo-800 dark:via-purple-600 dark:to-pink-400 lg:justify-around lg:rounded-sm">
+      <div className="w-2/2 flex cursor-pointer flex-row items-center justify-around gap-14 rounded-md lg:justify-start lg:gap-20">
         <Link href="/">
           <AiFillHome size={"20px"} />
         </Link>
-        <div classname="flex items-center justify-center ">
+        <div className="flex items-center justify-center ">
           <SearchBar />
         </div>
 
-        <div classname="lg:hidden">
+        <div className="lg:hidden">
           <GiHamburgerMenu
             size={"20px"}
             onClick={() => {
@@ -38,16 +38,16 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div classname=" hidden lg:flex lg:w-1/2 lg:justify-end lg:space-x-10 ">
+      <div className=" hidden lg:flex lg:w-1/2 lg:justify-end lg:space-x-10 ">
         {account && (
-          <div classname="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md ">
+          <div className="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md ">
             <h1 href="/market">{account?.toString()?.substr(0, 10)}</h1>
           </div>
         )}
-        <div classname="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 ">
+        <div className="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 ">
           {mounted && currenTheme === "dark" && (
             <SunIcon
-              classnameName="h-6 w-6"
+              classNameName="h-6 w-6"
               role="button"
               onClick={() => {
                 setTheme("light");
@@ -58,7 +58,7 @@ const Navbar = () => {
 
           {mounted && currenTheme === "light" && (
             <MoonIcon
-              classnameName="h-6 w-6"
+              classNameName="h-6 w-6"
               role="button"
               onClick={() => {
                 setTheme("dark");
@@ -68,11 +68,11 @@ const Navbar = () => {
           )}
         </div>
 
-        <div classname="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 ">
+        <div className="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 ">
           <Link href="/market">MARKET</Link>
         </div>
 
-        <div classname="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 ">
+        <div className="flex h-20 cursor-pointer items-center justify-center rounded-md lg:w-20 ">
           <Link href="/profile">PROFILE</Link>
         </div>
 
@@ -81,7 +81,7 @@ const Navbar = () => {
             onClick={() => {
               activateBrowserWallet();
             }}
-            classname="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md "
+            className="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md "
           >
             CONNECT
           </div>
@@ -91,7 +91,7 @@ const Navbar = () => {
             onClick={() => {
               deactivate();
             }}
-            classname="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md "
+            className="flex h-20 w-20 cursor-pointer items-center justify-center rounded-md "
           >
             <Link href="/">LOGOUT</Link>
           </div>

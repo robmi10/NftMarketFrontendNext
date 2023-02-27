@@ -1,4 +1,4 @@
-import classnamees from "./Timer.module.scss";
+import classNamees from "./Timer.module.scss";
 import { useState, useEffect } from "react";
 import CountDownTimer from "./countdownTimer";
 
@@ -26,20 +26,20 @@ const Timer = (props) => {
   );
 
   return (
-    <div classnameName={classnamees.timer}>
-      <div classnameName={classnamees.segment}>
+    <div classNameName={classNamees.timer}>
+      <div classNameName={classNamees.segment}>
         <CountDownTimer countDownTimeMs={days} type="days" />
         <p>Days</p>
       </div>
-      <div classnameName={classnamees.segment}>
+      <div classNameName={classNamees.segment}>
         <CountDownTimer countDownTimeMs={hours} type="hours" />
         <p>Hours</p>
       </div>
-      <div classnameName={classnamees.segment}>
+      <div classNameName={classNamees.segment}>
         <CountDownTimer countDownTimeMs={minutes} type="minutes" />
         <p>Minutes</p>
       </div>
-      <div classnameName={classnamees.segment}>
+      <div classNameName={classNamees.segment}>
         <CountDownTimer countDownTimeMs={seconds} type="seconds" />
         <p>Seconds</p>
       </div>
