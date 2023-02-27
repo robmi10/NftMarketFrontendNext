@@ -96,7 +96,7 @@ const CountDownTimer = ({ countDownTimeMs, AuctionInfo }) => {
       <div className="container-segment">
         <div className="segment">
           <div className="segment-title">Days</div>
-          <div className={styles.flipCard} dataCurrent={dataCurrent}>
+          <div className={styles.flipCard}>
             <span className={styles.top}>{remainingTime.days}</span>
             <span className={styles.bottom}>{remainingTime.days}</span>
           </div>

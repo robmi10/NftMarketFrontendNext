@@ -25,7 +25,6 @@ const FormSell = (listToMarket) => {
           type="number"
           step="any"
           id="price"
-          price="second"
           {...register("price", {
             required: true,
             minLength: 1,
