@@ -92,7 +92,7 @@ const Market = () => {
 
   return (
     <div className="pb-36">
-      <div className="mt-20 flex justify-center">
+      <div className="mt-20   flex justify-center">
         <div className="lg:p-3/4 flex h-11 w-3/4 items-center rounded-lg shadow-lg shadow-[#185ee041] lg:relative lg:w-auto">
           <input type="radio" id="radio-1" name="tabs" />
           <label
@@ -126,56 +126,49 @@ const Market = () => {
         </div>
       )}
 
-      {!isMarketAuction && nftsListedSale.length > 0 ? (
-        nftsListedSale?.map((nft, i) => {
-          return (
-            <div
-              key={i}
-              className="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm"
-            >
-              <NftCardBuy {...nft} />{" "}
-            </div>
-          );
-        })
-      ) : isMarketAuction && nftsListedAuction.length > 0 ? (
-        nftsListedAuction?.map((nft, i) => {
-          return (
-            <div
-              key={i}
-              className="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm"
-            >
-              {nftsListedAuction.length > 0 && (
-                <NftCardAuction
-                  handleOpenSellModal={handleOpenSellModal}
-                  {...nft}
-                />
-              )}
-            </div>
-          );
-        })
-      ) : isMarketAuction && nftsListedAuction.length <= 0 ? (
-        <>
-          {" "}
-          {
-            <div className="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
-              {nftsListedAuction.length <= 0 && (
-                <h1 className=" text-4xl font-extrabold">No Auctions ...</h1>
-              )}{" "}
-            </div>
-          }
-        </>
-      ) : (
-        <>
-          {" "}
-          {
-            <div className="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
-              {nftsListedAuction.length <= 0 && (
-                <h1 className=" text-4xl font-extrabold">No Nfts ...</h1>
-              )}{" "}
-            </div>
-          }
-        </>
-      )}
+      <div className="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
+        {!isMarketAuction && nftsListedSale.length > 0 ? (
+          nftsListedSale?.map((nft, i) => {
+            return <NftCardBuy key={i} {...nft} />;
+          })
+        ) : isMarketAuction && nftsListedAuction.length > 0 ? (
+          nftsListedAuction?.map((nft, i) => {
+            return (
+              <div className="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
+                {nftsListedAuction.length > 0 && (
+                  <NftCardAuction
+                    key={i}
+                    handleOpenSellModal={handleOpenSellModal}
+                    {...nft}
+                  />
+                )}
+              </div>
+            );
+          })
+        ) : isMarketAuction && nftsListedAuction.length <= 0 ? (
+          <>
+            {" "}
+            {
+              <div className="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+                {nftsListedAuction.length <= 0 && (
+                  <h1 className=" text-4xl font-extrabold">No Auctions ...</h1>
+                )}{" "}
+              </div>
+            }
+          </>
+        ) : (
+          <>
+            {" "}
+            {
+              <div className="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+                {nftsListedAuction.length <= 0 && (
+                  <h1 className=" text-4xl font-extrabold">No Nfts ...</h1>
+                )}{" "}
+              </div>
+            }
+          </>
+        )}
+      </div>
     </div>
   );
 };
