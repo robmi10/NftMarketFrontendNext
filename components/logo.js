@@ -17,38 +17,39 @@ export const Logo = () => {
   return (
     <div className="flex h-screen justify-center">
       <div className="mt-10 flex h-5/6 w-4/6 rounded-md ">
-        <div className="space-y-30 flex w-full flex-col items-center">
-          <div className="body-font mt-10 font-poppins text-7xl font-bold ">
-            <AnimatedTitle
-              size={3}
-              weight={600}
-              time={1}
-              text="WELCOME TO NFT MARKET"
-            />
-          </div>
-          <div className="body-font mt-10 font-poppins text-2xl">
-            <AnimatedTitle
-              size={2}
-              weight={300}
-              time={4}
-              text="THE BEST NFT MARKET IN THE WORLD"
-            />
-          </div>
-          <div className="body-font mt-10 font-poppins text-2xl">
-            <AnimatedTitle
-              size={1}
-              weight={150}
-              time={8}
-              text="START BUY CREATING YOUR FIRST NFT"
-            />
-          </div>
-          {/* <RiveComponent
-            onMouseEnter={() => rive && rive.play()}
-            onMouseLeave={() => rive && rive.pause()}
-          /> */}
-          {/* <RiveComponent src={PharaoRiv} className="base-canvas-size" /> */}
-        </div>
       </div>
     </div>
   );
 };
+
+{/* <div className="space-y-30 flex w-full flex-col items-center">
+  <div className="body-font mt-10 font-poppins text-7xl font-bold ">
+    <AnimatedTitle
+      size={3}
+      weight={600}
+      time={1}
+      text="WELCOME TO NFT MARKET"
+    />
+  </div>
+  <div className="body-font mt-10 font-poppins text-2xl">
+    <AnimatedTitle
+      size={2}
+      weight={300}
+      time={4}
+      text="THE BEST NFT MARKET IN THE WORLD"
+    />
+  </div>
+  <div className="body-font mt-10 font-poppins text-2xl">
+    <AnimatedTitle
+      size={1}
+      weight={150}
+      time={8}
+      text="START BUY CREATING YOUR FIRST NFT"
+    />
+  </div>
+  {/* <RiveComponent
+    onMouseEnter={() => rive && rive.play()}
+    onMouseLeave={() => rive && rive.pause()}
+  /> */}
+  {/* <RiveComponent src={PharaoRiv} className="base-canvas-size" /> */}
+</div> */}
