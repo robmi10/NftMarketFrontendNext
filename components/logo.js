@@ -16,13 +16,12 @@ export const Logo = () => {
   });
   return (
     <div className="flex h-screen justify-center">
-      <div className="mt-10 flex h-5/6 w-4/6 rounded-md ">
-      </div>
+      <div className="mt-10 flex h-5/6 w-4/6 rounded-md "></div>
     </div>
   );
 };
 
-{/* <div className="space-y-30 flex w-full flex-col items-center">
+<div className="space-y-30 flex w-full flex-col items-center">
   <div className="body-font mt-10 font-poppins text-7xl font-bold ">
     <AnimatedTitle
       size={3}
@@ -48,8 +47,8 @@ export const Logo = () => {
     />
   </div>
   {/* <RiveComponent
-    onMouseEnter={() => rive && rive.play()}
-    onMouseLeave={() => rive && rive.pause()}
-  /> */}
+            onMouseEnter={() => rive && rive.play()}
+            onMouseLeave={() => rive && rive.pause()}
+          /> */}
   {/* <RiveComponent src={PharaoRiv} className="base-canvas-size" /> */}
-</div> */}
+</div>;
