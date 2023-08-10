@@ -5,11 +5,6 @@ import PharaoRiv from "./rive/pharao.riv";
 import { AnimatedTitle } from "./animation/AnimatedText/animationtext";
 import pharao from "./rive/boxes.riv";
 export const Logo = () => {
-  // const { rive } = useRive({
-  //   src: "../pharao.riv",
-  //   autoplay: false,
-  // });
-
   const { rive, RiveComponent } = useRive({
     src: "https://rive.app/community/3679-7682-birdy/",
     autoplay: false,
