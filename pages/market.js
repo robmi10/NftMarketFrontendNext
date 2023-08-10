@@ -134,7 +134,10 @@ const Market = () => {
         ) : isMarketAuction && nftsListedAuction.length > 0 ? (
           nftsListedAuction?.map((nft, i) => {
             return (
-              <div className="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm">
+              <div
+                key={i}
+                className="mt-5 mb-5 flex w-screen flex-wrap justify-center gap-5 rounded-sm"
+              >
                 {nftsListedAuction.length > 0 && (
                   <NftCardAuction
                     key={i}
