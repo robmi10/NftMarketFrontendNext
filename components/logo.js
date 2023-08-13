@@ -14,7 +14,7 @@ export const Logo = () => {
       <div className="mt-10 flex h-5/6 w-4/6 rounded-md ">
         <div className="space-y-30 flex w-full flex-col items-center">
           <div className="body-font mt-11 font-poppins text-6xl font-bold ">
-            WELCOME TO NFT MARKET
+            NFT MARKET
           </div>
           <div className="body-font mt-10 font-poppins text-3xl">
             THE BEST NFT MARKET IN THE WORLD

@@ -13,7 +13,7 @@ const Footer = () => {
       </div>
       <div className="flex h-full w-1/3 justify-center">
         <ul className="mt-2">
-          <h1>Overview</h1>
+          <h1 className="font-medium">Overview</h1>
           <li className="mt-2 lg:mt-8">About</li>
           <li className="cursor-pointer">Careers</li>
           <li className="cursor-pointer">Privacy Policy</li>
@@ -23,7 +23,7 @@ const Footer = () => {
 
       <div className="flex h-full w-1/3 justify-center ">
         <ul className="mt-2">
-          <h1>Follow us</h1>
+          <h1 className="font-medium">Follow us</h1>
           <div className="flex w-full flex-col items-center gap-2 ">
             <li className="mt-2 cursor-pointer lg:mt-8">
               <BsFacebook />
@@ -42,7 +42,7 @@ const Footer = () => {
       </div>
       <div className="flex h-full w-1/3 justify-center">
         <ul className="mt-2">
-          <h1>Contact</h1>
+          <h1 className="font-medium">Contact</h1>
           <li className="mt-2 lg:mt-8">Support</li>
           <li className="cursor-pointer">Email</li>
         </ul>
